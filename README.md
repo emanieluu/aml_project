@@ -1,4 +1,4 @@
-# Molprop Prediction
+# Molecules Properties Prediction
 
 This project is dedicated to molecular property prediction using Machine Learning Models, such as Random Forest, Graph Isomorphism Networks (GIN).
 
@@ -32,4 +32,22 @@ Install dependencies with Pipenv:
 pipenv install
 ```
 
-To train a model, 
+To train a model, run the following command:
+```
+pipenv run python -m molprop_prediction.scripts.train
+```
+This command will execute the model training script. Make sure you have the necessary data available and properly configured in the script.
+
+## Project Structure
+
+molprop_prediction/: The main package of the project.
+models/: Contains model definitions.
+scripts/: Contains Python scripts for training, prediction, etc.
+configs/: Configuration files for model hyperparameters.
+data/: Folder for storing data required for training and evaluation.
+docs/: Project documentation.
+tests/: Unit and integration tests.
+
+## Contributors
+
+Claire Dechaux, François Lacarce, Emanie Luu 
