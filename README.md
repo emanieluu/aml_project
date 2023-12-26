@@ -1,4 +1,4 @@
-# Molprop Prediction
+# Molecules Properties Prediction
 
 This project is dedicated to molecular property prediction using Machine Learning Models, such as Random Forest, Graph Isomorphism Networks (GIN).
 
