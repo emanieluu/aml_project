@@ -6,7 +6,7 @@ import networkx as nx
 
 
 def smiles_to_graph(smiles: str):
-    mol = Chem.MolFromSmiles(smiles)  # construct molecules from smile notations
+    mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         return None
 

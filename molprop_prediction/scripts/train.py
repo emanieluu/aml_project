@@ -35,17 +35,7 @@ epochs = params["epochs"]
 batch_size = params["batch_size"]
 
 # Initialisation du modèle, de l'optimiseur et de la fonction de perte
-model = GIN(hidden_dim, input_dim)
-optimizer = optim.Adam(model.parameters(), lr=lr)
-criterion = nn.MSELoss()
-
-# Loading data
-merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
 train_data, test_data = train_test_split(merged_data, test_size=0.2, random_state=42)
-train_dataset = MolDataset(train_data)
-test_dataset = MolDataset(test_data)
-train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 # Boucle d'entraînement
 for epoch in range(epochs):
