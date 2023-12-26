@@ -21,7 +21,6 @@ def smiles_to_graph(smiles: str):
             bond.GetEndAtomIdx(),
             bond_type=bond.GetBondTypeAsDouble(),
         )
-
     return g
 
 
