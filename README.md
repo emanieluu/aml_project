@@ -40,12 +40,12 @@ This command will execute the model training script. Make sure you have the nece
 
 ## Project Structure
 
-molprop_prediction/: The main package of the project.
-models/: Contains model definitions.
-scripts/: Contains Python scripts for training, prediction, etc.
-configs/: Configuration files for model hyperparameters.
-data/: Folder for storing data required for training and evaluation.
-docs/: Project documentation.
+molprop_prediction/: The main package of the project.  
+models/: Contains model definitions.  
+scripts/: Contains Python scripts for training, prediction, etc.  
+configs/: Configuration files for model hyperparameters.  
+data/: Folder for storing data required for training and evaluation.  
+docs/: Project documentation.  
 tests/: Unit and integration tests.
 
 ## Contributors
