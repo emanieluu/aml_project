@@ -42,7 +42,7 @@ class MolecularGraphNeuralNetwork(nn.Module):
         i, j = 0, 0
         for k, matrix in enumerate(matrices):
             m, n = shapes[k]
-            pad_matrices[i : i + m, j : j + n] = matrix
+            pad_matrices[i: i + m, j: j + n] = matrix
             i += m
             j += n
         return pad_matrices
@@ -228,9 +228,12 @@ if __name__ == "__main__":
 
     print("Preprocessing the", dataset, "dataset.")
     print("Just a moment......")
-    (dataset_train, dataset_dev, dataset_test, N_fingerprints) = pp.create_datasets(
-        task, dataset, radius, device
-    )
+    (
+        dataset_train,
+        dataset_dev,
+        dataset_test,
+        N_fingerprints,
+    ) = pp.create_datasets(task, dataset, radius, device)
     print("-" * 100)
 
     print("The preprocess has finished!")
@@ -247,7 +250,8 @@ if __name__ == "__main__":
     trainer = Trainer(model)
     tester = Tester(model)
     print(
-        "# of model parameters:", sum([np.prod(p.size()) for p in model.parameters()])
+        "# of model parameters:",
+        sum([np.prod(p.size()) for p in model.parameters()]),
     )
     print("-" * 100)
 
@@ -288,13 +292,19 @@ if __name__ == "__main__":
             hours = int(minutes / 60)
             minutes = int(minutes - 60 * hours)
             print(
-                "The training will finish in about", hours, "hours", minutes, "minutes."
+                "The training will finish in about",
+                hours,
+                "hours",
+                minutes,
+                "minutes.",
             )
             print("-" * 100)
             print(result)
 
         result = "\t".join(
-            map(str, [epoch, time, loss_train, prediction_dev, prediction_test])
+            map(
+                str, [epoch, time, loss_train, prediction_dev, prediction_test]
+            )
         )
         tester.save_result(result, file_result)
 

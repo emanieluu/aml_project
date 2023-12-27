@@ -8,7 +8,6 @@ from molprop_prediction.models.GIN import GIN
 from molprop_prediction.scripts.preprocess_bis import (
     graph_datalist_from_smiles_and_labels,
 )
-from torchsummary import summary
 import pandas as pd
 
 
@@ -26,9 +25,12 @@ def load_params(config_path):
         params = json.load(config_file)
     return params
 
+
 # Loading data
 merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
-train_data, test_data = train_test_split(merged_data, test_size=0.2, random_state=42)
+train_data, test_data = train_test_split(
+    merged_data, test_size=0.2, random_state=42
+)
 
 train_dataset = graph_datalist_from_smiles_and_labels(
     train_data["smiles"], train_data["y"]

@@ -1,9 +1,8 @@
 import torch
 import torch.nn.functional as F
-from torch.nn import Linear, Sequential, BatchNorm1d, ReLU, Dropout
+from torch.nn import Linear, Sequential, BatchNorm1d, ReLU
 from torch_geometric.nn import GINConv
 from torch_geometric.nn import global_add_pool
-
 
 # adapted from https://mlabonne.github.io/blog/posts/2022-04-25-Graph_Isomorphism_Network.html to use it for a regression task
 class GIN(torch.nn.Module):
