@@ -1,8 +1,8 @@
 {
   "input_dim": 1,
-  "hidden_dim": 256,
+  "hidden_dim": 40,
   "output_dim": 1,
-  "lr": 0.01,
+  "lr": 0.05,
   "epochs": 100,
   "batch_size": 32
 }

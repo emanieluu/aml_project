@@ -2,25 +2,27 @@ import torch
 from torch.utils.data import Dataset
 from torch_geometric.data import Data
 from rdkit import Chem
+from rdkit.Chem import AllChem
 import networkx as nx
 
 
 def smiles_to_graph(smiles: str):
-    mol = Chem.MolFromSmiles(smiles)
+    mol = Chem.MolFromSmiles(smiles)  # construct molecules from smile notations
     if mol is None:
         return None
 
     # Convertir la molécule RDKit en graphe NetworkX
     g = nx.Graph()
-    for atom in mol.GetAtoms():
+    for atom in mol.GetAtoms():  # loop over the atoms
         g.add_node(atom.GetIdx(), atom_type=atom.GetSymbol())
 
-    for bond in mol.GetBonds():
+    for bond in mol.GetBonds():  # loop over the bonds
         g.add_edge(
             bond.GetBeginAtomIdx(),
             bond.GetEndAtomIdx(),
             bond_type=bond.GetBondTypeAsDouble(),
         )
+
     return g
 
 

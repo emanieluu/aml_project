@@ -5,7 +5,10 @@ import torch.nn as nn
 import torch.optim as optim
 from torch_geometric.loader import DataLoader
 from molprop_prediction.models.GIN import GIN
-from molprop_prediction.scripts.preprocess import MolDataset
+from molprop_prediction.scripts.preprocess_bis import (
+    graph_datalist_from_smiles_and_labels,
+)
+from torchsummary import summary
 import pandas as pd
 
 
@@ -23,11 +26,23 @@ def load_params(config_path):
         params = json.load(config_file)
     return params
 
+# Loading data
+merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
+train_data, test_data = train_test_split(merged_data, test_size=0.2, random_state=42)
+
+train_dataset = graph_datalist_from_smiles_and_labels(
+    train_data["smiles"], train_data["y"]
+)
+test_dataset = graph_datalist_from_smiles_and_labels(
+    test_data["smiles"], test_data["y"]
+)
+train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=True)
 
 # Paramètres du modèle et de l'entraînement
 args = parse_args()
 params = load_params(args.config)
-input_dim = params["input_dim"]
+input_dim = train_dataset[0].x.size(-1)
 hidden_dim = params["hidden_dim"]
 output_dim = params["output_dim"]
 lr = params["lr"]
@@ -38,28 +53,25 @@ batch_size = params["batch_size"]
 model = GIN(hidden_dim, input_dim)
 optimizer = optim.Adam(model.parameters(), lr=lr)
 criterion = nn.MSELoss()
-
-# Loading data
-merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
-train_data, test_data = train_test_split(merged_data, test_size=0.2, random_state=42)
-train_dataset = MolDataset(train_data)
-test_dataset = MolDataset(test_data)
-train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+mae = nn.L1Loss()
 
 # Boucle d'entraînement
 for epoch in range(epochs):
     model.train()
     total_loss = 0
+    total_mae = 0  # Nouvelle variable pour stocker la somme des MAE
     for batch in train_dataloader:
         optimizer.zero_grad()
         x, edge_index, batch_data = batch.x, batch.edge_index, batch.batch
         output = model(x, edge_index, batch_data)
-        loss = criterion(output, batch.y)
+        loss = criterion(output, batch.y.view(-1, 1))
+        mae_value = mae(output, batch.y.view(-1, 1))  # Calcul de la MAE
         loss.backward()
         optimizer.step()
-
         total_loss += loss.item()
+        total_mae += mae_value.item()
 
     average_loss = total_loss / len(train_dataloader)
-    print(f"Epoch {epoch + 1}, Loss: {average_loss}")
+    average_mae = total_mae / len(train_dataloader)
+
+    print(f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}")
