@@ -34,7 +34,7 @@ pipenv install
 
 To train a model, run the following command:
 ```
-pipenv run python -m molprop_prediction.scripts.train
+python -m molprop_prediction.scripts.train
 ```
 This command will execute the model training script. Make sure you have the necessary data available and properly configured in the script.
 
