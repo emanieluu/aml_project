@@ -10,6 +10,17 @@ from hyperopt import fmin, tpe, hp
 from sklearnex import patch_sklearn
 patch_sklearn() #Extension to speed calculation (X10-100)
 
+import time
+
+import cProfile
+import pstats
+
+# Votre code ici
+
+# Ligne à ajouter avant la partie du code que vous voulez profiler
+profiler = cProfile.Profile()
+profiler.enable()
+
 
 
 
@@ -39,7 +50,7 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 150, 200, 250, 300]
                  }]),
          }
 
-@timeout_decorator.timeout(5)
+#@timeout_decorator.timeout(5,timeout_exception=StopIteration)
 def model_from_param(params, X, y):
 
     import numpy as np
@@ -116,18 +127,34 @@ def model_from_param(params, X, y):
 
     #for i in range(n_repeats):
         #print(i)
-    y_cv_predict = cross_val_predict(model, X.values, y.values, cv=3)
-    mae = mean_absolute_error(y.values, y_cv_predict)
 
+    @timeout_decorator.timeout(10,timeout_exception=StopIteration)
+    def cross_val(model, X, y, cv):
+        y_cv_predict = cross_val_predict(model, X.values, y.values, cv=cv)
+        mae = mean_absolute_error(y.values, y_cv_predict)
+        return(mae)
+
+    try:
+        mae=cross_val(model, X, y, 3)
+
+    except RuntimeError as e:
+        if "generator raised StopIteration" in str(e):
+            mae=100
+            print(f"Exception handled: {e}")
+        else:
+            # Si ce n'est pas l'exception attendue, propagez-la.
+            raise
+    
+    
     #print("cross validate. : done ")
 
     return {'loss': mae,
-            'loss_variance': mae.std()**2,
             'status': STATUS_OK,
-            'params': params,
-            'y_pred': y_cv_predict} 
+            'params': params} 
 
     #print('ALL done')
+
+
 
 
 final_train = pd.read_csv('/home/onyxia/work/aml_project/claire/final_train.csv')
@@ -137,11 +164,16 @@ y_train = pd.read_csv('/home/onyxia/work/aml_project/claire/y_train.csv')['y']
 from hyperopt.mongoexp import Trials
 trials = Trials()
 
+
 best = fmin(
     fn=partial(model_from_param, X=final_train, y=y_train),
     space=space,
     algo=tpe.suggest,
-    max_evals=5,
+    max_evals=100,
     trials=trials)
 
 print("Best estimator:", best)
+
+profiler.disable()
+stats = pstats.Stats(profiler)
+stats.sort_stats('cumulative').print_stats(10) 
