@@ -24,10 +24,12 @@ profiler.enable()
 
 
 
-space = {'n_estimators': hp.choice('n_estimators', [50, 100, 150, 200, 250, 300]),
+space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
          'max_depth': hp.choice('max_depth', [None, 10, 20, 30]),
-         'min_samples_split': hp.choice('min_samples_split', [2, 7, 12, 17, 22]),
-         'min_samples_leaf': hp.choice('min_samples_leaf', [2, 6, 10]),
+         'min_samples_split': hp.choice('min_samples_split', [2, 3,  7, 12]),
+         'min_samples_leaf': hp.choice('min_samples_leaf', [1, 3, 6, 10]),
+         'bootstrap': hp.choice('bootstrap', [True, False]),
+         'warm_start': hp.choice('warm_startbool', [True, False]),
 
          'preprocessor': hp.choice(
              'preprocessor', ['StandardScaler', 'RobustScaler', 'Normalizer', 'MaxAbsScaler']),
@@ -36,17 +38,17 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 150, 200, 250, 300]
              'feature_extractor', [
                  {
                      'type': 'pca',
-                     'n_components': hp.choice('n_components', [10, 50, 75, 110]),
+                     'n_components': hp.choice('n_components', [10, 50, 60, 75, 100, 150, 200]),
                      'whiten': hp.choice('whiten', [True, False])
                  }, {
                      'type': 'RFE',
                      'n_features_to_select': hp.choice(
-                         'n_features_to_select', [10, 50, 75, 110]),
+                         'n_features_to_select', [10, 75, 150, 200, 300, 400]),
                      'step': 10,
                  }, {
                      'type': 'SelectKBest',
                      'k': hp.choice(
-                         'k', [10, 50, 75, 110]),
+                         'k', [10, 75, 150, 200, 300, 400]),
                  }]),
          }
 
@@ -71,12 +73,14 @@ def model_from_param(params, X, y):
     from sklearn.feature_selection import VarianceThreshold, RFE, SelectKBest, f_regression
     from sklearn import svm
 
-    print('Params testing: ', params)
+    #print('Params testing: ', params)
     
     rf_model = RandomForestRegressor(n_estimators=params['n_estimators'],
                                      max_depth=params['max_depth'],
                                      min_samples_split=params['min_samples_split'],
-                                     min_samples_leaf=params['min_samples_leaf'])
+                                     min_samples_leaf=params['min_samples_leaf'],
+                                     bootstrap=params['bootstrap'],
+                                     warm_start=params['warm_start'])
     
     #print("RF computation : done ")
 
@@ -127,8 +131,10 @@ def model_from_param(params, X, y):
 
     #for i in range(n_repeats):
         #print(i)
+    
+    
 
-    @timeout_decorator.timeout(10,timeout_exception=StopIteration)
+    @timeout_decorator.timeout(20,timeout_exception=StopIteration)
     def cross_val(model, X, y, cv):
         y_cv_predict = cross_val_predict(model, X.values, y.values, cv=cv)
         mae = mean_absolute_error(y.values, y_cv_predict)
@@ -139,8 +145,8 @@ def model_from_param(params, X, y):
 
     except RuntimeError as e:
         if "generator raised StopIteration" in str(e):
-            mae=100
-            print(f"Exception handled: {e}")
+            mae=300
+            print(f"Exception : Too much time, move on to next parameters")
         else:
             # Si ce n'est pas l'exception attendue, propagez-la.
             raise
@@ -157,8 +163,8 @@ def model_from_param(params, X, y):
 
 
 
-final_train = pd.read_csv('/home/onyxia/work/aml_project/claire/final_train.csv')
-y_train = pd.read_csv('/home/onyxia/work/aml_project/claire/y_train.csv')['y']
+final_train = pd.read_csv('/home/onyxia/work/aml_project/claire/final_train_train.csv')
+y_train = pd.read_csv('/home/onyxia/work/aml_project/claire/Y_train.csv')['y']
 
 
 from hyperopt.mongoexp import Trials
@@ -172,8 +178,9 @@ best = fmin(
     max_evals=100,
     trials=trials)
 
+print(count, " sets of parameters avoids because of too long run time")
 print("Best estimator:", best)
 
 profiler.disable()
 stats = pstats.Stats(profiler)
-stats.sort_stats('cumulative').print_stats(10) 
+#stats.sort_stats('cumulative').print_stats(10) 
