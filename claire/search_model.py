@@ -30,6 +30,7 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
          'min_samples_leaf': hp.choice('min_samples_leaf', [1, 3, 6, 10]),
          'bootstrap': hp.choice('bootstrap', [True, False]),
          'warm_start': hp.choice('warm_startbool', [True, False]),
+         'max_features' : hp.choice('max_features', ['sqrt', 'log2']),
 
          'preprocessor': hp.choice(
              'preprocessor', ['StandardScaler', 'RobustScaler', 'Normalizer', 'MaxAbsScaler']),
@@ -80,7 +81,8 @@ def model_from_param(params, X, y):
                                      min_samples_split=params['min_samples_split'],
                                      min_samples_leaf=params['min_samples_leaf'],
                                      bootstrap=params['bootstrap'],
-                                     warm_start=params['warm_start'])
+                                     warm_start=params['warm_start'],
+                                     max_features=params['max_features'])
     
     #print("RF computation : done ")
 
@@ -134,27 +136,35 @@ def model_from_param(params, X, y):
     
     
 
-    @timeout_decorator.timeout(120,timeout_exception=StopIteration)
+    @timeout_decorator.timeout(20,timeout_exception=StopIteration)
     def cross_val(model, X, y, cv):
-        n_repeats = 5
-        acc = np.zeros(n_repeats)
+        y_cv_predict = cross_val_predict(model, X, y, cv=cv, n_jobs=None)
+        acc = mean_absolute_error(y, y_cv_predict)
+        return(acc)
 
-        for i in range(n_repeats):
-            y_cv_predict = cross_val_predict(model, X.values, y.values, cv=cv, n_jobs=-1)
-            acc[i] = mean_absolute_error(y.values, y_cv_predict)
-        mae=acc.mean()
-        return(mae)
+    n_repeats = 3
+    acc = np.zeros(n_repeats)
+    timeout = np.zeros(n_repeats)
+    for i in range(n_repeats):
+        print(i)
+        try:
+            acc[i]=cross_val(model, X, y, 5)
 
-    try:
-        mae=cross_val(model, X, y, 5)
-
-    except RuntimeError as e:
-        if "generator raised StopIteration" in str(e):
-            mae=300
-            print(f"Exception : Too much time, move on to next parameters")
-        else:
-            # Si ce n'est pas l'exception attendue, propagez-la.
-            raise
+        except RuntimeError as e:
+            print("err")
+            if "generator raised StopIteration" in str(e):
+                print("p2")
+                timeout[i]=1
+                print(f"Exception : Too much time, move on to next parameters")
+            else:
+                raise
+        
+    if np.sum(timeout)==n_repeats:
+        print("p5")
+        mae=300
+    else:
+        print("p6")
+        mae=acc[timeout==0].mean()
     
     
     #print("cross validate. : done ")
