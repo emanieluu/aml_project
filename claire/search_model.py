@@ -15,13 +15,9 @@ import time
 import cProfile
 import pstats
 
-# Votre code ici
-
-# Ligne à ajouter avant la partie du code que vous voulez profiler
+# Profiler to see where the code is taking the most time 
 profiler = cProfile.Profile()
 profiler.enable()
-
-
 
 
 
@@ -46,7 +42,7 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
                  }, {
                      'type': 'RFE',
                      'n_features_to_select': hp.choice(
-                         'n_features_to_select', [10, 75, 150, 200, 300, 400]),
+                         'n_features_to_select', [200, 300, 400]),
                      'step': 10,
                  }, {
                      'type': 'SelectKBest',
@@ -76,7 +72,7 @@ def model_from_param(params, X, y):
     from sklearn.feature_selection import VarianceThreshold, RFE, SelectKBest, f_regression
     from sklearn import svm
 
-    #print('Params testing: ', params)
+    print('Params testing: ', params)
     
     rf_model = RandomForestRegressor(n_estimators=params['n_estimators'],
                                      max_depth=params['max_depth'],
@@ -86,11 +82,9 @@ def model_from_param(params, X, y):
                                      warm_start=params['warm_start'],
                                      max_features=params['max_features'])
     
-    #print("RF computation : done ")
 
     imputer = SimpleImputer(missing_values=np.nan, strategy='constant')
     var_filter = VarianceThreshold()
-    #print("imputer and var_filter : done ")
 
     preprocessor_dict = {
         'StandardScaler': StandardScaler,
@@ -127,15 +121,7 @@ def model_from_param(params, X, y):
         ('rf_model', rf_model)
     ])
     
-    #print("pipeline : done ")
-    #labels = LabelEncoder().fit_transform(y.Type)
-
-    #n_repeats = 3
-    #acc = np.zeros(n_repeats)
-
-    #for i in range(n_repeats):
-        #print(i)
-    
+  
     @timeout_decorator.timeout(20, timeout_exception=StopIteration)
     def cross_val(model, X, y, cv):
         y_cv_predict = cross_val_predict(model, X, y, cv=cv, n_jobs=None)
@@ -146,43 +132,34 @@ def model_from_param(params, X, y):
     acc = np.zeros(n_repeats)
     timeout = np.zeros(n_repeats)
     for i in range(n_repeats):
-        print(i)
+        
         try:
             acc[i]=cross_val(model, X, y, 5)
 
         except RuntimeError as e:
-            print("err")
             if "generator raised StopIteration" in str(e):
-                print("p2")
                 timeout[i]=1
                 print(f"Exception : Too much time, move on to next cross validate")
             else:
                 raise
         
     if np.sum(timeout)==n_repeats:
-        print("p5")
         mae=300
     else:
-        print("p6")
         mae=acc[timeout==0].mean()
     
-    #print("cross validate. : done ")
 
     return {'loss': mae,
             'status': STATUS_OK,
             'params': params} 
 
-    #print('ALL done')
 
 def model_from_param_with_timeout(params, X, y):
     from hyperopt import STATUS_OK
 
     try:
-        print('entre dans try')
         result = model_from_param(params, X, y)
-        print('sort de try')
     except RuntimeError as e:
-        print("err")
         if "generator raised StopIteration" in str(e):
             print(f"Exception : Too much time in model, move on to next parameters")
             result ={'loss': 300,
@@ -193,7 +170,6 @@ def model_from_param_with_timeout(params, X, y):
         
         #else:
             #raise
-    print('renvoie result')
     return result
 
 
@@ -214,7 +190,6 @@ best = fmin(
     max_evals=100,
     trials=trials)
 
-#print(count, " sets of parameters avoids because of too long run time")
 print("Best estimator:", best)
 
 profiler.disable()
