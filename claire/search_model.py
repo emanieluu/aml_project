@@ -178,7 +178,7 @@ best = fmin(
     max_evals=100,
     trials=trials)
 
-print(count, " sets of parameters avoids because of too long run time")
+#print(count, " sets of parameters avoids because of too long run time")
 print("Best estimator:", best)
 
 profiler.disable()
