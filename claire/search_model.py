@@ -24,6 +24,8 @@ profiler.enable()
 
 
 
+
+
 space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
          'max_depth': hp.choice('max_depth', [None, 10, 20, 30]),
          'min_samples_split': hp.choice('min_samples_split', [2, 3,  7, 12]),
@@ -53,7 +55,7 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
                  }]),
          }
 
-#@timeout_decorator.timeout(5,timeout_exception=StopIteration)
+#@timeout_decorator.timeout(5, timeout_exception=StopIteration)
 def model_from_param(params, X, y):
 
     import numpy as np
@@ -134,9 +136,7 @@ def model_from_param(params, X, y):
     #for i in range(n_repeats):
         #print(i)
     
-    
-
-    @timeout_decorator.timeout(20,timeout_exception=StopIteration)
+    @timeout_decorator.timeout(20, timeout_exception=StopIteration)
     def cross_val(model, X, y, cv):
         y_cv_predict = cross_val_predict(model, X, y, cv=cv, n_jobs=None)
         acc = mean_absolute_error(y, y_cv_predict)
@@ -155,7 +155,7 @@ def model_from_param(params, X, y):
             if "generator raised StopIteration" in str(e):
                 print("p2")
                 timeout[i]=1
-                print(f"Exception : Too much time, move on to next parameters")
+                print(f"Exception : Too much time, move on to next cross validate")
             else:
                 raise
         
@@ -166,7 +166,6 @@ def model_from_param(params, X, y):
         print("p6")
         mae=acc[timeout==0].mean()
     
-    
     #print("cross validate. : done ")
 
     return {'loss': mae,
@@ -174,6 +173,28 @@ def model_from_param(params, X, y):
             'params': params} 
 
     #print('ALL done')
+
+def model_from_param_with_timeout(params, X, y):
+    from hyperopt import STATUS_OK
+
+    try:
+        print('entre dans try')
+        result = model_from_param(params, X, y)
+        print('sort de try')
+    except RuntimeError as e:
+        print("err")
+        if "generator raised StopIteration" in str(e):
+            print(f"Exception : Too much time in model, move on to next parameters")
+            result ={'loss': 300,
+                'status': STATUS_OK,
+                'params': params} 
+        else:
+            raise
+        
+        #else:
+            #raise
+    print('renvoie result')
+    return result
 
 
 
