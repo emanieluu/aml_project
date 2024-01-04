@@ -134,14 +134,19 @@ def model_from_param(params, X, y):
     
     
 
-    @timeout_decorator.timeout(20,timeout_exception=StopIteration)
+    @timeout_decorator.timeout(120,timeout_exception=StopIteration)
     def cross_val(model, X, y, cv):
-        y_cv_predict = cross_val_predict(model, X.values, y.values, cv=cv)
-        mae = mean_absolute_error(y.values, y_cv_predict)
+        n_repeats = 5
+        acc = np.zeros(n_repeats)
+
+        for i in range(n_repeats):
+            y_cv_predict = cross_val_predict(model, X.values, y.values, cv=cv, n_jobs=-1)
+            acc[i] = mean_absolute_error(y.values, y_cv_predict)
+        mae=acc.mean()
         return(mae)
 
     try:
-        mae=cross_val(model, X, y, 3)
+        mae=cross_val(model, X, y, 5)
 
     except RuntimeError as e:
         if "generator raised StopIteration" in str(e):
