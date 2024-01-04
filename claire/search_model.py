@@ -7,6 +7,24 @@ from functools import partial
 
 from hyperopt import fmin, tpe, hp
 
+import numpy as np
+np.random.seed(0)
+
+from hyperopt import STATUS_OK
+
+from sklearn.ensemble import RandomForestRegressor
+
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import (StandardScaler, Normalizer, RobustScaler,
+                                       MaxAbsScaler)
+from sklearn.impute import SimpleImputer
+from sklearn.decomposition import PCA
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import cross_val_predict, KFold
+
+from sklearn.feature_selection import VarianceThreshold, RFE, SelectKBest, f_regression
+from sklearn import svm
+
 from sklearnex import patch_sklearn
 patch_sklearn() #Extension to speed calculation (X10-100)
 
@@ -53,24 +71,6 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
 
 #@timeout_decorator.timeout(5, timeout_exception=StopIteration)
 def model_from_param(params, X, y):
-
-    import numpy as np
-    np.random.seed(0)
-
-    from hyperopt import STATUS_OK
-
-    from sklearn.ensemble import RandomForestRegressor
-
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import (StandardScaler, Normalizer, RobustScaler,
-                                       MaxAbsScaler)
-    from sklearn.impute import SimpleImputer
-    from sklearn.decomposition import PCA
-    from sklearn.metrics import mean_absolute_error
-    from sklearn.model_selection import cross_val_predict
-
-    from sklearn.feature_selection import VarianceThreshold, RFE, SelectKBest, f_regression
-    from sklearn import svm
 
     print('Params testing: ', params)
     
@@ -124,11 +124,11 @@ def model_from_param(params, X, y):
   
     @timeout_decorator.timeout(20, timeout_exception=StopIteration)
     def cross_val(model, X, y, cv):
-        y_cv_predict = cross_val_predict(model, X, y, cv=cv, n_jobs=None)
+        y_cv_predict = cross_val_predict(model, X, y, cv=KFold(n_splits=5), n_jobs=None)
         acc = mean_absolute_error(y, y_cv_predict)
         return(acc)
 
-    n_repeats = 3
+    n_repeats = 5
     acc = np.zeros(n_repeats)
     timeout = np.zeros(n_repeats)
     for i in range(n_repeats):
