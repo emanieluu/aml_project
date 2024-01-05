@@ -39,6 +39,7 @@ profiler.enable()
 
 
 
+# Our space of hyperparamaters : scaler, feature extractor and hyperparameters of Random Forest
 
 space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
          'max_depth': hp.choice('max_depth', [None, 10, 20, 30]),
@@ -69,8 +70,19 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
                  }]),
          }
 
-#@timeout_decorator.timeout(5, timeout_exception=StopIteration)
 def model_from_param(params, X, y):
+    """" Model to implement the pipeline and cross validate over a set of parameters
+
+    Args:
+        params : set of parameters for each step of the pipeline
+        X : train values
+        y : values to estimate
+
+    Returns:
+        {'loss': mae,
+            'status': STATUS_OK,
+            'params': params} : the final mae, status and parameters 
+    """
 
     print('Params testing: ', params)
     
@@ -136,6 +148,7 @@ def model_from_param(params, X, y):
         try:
             acc[i]=cross_val(model, X, y, 5)
 
+        #we stoped the calculation in the cross validation is taking too much time 
         except RuntimeError as e:
             if "generator raised StopIteration" in str(e):
                 timeout[i]=1
@@ -154,35 +167,17 @@ def model_from_param(params, X, y):
             'params': params} 
 
 
-def model_from_param_with_timeout(params, X, y):
-    from hyperopt import STATUS_OK
-
-    try:
-        result = model_from_param(params, X, y)
-    except RuntimeError as e:
-        if "generator raised StopIteration" in str(e):
-            print(f"Exception : Too much time in model, move on to next parameters")
-            result ={'loss': 300,
-                'status': STATUS_OK,
-                'params': params} 
-        else:
-            raise
-        
-        #else:
-            #raise
-    return result
 
 
 
-
-final_train = pd.read_csv('/home/onyxia/work/aml_project/claire/final_train_train.csv')
-y_train = pd.read_csv('/home/onyxia/work/aml_project/claire/Y_train.csv')['y']
+final_train = pd.read_csv('/home/onyxia/work/aml_project/data/raw_data/data_fot_ML/final_train_train.csv')
+y_train = pd.read_csv('/home/onyxia/work/aml_project/data/raw_data/data_fot_ML/Y_train.csv')['y']
 
 
 from hyperopt.mongoexp import Trials
 trials = Trials()
 
-
+#minimization of the mae over 100 sets of parameters
 best = fmin(
     fn=partial(model_from_param, X=final_train, y=y_train),
     space=space,
@@ -192,6 +187,8 @@ best = fmin(
 
 print("Best estimator:", best)
 
+
 profiler.disable()
 stats = pstats.Stats(profiler)
+#uncomment to see the repartion of spending time across different functions
 #stats.sort_stats('cumulative').print_stats(10) 
