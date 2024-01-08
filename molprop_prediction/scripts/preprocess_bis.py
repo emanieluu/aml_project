@@ -312,3 +312,4 @@ def graph_datalist_from_smiles_and_labels(x_smiles, y):
         # construct Pytorch Geometric data object list
         data_list.append(Data(x=X, edge_index=E, edge_attr=EF, y=y_tensor))
     return data_list
+

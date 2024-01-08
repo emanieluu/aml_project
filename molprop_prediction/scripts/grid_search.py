@@ -2,6 +2,7 @@ import argparse
 import json
 from sklearn.model_selection import ParameterGrid
 from sklearn.model_selection import train_test_split
+import molprop_prediction.scripts.train
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -26,26 +27,26 @@ def load_params(config_path):
     return params
 
 
-def train_model(model, train_dataloader, optimizer, criterion, mae, device):
-    model.train()
-    total_loss = 0
-    total_mae = 0
+# def train_model(model, train_dataloader, optimizer, criterion, mae, device):
+#     model.train()
+#     total_loss = 0
+#     total_mae = 0
 
-    for batch in train_dataloader:
-        optimizer.zero_grad()
-        x, edge_index, batch_data = batch.x, batch.edge_index, batch.batch
-        output = model(x, edge_index, batch_data)
-        loss = criterion(output, batch.y.view(-1, 1))
-        mae_value = mae(output, batch.y.view(-1, 1))
-        loss.backward()
-        optimizer.step()
-        total_loss += loss.item()
-        total_mae += mae_value.item()
+#     for batch in train_dataloader:
+#         optimizer.zero_grad()
+#         x, edge_index, batch_data = batch.x, batch.edge_index, batch.batch
+#         output = model(x, edge_index, batch_data)
+#         loss = criterion(output, batch.y.view(-1, 1))
+#         mae_value = mae(output, batch.y.view(-1, 1))
+#         loss.backward()
+#         optimizer.step()
+#         total_loss += loss.item()
+#         total_mae += mae_value.item()
 
-    average_loss = total_loss / len(train_dataloader)
-    average_mae = total_mae / len(train_dataloader)
+#     average_loss = total_loss / len(train_dataloader)
+#     average_mae = total_mae / len(train_dataloader)
 
-    return average_loss, average_mae
+#     return average_loss, average_mae
 
 
 def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device):
@@ -58,6 +59,10 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
 
     best_model = None
     best_loss = float("inf")
+
+    results_file = "molprop_prediction/results/grid_search_res.txt"
+    with open(results_file, 'w') as f:
+        f.write("hidden_dim,lr,batch_size,epochs,test_loss\n")
 
     for params in ParameterGrid(param_grid):
         model = GIN(params["hidden_dim"], input_dim).to(device)
@@ -72,8 +77,14 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
             total_loss = 0
             total_mae = 0
             for batch in train_dataloader:
+                batch = batch.to(device)  # Move the entire batch to the GPU
                 optimizer.zero_grad()
-                x, edge_index, batch_data = batch.x, batch.edge_index, batch.batch
+                x, edge_index, batch_data, y = (
+                                                batch.x.to(device),
+                                                batch.edge_index.to(device),
+                                                batch.batch.to(device),
+                                                batch.y.to(device),
+                                                )
                 output = model(x, edge_index, batch_data)
                 loss = criterion(output, batch.y.view(-1, 1))
                 mae_value = mae(output, batch.y.view(-1, 1))
@@ -86,12 +97,21 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
             average_mae = total_mae / len(train_dataloader)
 
             print(f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}")
+        with open(results_file, 'a') as f:  # Use 'a' mode to append to the file
+            f.write(f"{params['hidden_dim']},{params['lr']},{params['batch_size']},{params['epochs']},{average_loss}\n")
+
 
         # Evaluate on the test set after training
         model.eval()
         total_loss = 0
         for batch in test_dataloader:
-            x, edge_index, batch_data = batch.x, batch.edge_index, batch.batch
+            batch = batch.to(device)
+            x, edge_index, batch_data, y = (
+            batch.x.to(device),
+            batch.edge_index.to(device),
+            batch.batch.to(device),
+            batch.y.to(device),
+                    )
             output = model(x, edge_index, batch_data)
             loss = criterion(output, batch.y.view(-1, 1))
             total_loss += loss.item()
@@ -133,7 +153,7 @@ def main():
 
     input_dim = train_dataset[0].x.size(-1)
     output_dim = params["output_dim"]
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0")
 
     best_model = grid_search(
         train_dataloader, test_dataloader, input_dim, output_dim, device
