@@ -49,7 +49,7 @@ new_dataloader = DataLoader(new_dataset, batch_size=16, shuffle=False)
 # Load the model and optimizer
 model = GIN(hidden_dim, input_dim)  # Initialize the model with the same architecture
 optimizer = optim.Adam(model.parameters(), lr=lr)  # You can adjust lr if needed
-checkpoint_path = "/home/onyxia/work/aml_project/molprop_prediction/models/saved_models2"  # Update with the path where you saved the model
+checkpoint_path = "/home/onyxia/work/aml_project/molprop_prediction/models/saved_models3"  # Update with the path where you saved the model
 model, optimizer = load_model(model, optimizer, checkpoint_path)
 
 # Set the model to evaluation mode
@@ -67,7 +67,7 @@ with torch.no_grad():
 predictions_df = pd.DataFrame({'id': new_data['id'], 'y': predictions})
 
 # Save the DataFrame to a CSV file
-predictions_csv_path = '/home/onyxia/work/aml_project/data/raw_data/predictions/predictions2.csv'
+predictions_csv_path = '/home/onyxia/work/aml_project/data/raw_data/predictions/predictions3.csv'
 predictions_df.to_csv(predictions_csv_path, index=False)
 
 print(f'Predictions saved to {predictions_csv_path}')

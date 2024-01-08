@@ -84,7 +84,7 @@ for epoch in range(epochs):
     print(f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}")
 
 # Save the trained model and optimizer state
-checkpoint_path = "molprop_prediction/models/saved_models2"
+checkpoint_path = "molprop_prediction/models/saved_models3"
 torch.save(
     {
         "epoch": epoch + 1,
