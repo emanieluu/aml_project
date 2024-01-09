@@ -1,0 +1,2 @@
+hidden_dim,lr,batch_size,epochs,num_gin_layers,num_lin_layers,avg_mae,test_loss
+64,0.001,16,30,2,1,1.3192880209048226,1.3845095379011971
