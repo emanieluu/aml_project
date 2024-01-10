@@ -26,15 +26,15 @@ def load_params(config_path):
     return params
 
 def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device):
-    param_grid = {
-        "hidden_dim": [64, 128, 256],
+    param_grid = {       
+        "hidden_dim": [256, 64, 128],
         "lr": [0.001, 0.01],
         "batch_size": [16, 32, 64],
-        "epochs": [30, 40, 50, 80, 100],
+        "epochs": [100, 80, 50, 40, 30],
         "random_seed": [37],
         "k_folds": [3],
-        "num_gin_layers": [2, 3, 4],  
-        "num_lin_layers": [1, 2, 3],
+        "num_gin_layers": [4, 3, 2],  
+        "num_lin_layers": [1],
     }
 
     best_model = None
