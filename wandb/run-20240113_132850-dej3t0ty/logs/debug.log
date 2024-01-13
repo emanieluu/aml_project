@@ -1,0 +1,16 @@
+2024-01-13 13:28:50,950 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Current SDK version is 0.16.2
+2024-01-13 13:28:50,959 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Configure stats pid to 56850
+2024-01-13 13:28:50,959 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Loading settings from /home/onyxia/.config/wandb/settings
+2024-01-13 13:28:50,959 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Loading settings from /home/onyxia/work/aml_project/wandb/settings
+2024-01-13 13:28:50,959 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-01-13 13:28:50,960 WARNING MainThread:56850 [wandb_setup.py:_flush():76] Could not find program at -m molprop_prediction.scripts.grid_search_wandb
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': None, 'program': '-m molprop_prediction.scripts.grid_search_wandb'}
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_init.py:_log_setup():526] Logging user logs to /home/onyxia/work/aml_project/wandb/run-20240113_132850-dej3t0ty/logs/debug.log
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_init.py:_log_setup():527] Logging internal logs to /home/onyxia/work/aml_project/wandb/run-20240113_132850-dej3t0ty/logs/debug-internal.log
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_init.py:init():566] calling init triggers
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_init.py:init():573] wandb.init called with sweep_config: {}
+config: {}
+2024-01-13 13:28:50,960 INFO    MainThread:56850 [wandb_init.py:init():611] wandb.init() called when a run is still active
+2024-01-13 13:29:07,760 INFO    MainThread:56850 [wandb_watch.py:watch():51] Watching

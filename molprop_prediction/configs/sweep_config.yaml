@@ -1,0 +1,21 @@
+sweep_configuration:
+  method: grid
+  name: sweep
+  metric:
+    goal: minimize
+    name: loss
+  parameters:
+    hidden_dim:
+      values: [256, 64, 128]
+    lr:
+      values: [0.0001, 0.001, 0.01]
+    batch_size:
+      values: [16, 32, 64]
+    epochs:
+      values: [200, 150, 100]
+    random_seed:
+      value: 42
+    num_gin_layers:
+      values: [4, 3, 2]
+    num_lin_layers:
+      value: 1

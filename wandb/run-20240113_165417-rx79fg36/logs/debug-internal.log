@@ -1,0 +1,189 @@
+2024-01-13 16:54:17,513 INFO    StreamThr :122160 [internal.py:wandb_internal():86] W&B internal server running at pid: 122160, started at: 2024-01-13 16:54:17.512801
+2024-01-13 16:54:17,517 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: status
+2024-01-13 16:54:17,518 INFO    WriterThread:122160 [datastore.py:open_for_write():87] open: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/run-rx79fg36.wandb
+2024-01-13 16:54:17,519 DEBUG   SenderThread:122160 [sender.py:send():382] send: header
+2024-01-13 16:54:17,525 DEBUG   SenderThread:122160 [sender.py:send():382] send: run
+2024-01-13 16:54:17,903 INFO    SenderThread:122160 [dir_watcher.py:__init__():211] watching files in: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files
+2024-01-13 16:54:17,904 INFO    SenderThread:122160 [sender.py:_start_run_threads():1136] run started: rx79fg36 with start time 1705164857.513291
+2024-01-13 16:54:17,919 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: check_version
+2024-01-13 16:54:17,920 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: check_version
+2024-01-13 16:54:17,995 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: run_start
+2024-01-13 16:54:18,008 DEBUG   HandlerThread:122160 [system_info.py:__init__():27] System info init
+2024-01-13 16:54:18,008 DEBUG   HandlerThread:122160 [system_info.py:__init__():42] System info init done
+2024-01-13 16:54:18,008 INFO    HandlerThread:122160 [system_monitor.py:start():194] Starting system monitor
+2024-01-13 16:54:18,008 INFO    SystemMonitor:122160 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-01-13 16:54:18,010 INFO    HandlerThread:122160 [system_monitor.py:probe():214] Collecting system info
+2024-01-13 16:54:18,011 INFO    SystemMonitor:122160 [interfaces.py:start():190] Started cpu monitoring
+2024-01-13 16:54:18,013 INFO    SystemMonitor:122160 [interfaces.py:start():190] Started disk monitoring
+2024-01-13 16:54:18,016 INFO    SystemMonitor:122160 [interfaces.py:start():190] Started gpu monitoring
+2024-01-13 16:54:18,018 INFO    SystemMonitor:122160 [interfaces.py:start():190] Started memory monitoring
+2024-01-13 16:54:18,019 INFO    SystemMonitor:122160 [interfaces.py:start():190] Started network monitoring
+2024-01-13 16:54:18,043 DEBUG   HandlerThread:122160 [system_info.py:probe():151] Probing system
+2024-01-13 16:54:18,047 DEBUG   HandlerThread:122160 [system_info.py:_probe_git():136] Probing git
+2024-01-13 16:54:18,057 DEBUG   HandlerThread:122160 [system_info.py:_probe_git():144] Probing git done
+2024-01-13 16:54:18,057 DEBUG   HandlerThread:122160 [system_info.py:probe():199] Probing system done
+2024-01-13 16:54:18,057 DEBUG   HandlerThread:122160 [system_monitor.py:probe():223] {'os': 'Linux-6.1.0-16-amd64-x86_64-with-glibc2.35', 'python': '3.10.13', 'heartbeatAt': '2024-01-13T16:54:18.044056', 'startedAt': '2024-01-13T16:54:17.507188', 'docker': '.io/inseefrlab/onyxia-vscode-pytorch@sha256:651427a16dc99c00193fd4beac4d510d328b79b621f4aa217d0b0d44ec596191', 'cuda': None, 'args': (), 'state': 'running', 'program': '-m molprop_prediction.scripts.grid_search_wandb_bis', 'codePathLocal': None, 'git': {'remote': 'https://github.com/emanieluu/aml_project.git', 'commit': '902711213124da54d723078abf5dfae4129ef29a'}, 'email': 'emanie.luu@ensae.fr', 'root': '/home/onyxia/work/aml_project', 'host': 'vscode-pytorch-gpu-87679-0', 'username': 'onyxia', 'executable': '/opt/mamba/bin/python', 'cpu_count': 52, 'cpu_count_logical': 104, 'cpu_freq': {'current': 1353.972375, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 800.095, 'min': 0.0, 'max': 0.0}, {'current': 2200.008, 'min': 0.0, 'max': 0.0}, {'current': 800.052, 'min': 0.0, 'max': 0.0}, {'current': 800.297, 'min': 0.0, 'max': 0.0}, {'current': 800.339, 'min': 0.0, 'max': 0.0}, {'current': 800.271, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 1160.992, 'min': 0.0, 'max': 0.0}, {'current': 800.248, 'min': 0.0, 'max': 0.0}, {'current': 2100.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.005, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.041, 'min': 0.0, 'max': 0.0}, {'current': 800.471, 'min': 0.0, 'max': 0.0}, {'current': 800.148, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.154, 'min': 0.0, 'max': 0.0}, {'current': 800.297, 'min': 0.0, 'max': 0.0}, {'current': 1000.609, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 799.155, 'min': 0.0, 'max': 0.0}, {'current': 800.17, 'min': 0.0, 'max': 0.0}, {'current': 800.837, 'min': 0.0, 'max': 0.0}, {'current': 800.124, 'min': 0.0, 'max': 0.0}, {'current': 800.368, 'min': 0.0, 'max': 0.0}, {'current': 800.11, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.016, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.024, 'min': 0.0, 'max': 0.0}, {'current': 800.069, 'min': 0.0, 'max': 0.0}, {'current': 1800.004, 'min': 0.0, 'max': 0.0}, {'current': 839.981, 'min': 0.0, 'max': 0.0}, {'current': 800.256, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.078, 'min': 0.0, 'max': 0.0}, {'current': 800.277, 'min': 0.0, 'max': 0.0}, {'current': 1767.971, 'min': 0.0, 'max': 0.0}, {'current': 800.916, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 1547.131, 'min': 0.0, 'max': 0.0}, {'current': 2190.39, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.15, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.009, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.104, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 799.755, 'min': 0.0, 'max': 0.0}, {'current': 2199.99, 'min': 0.0, 'max': 0.0}, {'current': 800.129, 'min': 0.0, 'max': 0.0}, {'current': 800.496, 'min': 0.0, 'max': 0.0}, {'current': 2100.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.225, 'min': 0.0, 'max': 0.0}, {'current': 800.94, 'min': 0.0, 'max': 0.0}, {'current': 800.577, 'min': 0.0, 'max': 0.0}, {'current': 800.41, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.315, 'min': 0.0, 'max': 0.0}, {'current': 800.158, 'min': 0.0, 'max': 0.0}, {'current': 2200.005, 'min': 0.0, 'max': 0.0}, {'current': 800.009, 'min': 0.0, 'max': 0.0}, {'current': 800.313, 'min': 0.0, 'max': 0.0}, {'current': 799.894, 'min': 0.0, 'max': 0.0}, {'current': 1000.395, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.173, 'min': 0.0, 'max': 0.0}, {'current': 800.305, 'min': 0.0, 'max': 0.0}, {'current': 800.036, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.377, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.351, 'min': 0.0, 'max': 0.0}, {'current': 800.022, 'min': 0.0, 'max': 0.0}, {'current': 800.41, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2172.535, 'min': 0.0, 'max': 0.0}, {'current': 2200.007, 'min': 0.0, 'max': 0.0}, {'current': 800.167, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.087, 'min': 0.0, 'max': 0.0}, {'current': 800.513, 'min': 0.0, 'max': 0.0}, {'current': 1486.787, 'min': 0.0, 'max': 0.0}, {'current': 800.369, 'min': 0.0, 'max': 0.0}, {'current': 800.321, 'min': 0.0, 'max': 0.0}, {'current': 801.149, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 1062.332, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.585, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.43, 'min': 0.0, 'max': 0.0}], 'disk': {'/': {'total': 6651.050048828125, 'used': 5148.830337524414}}, 'gpu': 'NVIDIA A2', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA A2', 'memory_total': 16101933056}], 'memory': {'total': 1007.3337020874023}}
+2024-01-13 16:54:18,058 INFO    HandlerThread:122160 [system_monitor.py:probe():224] Finished collecting system info
+2024-01-13 16:54:18,058 INFO    HandlerThread:122160 [system_monitor.py:probe():227] Publishing system info
+2024-01-13 16:54:18,058 DEBUG   HandlerThread:122160 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-01-13 16:54:18,907 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/conda-environment.yaml
+2024-01-13 16:54:23,152 DEBUG   HandlerThread:122160 [system_info.py:_save_conda():220] Saving conda packages done
+2024-01-13 16:54:23,155 INFO    HandlerThread:122160 [system_monitor.py:probe():229] Finished publishing system info
+2024-01-13 16:54:23,159 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: status_report
+2024-01-13 16:54:23,160 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: keepalive
+2024-01-13 16:54:23,161 DEBUG   SenderThread:122160 [sender.py:send():382] send: files
+2024-01-13 16:54:23,161 INFO    SenderThread:122160 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-01-13 16:54:23,171 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: python_packages
+2024-01-13 16:54:23,172 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: python_packages
+2024-01-13 16:54:23,172 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-13 16:54:23,173 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: stop_status
+2024-01-13 16:54:23,183 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-13 16:54:23,362 DEBUG   SenderThread:122160 [sender.py:send():382] send: telemetry
+2024-01-13 16:54:23,680 INFO    wandb-upload_0:122160 [upload_job.py:push():131] Uploaded file /tmp/tmppd20ma5qwandb/piq0tudt-wandb-metadata.json
+2024-01-13 16:54:23,906 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/conda-environment.yaml
+2024-01-13 16:54:23,906 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/output.log
+2024-01-13 16:54:23,907 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/wandb-metadata.json
+2024-01-13 16:54:23,907 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/requirements.txt
+2024-01-13 16:54:24,378 DEBUG   SenderThread:122160 [sender.py:send():382] send: exit
+2024-01-13 16:54:24,379 INFO    SenderThread:122160 [sender.py:send_exit():589] handling exit code: 0
+2024-01-13 16:54:24,379 INFO    SenderThread:122160 [sender.py:send_exit():591] handling runtime: 6
+2024-01-13 16:54:24,382 INFO    SenderThread:122160 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-13 16:54:24,383 INFO    SenderThread:122160 [sender.py:send_exit():597] send defer
+2024-01-13 16:54:24,383 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,383 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 0
+2024-01-13 16:54:24,384 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,384 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-01-13 16:54:24,385 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 1
+2024-01-13 16:54:24,385 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,385 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 1
+2024-01-13 16:54:24,386 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,386 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-01-13 16:54:24,386 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 2
+2024-01-13 16:54:24,389 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,389 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 2
+2024-01-13 16:54:24,389 INFO    HandlerThread:122160 [system_monitor.py:finish():203] Stopping system monitor
+2024-01-13 16:54:24,390 DEBUG   SystemMonitor:122160 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-01-13 16:54:24,390 DEBUG   SystemMonitor:122160 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-01-13 16:54:24,390 DEBUG   SystemMonitor:122160 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-01-13 16:54:24,392 INFO    HandlerThread:122160 [interfaces.py:finish():202] Joined cpu monitor
+2024-01-13 16:54:24,394 INFO    HandlerThread:122160 [interfaces.py:finish():202] Joined disk monitor
+2024-01-13 16:54:24,405 INFO    HandlerThread:122160 [interfaces.py:finish():202] Joined gpu monitor
+2024-01-13 16:54:24,406 INFO    HandlerThread:122160 [interfaces.py:finish():202] Joined memory monitor
+2024-01-13 16:54:24,406 INFO    HandlerThread:122160 [interfaces.py:finish():202] Joined network monitor
+2024-01-13 16:54:24,407 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,407 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-01-13 16:54:24,408 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 3
+2024-01-13 16:54:24,408 DEBUG   SenderThread:122160 [sender.py:send():382] send: stats
+2024-01-13 16:54:24,408 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,409 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 3
+2024-01-13 16:54:24,409 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,409 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-01-13 16:54:24,409 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 4
+2024-01-13 16:54:24,409 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,409 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 4
+2024-01-13 16:54:24,410 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,410 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-01-13 16:54:24,410 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 5
+2024-01-13 16:54:24,410 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,410 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 5
+2024-01-13 16:54:24,410 DEBUG   SenderThread:122160 [sender.py:send():382] send: summary
+2024-01-13 16:54:24,411 INFO    SenderThread:122160 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-13 16:54:24,412 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,412 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-01-13 16:54:24,412 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 6
+2024-01-13 16:54:24,412 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,412 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 6
+2024-01-13 16:54:24,413 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,413 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-01-13 16:54:24,418 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: status_report
+2024-01-13 16:54:24,585 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 7
+2024-01-13 16:54:24,585 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:24,585 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 7
+2024-01-13 16:54:24,586 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:24,586 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-01-13 16:54:24,906 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/config.yaml
+2024-01-13 16:54:24,907 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/wandb-summary.json
+2024-01-13 16:54:25,378 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-13 16:54:25,906 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/output.log
+2024-01-13 16:54:25,933 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 8
+2024-01-13 16:54:25,933 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: poll_exit
+2024-01-13 16:54:25,933 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:25,934 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 8
+2024-01-13 16:54:25,934 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:25,934 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-01-13 16:54:25,934 INFO    SenderThread:122160 [job_builder.py:build():296] Attempting to build job artifact
+2024-01-13 16:54:25,935 INFO    SenderThread:122160 [job_builder.py:_get_source_type():426] is repo sourced job
+2024-01-13 16:54:25,935 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 9
+2024-01-13 16:54:25,935 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:25,936 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 9
+2024-01-13 16:54:25,936 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:25,936 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-01-13 16:54:25,936 INFO    SenderThread:122160 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-01-13 16:54:26,379 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-13 16:54:26,907 INFO    Thread-12 :122160 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/output.log
+2024-01-13 16:54:26,909 INFO    SenderThread:122160 [dir_watcher.py:finish():388] scan: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files
+2024-01-13 16:54:26,909 INFO    SenderThread:122160 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/requirements.txt requirements.txt
+2024-01-13 16:54:26,909 INFO    SenderThread:122160 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/wandb-summary.json wandb-summary.json
+2024-01-13 16:54:26,910 INFO    SenderThread:122160 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/config.yaml config.yaml
+2024-01-13 16:54:26,910 INFO    SenderThread:122160 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/conda-environment.yaml conda-environment.yaml
+2024-01-13 16:54:26,910 INFO    SenderThread:122160 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/output.log output.log
+2024-01-13 16:54:26,911 INFO    SenderThread:122160 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/wandb-metadata.json wandb-metadata.json
+2024-01-13 16:54:26,911 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 10
+2024-01-13 16:54:26,912 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: poll_exit
+2024-01-13 16:54:26,912 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:26,929 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 10
+2024-01-13 16:54:26,935 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:26,937 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-01-13 16:54:26,943 INFO    SenderThread:122160 [file_pusher.py:finish():175] shutting down file pusher
+2024-01-13 16:54:27,256 INFO    wandb-upload_0:122160 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/wandb-summary.json
+2024-01-13 16:54:27,286 INFO    wandb-upload_2:122160 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/config.yaml
+2024-01-13 16:54:27,344 INFO    wandb-upload_3:122160 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/conda-environment.yaml
+2024-01-13 16:54:27,361 INFO    wandb-upload_1:122160 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/requirements.txt
+2024-01-13 16:54:27,381 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-13 16:54:27,382 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: poll_exit
+2024-01-13 16:54:27,933 INFO    wandb-upload_4:122160 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/files/output.log
+2024-01-13 16:54:28,134 INFO    Thread-11 (_thread_body):122160 [sender.py:transition_state():617] send defer: 11
+2024-01-13 16:54:28,135 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:28,135 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 11
+2024-01-13 16:54:28,136 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:28,136 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-01-13 16:54:28,137 INFO    SenderThread:122160 [file_pusher.py:join():181] waiting for file pusher
+2024-01-13 16:54:28,137 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 12
+2024-01-13 16:54:28,137 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:28,137 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 12
+2024-01-13 16:54:28,138 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:28,138 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-01-13 16:54:28,138 INFO    SenderThread:122160 [file_stream.py:finish():595] file stream finish called
+2024-01-13 16:54:28,279 INFO    SenderThread:122160 [file_stream.py:finish():599] file stream finish is done
+2024-01-13 16:54:28,280 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 13
+2024-01-13 16:54:28,280 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:28,280 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 13
+2024-01-13 16:54:28,281 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:28,281 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-01-13 16:54:28,281 INFO    SenderThread:122160 [sender.py:transition_state():617] send defer: 14
+2024-01-13 16:54:28,282 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: defer
+2024-01-13 16:54:28,282 INFO    HandlerThread:122160 [handler.py:handle_request_defer():172] handle defer: 14
+2024-01-13 16:54:28,282 DEBUG   SenderThread:122160 [sender.py:send():382] send: final
+2024-01-13 16:54:28,283 DEBUG   SenderThread:122160 [sender.py:send():382] send: footer
+2024-01-13 16:54:28,283 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: defer
+2024-01-13 16:54:28,283 INFO    SenderThread:122160 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-01-13 16:54:28,285 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-13 16:54:28,285 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: poll_exit
+2024-01-13 16:54:28,287 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-13 16:54:28,287 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: server_info
+2024-01-13 16:54:28,288 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: poll_exit
+2024-01-13 16:54:28,289 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: server_info
+2024-01-13 16:54:28,294 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: get_summary
+2024-01-13 16:54:28,296 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: sampled_history
+2024-01-13 16:54:28,296 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-13 16:54:28,297 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: job_info
+2024-01-13 16:54:28,418 DEBUG   SenderThread:122160 [sender.py:send_request():409] send_request: job_info
+2024-01-13 16:54:28,420 INFO    MainThread:122160 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2024-01-13 16:54:28,420 INFO    MainThread:122160 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2024-01-13 16:54:28,420 INFO    MainThread:122160 [wandb_run.py:_footer_sync_info():3816] logging synced files
+2024-01-13 16:54:28,421 DEBUG   HandlerThread:122160 [handler.py:handle_request():146] handle_request: shutdown
+2024-01-13 16:54:28,421 INFO    HandlerThread:122160 [handler.py:finish():869] shutting down handler
+2024-01-13 16:54:29,298 INFO    WriterThread:122160 [datastore.py:close():296] close: /home/onyxia/work/aml_project/wandb/run-20240113_165417-rx79fg36/run-rx79fg36.wandb
+2024-01-13 16:54:29,419 INFO    SenderThread:122160 [sender.py:finish():1572] shutting down sender
+2024-01-13 16:54:29,420 INFO    SenderThread:122160 [file_pusher.py:finish():175] shutting down file pusher
+2024-01-13 16:54:29,420 INFO    SenderThread:122160 [file_pusher.py:join():181] waiting for file pusher
