@@ -26,6 +26,7 @@ def load_params(config_path):
 device = torch.device("cuda:0")
 
 # Loading data
+
 merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
 train_data, test_data = train_test_split(
     merged_data, test_size=0.1, random_state=42

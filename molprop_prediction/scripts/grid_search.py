@@ -27,7 +27,7 @@ def load_params(config_path):
 def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device):
     param_grid = {       
         "hidden_dim": [256, 64, 128],
-        "lr": [0.0001,0.001, 0.01],
+        "lr": [0.0001, 0.001, 0.01],
         "batch_size": [16, 32, 64],
         "epochs": [200, 150, 100],  #[40, 30],
         "random_seed": [37],

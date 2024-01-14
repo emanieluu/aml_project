@@ -2,7 +2,9 @@ import json
 from rdkit import Chem
 from rdkit.Chem import GraphDescriptors
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
-
+from rdkit import Chem
+from pathlib import Path
+import torch
 import numpy as np, pandas as pd
 import torch
 from torch_geometric.data import Data
@@ -46,12 +48,6 @@ def list_to_json(json_file, input_list):
     with open(json_file, "w") as f:
         json.dump(input_list, f)
     print(f"Output json saved to: {json_file}")
-
-
-from rdkit import Chem
-from pathlib import Path
-import torch
-
 
 class FeaturesArgs:
     # encodings information
