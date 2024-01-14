@@ -22,8 +22,8 @@ def load_params(config_path):
 def prompt_user_for_args():
     model = input("Which model would you like to train? (RF, GIN, GAT): ")
     params_file = input("Enter the name of the JSON parameter file to load: ")
-    save_path = input("Enter the name of the model (saved in models/trained_models): ")
-    return model, params_file, save_path
+    model_name = input("Enter the name of the model (saved in models/trained_models): ")
+    return model, params_file, model_name
 
 def prompt_user_for_predictions():
     model = input("Which model would you like to use to predict? (RF, GIN, GAT): ")

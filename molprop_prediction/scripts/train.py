@@ -10,7 +10,7 @@ if __name__ == "__main__":
     device = torch.device("cuda:0")
     print(f"Training the {model} model with parameters from the file {params_file} and saving it as {model_name}.")
     config_path = "./molprop_prediction/configs/" + params_file
-    save_path = "./molprop_prediction/models/trained_models/" + model_name
+    save_path = "./molprop_prediction/models/" + model + "/trained_models/" + model_name
     with open(config_path, 'r') as file:
         params = json.load(file)
     if model == "RF":
