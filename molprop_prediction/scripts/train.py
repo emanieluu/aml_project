@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from molprop_prediction.scripts.utils import prompt_user_for_args, load_graph_preprocessed_dataset
-from molprop_prediction.models.GIN import GIN
+from molprop_prediction.models.GIN.GIN import GIN
 
 if __name__ == "__main__":
     model, params_file, model_name = prompt_user_for_args()
