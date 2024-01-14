@@ -12,9 +12,6 @@ from rdkit.Chem import GraphDescriptors
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
 from pathlib import Path
 
-
-
-
 def smiles_to_graph(smiles: str):
     mol = Chem.MolFromSmiles(smiles)  # construct molecules from smile notations
     if mol is None:

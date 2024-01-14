@@ -26,3 +26,10 @@ config: {}
 2024-01-14 14:53:25,512 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_redirect():2153] Wrapping output streams.
 2024-01-14 14:53:25,512 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_redirect():2178] Redirects installed.
 2024-01-14 14:53:25,513 INFO    Thread-678 (_run_job):125868 [wandb_init.py:init():847] run started, returning control to user process
+2024-01-14 14:55:40,835 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_finish():1962] finishing run emanie-luu/hyperparameter-sweep/jp3k2cpz
+2024-01-14 14:55:40,836 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_atexit_cleanup():2202] got exitcode: 0
+2024-01-14 14:55:40,836 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_restore():2185] restore
+2024-01-14 14:55:40,836 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_restore():2191] restore done
+2024-01-14 14:55:44,125 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2024-01-14 14:55:44,127 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2024-01-14 14:55:44,133 INFO    Thread-678 (_run_job):125868 [wandb_run.py:_footer_sync_info():3816] logging synced files
