@@ -9,9 +9,9 @@ if __name__ == "__main__":
     model, checkpoint_name, params_file = prompt_user_for_predictions()
     device = torch.device("cuda:0")
     print(f"Using {model} model with parameters from the file {params_file} and checkpoint {checkpoint_name} to predict")
-    checkpoint_path = "./molprop_prediction/models/trained_models/" + checkpoint_name
+    checkpoint_path = "./molprop_prediction/models/" + model + "/trained_models/" + checkpoint_name
     config_path = "./molprop_prediction/configs/" + params_file
-    save_path = "./data/predictions/" + checkpoint_name + "_predictions.csv"
+    save_path = "./data/predictions/" + model + "_predictions/" + checkpoint_name + "_predictions.csv"
 
     with open(config_path, 'r') as file:
         params = json.load(file)
