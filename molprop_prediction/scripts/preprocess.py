@@ -1,21 +1,18 @@
 import numpy as np
+import pandas as pd
 import torch
+import json
 from torch.utils.data import Dataset
 from torch_geometric.data import Data
 from rdkit import Chem
 from rdkit.Chem import AllChem
 import networkx as nx
 from collections import defaultdict
-import json
-from rdkit import Chem
 from rdkit.Chem import GraphDescriptors
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
-from rdkit import Chem
 from pathlib import Path
-import torch
-import numpy as np, pandas as pd
-import torch
-from torch_geometric.data import Data
+
+
 
 
 def smiles_to_graph(smiles: str):
