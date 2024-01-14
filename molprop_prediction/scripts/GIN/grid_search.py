@@ -29,7 +29,7 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
         "hidden_dim": [256, 64, 128],
         "lr": [0.0001, 0.001, 0.01],
         "batch_size": [16, 32, 64],
-        "epochs": [200, 150, 100],  #[40, 30],
+        "epochs": [200, 150, 100],
         "random_seed": [37],
         "k_folds": [3],
         "num_gin_layers": [4, 3, 2],  
