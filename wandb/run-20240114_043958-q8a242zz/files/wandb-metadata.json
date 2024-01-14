@@ -1,0 +1,567 @@
+{
+    "os": "Linux-6.1.0-16-amd64-x86_64-with-glibc2.35",
+    "python": "3.10.13",
+    "heartbeatAt": "2024-01-14T04:39:59.062049",
+    "startedAt": "2024-01-14T04:39:58.557199",
+    "docker": ".io/inseefrlab/onyxia-vscode-pytorch@sha256:651427a16dc99c00193fd4beac4d510d328b79b621f4aa217d0b0d44ec596191",
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "-m molprop_prediction.scripts.grid_search_wandb_bis",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/emanieluu/aml_project.git",
+        "commit": "cf2a75888fceba6e1c868636d92bcd8f5ab72070"
+    },
+    "email": "emanie.luu@ensae.fr",
+    "root": "/home/onyxia/work/aml_project",
+    "host": "vscode-pytorch-gpu-87679-0",
+    "username": "onyxia",
+    "executable": "/opt/mamba/bin/python",
+    "cpu_count": 52,
+    "cpu_count_logical": 104,
+    "cpu_freq": {
+        "current": 1390.764663461539,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 800.02,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.476,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.309,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 937.053,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.397,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1867.233,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.503,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2022.099,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.139,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.146,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.169,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.334,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.703,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.366,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.221,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1202.605,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1771.295,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.133,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1562.19,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.9,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.92,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 875.034,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.201,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.456,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.423,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 971.954,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.306,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.737,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 894.667,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2894.517,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.719,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.341,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.331,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1990.84,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.439,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.699,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 801.02,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.419,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.203,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1911.103,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 992.183,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.529,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.164,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 869.098,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.393,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.953,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.168,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.077,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.111,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.533,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 950.268,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 799.779,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.005,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.214,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 800.0,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 6651.050048828125,
+            "used": 5148.368194580078
+        }
+    },
+    "gpu": "NVIDIA A2",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A2",
+            "memory_total": 16101933056
+        }
+    ],
+    "memory": {
+        "total": 1007.3337020874023
+    }
+}

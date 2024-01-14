@@ -1,0 +1,1218 @@
+2024-01-14 03:53:47,601 INFO    StreamThr :303187 [internal.py:wandb_internal():86] W&B internal server running at pid: 303187, started at: 2024-01-14 03:53:47.600352
+2024-01-14 03:53:47,604 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status
+2024-01-14 03:53:47,609 INFO    WriterThread:303187 [datastore.py:open_for_write():87] open: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/run-cnku5ryv.wandb
+2024-01-14 03:53:47,610 DEBUG   SenderThread:303187 [sender.py:send():382] send: header
+2024-01-14 03:53:47,614 DEBUG   SenderThread:303187 [sender.py:send():382] send: run
+2024-01-14 03:53:47,906 INFO    SenderThread:303187 [dir_watcher.py:__init__():211] watching files in: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files
+2024-01-14 03:53:47,906 INFO    SenderThread:303187 [sender.py:_start_run_threads():1136] run started: cnku5ryv with start time 1705204427.598564
+2024-01-14 03:53:47,918 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: check_version
+2024-01-14 03:53:47,918 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: check_version
+2024-01-14 03:53:47,988 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: run_start
+2024-01-14 03:53:47,998 DEBUG   HandlerThread:303187 [system_info.py:__init__():27] System info init
+2024-01-14 03:53:47,998 DEBUG   HandlerThread:303187 [system_info.py:__init__():42] System info init done
+2024-01-14 03:53:47,998 INFO    HandlerThread:303187 [system_monitor.py:start():194] Starting system monitor
+2024-01-14 03:53:47,999 INFO    SystemMonitor:303187 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-01-14 03:53:48,001 INFO    HandlerThread:303187 [system_monitor.py:probe():214] Collecting system info
+2024-01-14 03:53:48,001 INFO    SystemMonitor:303187 [interfaces.py:start():190] Started cpu monitoring
+2024-01-14 03:53:48,002 INFO    SystemMonitor:303187 [interfaces.py:start():190] Started disk monitoring
+2024-01-14 03:53:48,003 INFO    SystemMonitor:303187 [interfaces.py:start():190] Started gpu monitoring
+2024-01-14 03:53:48,005 INFO    SystemMonitor:303187 [interfaces.py:start():190] Started memory monitoring
+2024-01-14 03:53:48,014 INFO    SystemMonitor:303187 [interfaces.py:start():190] Started network monitoring
+2024-01-14 03:53:48,039 DEBUG   HandlerThread:303187 [system_info.py:probe():151] Probing system
+2024-01-14 03:53:48,042 DEBUG   HandlerThread:303187 [system_info.py:_probe_git():136] Probing git
+2024-01-14 03:53:48,053 DEBUG   HandlerThread:303187 [system_info.py:_probe_git():144] Probing git done
+2024-01-14 03:53:48,053 DEBUG   HandlerThread:303187 [system_info.py:probe():199] Probing system done
+2024-01-14 03:53:48,053 DEBUG   HandlerThread:303187 [system_monitor.py:probe():223] {'os': 'Linux-6.1.0-16-amd64-x86_64-with-glibc2.35', 'python': '3.10.13', 'heartbeatAt': '2024-01-14T03:53:48.039558', 'startedAt': '2024-01-14T03:53:47.588585', 'docker': '.io/inseefrlab/onyxia-vscode-pytorch@sha256:651427a16dc99c00193fd4beac4d510d328b79b621f4aa217d0b0d44ec596191', 'cuda': None, 'args': (), 'state': 'running', 'program': '-m molprop_prediction.scripts.grid_search_wandb_bis', 'codePathLocal': None, 'git': {'remote': 'https://github.com/emanieluu/aml_project.git', 'commit': 'cf2a75888fceba6e1c868636d92bcd8f5ab72070'}, 'email': 'emanie.luu@ensae.fr', 'root': '/home/onyxia/work/aml_project', 'host': 'vscode-pytorch-gpu-87679-0', 'username': 'onyxia', 'executable': '/opt/mamba/bin/python', 'cpu_count': 52, 'cpu_count_logical': 104, 'cpu_freq': {'current': 1294.3169807692316, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 800.989, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.213, 'min': 0.0, 'max': 0.0}, {'current': 1029.984, 'min': 0.0, 'max': 0.0}, {'current': 884.116, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.051, 'min': 0.0, 'max': 0.0}, {'current': 799.929, 'min': 0.0, 'max': 0.0}, {'current': 800.153, 'min': 0.0, 'max': 0.0}, {'current': 2199.778, 'min': 0.0, 'max': 0.0}, {'current': 800.251, 'min': 0.0, 'max': 0.0}, {'current': 799.996, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 799.95, 'min': 0.0, 'max': 0.0}, {'current': 800.135, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.296, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 1599.522, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.067, 'min': 0.0, 'max': 0.0}, {'current': 868.244, 'min': 0.0, 'max': 0.0}, {'current': 800.963, 'min': 0.0, 'max': 0.0}, {'current': 800.358, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 1731.04, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.822, 'min': 0.0, 'max': 0.0}, {'current': 799.948, 'min': 0.0, 'max': 0.0}, {'current': 1402.129, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.233, 'min': 0.0, 'max': 0.0}, {'current': 799.319, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.213, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 867.586, 'min': 0.0, 'max': 0.0}, {'current': 1603.53, 'min': 0.0, 'max': 0.0}, {'current': 951.82, 'min': 0.0, 'max': 0.0}, {'current': 800.053, 'min': 0.0, 'max': 0.0}, {'current': 942.32, 'min': 0.0, 'max': 0.0}, {'current': 800.497, 'min': 0.0, 'max': 0.0}, {'current': 800.064, 'min': 0.0, 'max': 0.0}, {'current': 800.024, 'min': 0.0, 'max': 0.0}, {'current': 1338.9, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 1897.307, 'min': 0.0, 'max': 0.0}, {'current': 2800.007, 'min': 0.0, 'max': 0.0}, {'current': 800.225, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 1700.677, 'min': 0.0, 'max': 0.0}, {'current': 891.202, 'min': 0.0, 'max': 0.0}, {'current': 800.503, 'min': 0.0, 'max': 0.0}, {'current': 2200.005, 'min': 0.0, 'max': 0.0}, {'current': 800.492, 'min': 0.0, 'max': 0.0}, {'current': 799.989, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.008, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 799.557, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 798.095, 'min': 0.0, 'max': 0.0}, {'current': 800.484, 'min': 0.0, 'max': 0.0}, {'current': 799.957, 'min': 0.0, 'max': 0.0}, {'current': 800.829, 'min': 0.0, 'max': 0.0}, {'current': 800.713, 'min': 0.0, 'max': 0.0}, {'current': 800.018, 'min': 0.0, 'max': 0.0}, {'current': 799.255, 'min': 0.0, 'max': 0.0}, {'current': 800.037, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.172, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 868.061, 'min': 0.0, 'max': 0.0}, {'current': 802.233, 'min': 0.0, 'max': 0.0}, {'current': 800.364, 'min': 0.0, 'max': 0.0}, {'current': 799.913, 'min': 0.0, 'max': 0.0}, {'current': 1997.46, 'min': 0.0, 'max': 0.0}, {'current': 800.583, 'min': 0.0, 'max': 0.0}, {'current': 800.838, 'min': 0.0, 'max': 0.0}, {'current': 1086.402, 'min': 0.0, 'max': 0.0}, {'current': 880.738, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.184, 'min': 0.0, 'max': 0.0}, {'current': 800.066, 'min': 0.0, 'max': 0.0}, {'current': 800.434, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 800.21, 'min': 0.0, 'max': 0.0}, {'current': 2199.994, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 1695.567, 'min': 0.0, 'max': 0.0}, {'current': 801.067, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 2200.0, 'min': 0.0, 'max': 0.0}, {'current': 800.243, 'min': 0.0, 'max': 0.0}, {'current': 800.0, 'min': 0.0, 'max': 0.0}, {'current': 2098.655, 'min': 0.0, 'max': 0.0}, {'current': 800.551, 'min': 0.0, 'max': 0.0}, {'current': 2201.877, 'min': 0.0, 'max': 0.0}, {'current': 2865.784, 'min': 0.0, 'max': 0.0}], 'disk': {'/': {'total': 6651.050048828125, 'used': 5148.387222290039}}, 'gpu': 'NVIDIA A2', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA A2', 'memory_total': 16101933056}], 'memory': {'total': 1007.3337020874023}}
+2024-01-14 03:53:48,053 INFO    HandlerThread:303187 [system_monitor.py:probe():224] Finished collecting system info
+2024-01-14 03:53:48,053 INFO    HandlerThread:303187 [system_monitor.py:probe():227] Publishing system info
+2024-01-14 03:53:48,053 DEBUG   HandlerThread:303187 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-01-14 03:53:48,909 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/conda-environment.yaml
+2024-01-14 03:53:52,721 DEBUG   HandlerThread:303187 [system_info.py:_save_conda():220] Saving conda packages done
+2024-01-14 03:53:52,735 INFO    HandlerThread:303187 [system_monitor.py:probe():229] Finished publishing system info
+2024-01-14 03:53:52,738 DEBUG   SenderThread:303187 [sender.py:send():382] send: files
+2024-01-14 03:53:52,738 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-01-14 03:53:52,738 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:53:52,750 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: python_packages
+2024-01-14 03:53:52,751 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: python_packages
+2024-01-14 03:53:52,752 DEBUG   SenderThread:303187 [sender.py:send():382] send: telemetry
+2024-01-14 03:53:52,755 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:53:52,755 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:53:52,759 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:53:52,908 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/conda-environment.yaml
+2024-01-14 03:53:52,909 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-metadata.json
+2024-01-14 03:53:52,909 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/requirements.txt
+2024-01-14 03:53:53,226 INFO    wandb-upload_0:303187 [upload_job.py:push():131] Uploaded file /tmp/tmpe8ykd_2vwandb/nvsbx9j2-wandb-metadata.json
+2024-01-14 03:53:53,931 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:53,934 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:53,934 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:53,938 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:54,088 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:54,090 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:54,091 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:54,092 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:54,909 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:53:54,918 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_created():271] file/dir created: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:53:55,191 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:55,193 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:55,193 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:55,194 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:55,343 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:55,345 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:55,346 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:55,347 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:55,910 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:53:56,468 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:56,470 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:56,470 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:56,471 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:56,617 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:56,619 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:56,619 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:56,620 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:56,911 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:53:56,911 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:53:57,765 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:57,766 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:57,769 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:57,769 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:53:57,770 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:57,911 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:53:57,916 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:57,917 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:57,918 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:57,918 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:58,912 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:53:58,912 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:53:59,080 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:59,082 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:59,083 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:59,084 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:59,230 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:53:59,232 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:53:59,232 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:53:59,233 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:53:59,912 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:00,350 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:00,352 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:00,353 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:00,354 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:00,498 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:00,501 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:00,501 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:00,502 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:00,913 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:00,913 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:01,638 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:01,640 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:01,640 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:01,641 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:01,799 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:01,801 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:01,802 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:01,802 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:01,913 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:02,804 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:02,914 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:02,947 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:02,949 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:02,950 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:02,950 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:03,096 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:03,098 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:03,098 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:03,099 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:03,915 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:04,208 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:04,210 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:04,210 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:04,211 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:04,357 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:04,358 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:04,359 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:04,359 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:04,915 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:04,915 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:05,527 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:05,529 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:05,529 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:05,530 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:05,683 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:05,686 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:05,686 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:05,687 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:05,916 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:06,827 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:06,829 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:06,829 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:06,830 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:06,916 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:06,917 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:06,978 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:06,980 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:06,981 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:06,981 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:07,754 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:54:07,755 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:54:07,756 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:54:07,917 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:07,963 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:08,034 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:08,035 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:08,036 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:08,036 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:08,197 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:08,199 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:08,199 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:08,200 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:08,917 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:08,918 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:09,260 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:09,261 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:09,261 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:09,275 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:09,410 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:09,411 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:09,412 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:09,413 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:09,918 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:10,582 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:10,584 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:10,585 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:10,586 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:10,741 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:10,742 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:10,743 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:10,744 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:10,919 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:10,919 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:11,887 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:11,889 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:11,890 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:11,890 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:11,919 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:12,040 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:12,041 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:12,042 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:12,042 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:12,920 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:12,920 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:13,044 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:13,173 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:13,176 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:13,176 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:13,177 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:13,328 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:13,330 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:13,330 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:13,331 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:13,920 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:14,496 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:14,498 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:14,498 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:14,500 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:14,651 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:14,652 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:14,664 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:14,664 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:14,921 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:14,921 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:15,801 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:15,803 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:15,803 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:15,804 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:15,921 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:15,950 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:15,952 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:15,952 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:15,953 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:16,922 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:16,923 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:17,075 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:17,077 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:17,077 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:17,078 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:17,225 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:17,226 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:17,227 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:17,228 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:17,925 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:18,234 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:18,343 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:18,398 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:18,399 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:18,399 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:18,492 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:18,494 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:18,494 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:18,496 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:18,926 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:18,927 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:18,928 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/config.yaml
+2024-01-14 03:54:19,628 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:19,630 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:19,631 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:19,632 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:19,777 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:19,779 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:19,780 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:19,780 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:19,927 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:20,901 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:20,903 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:20,903 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:20,904 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:20,927 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:20,928 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:21,052 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:21,053 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:21,054 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:21,055 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:21,928 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:22,187 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:22,189 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:22,189 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:22,190 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:22,339 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:22,341 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:22,341 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:22,342 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:22,752 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:54:22,753 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:54:22,757 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:54:22,928 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:22,929 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:23,460 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:23,462 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:23,465 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:23,466 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:23,467 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:23,611 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:23,613 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:23,614 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:23,614 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:23,929 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:24,786 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:24,788 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:24,789 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:24,789 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:24,930 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:24,930 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:24,945 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:24,946 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:24,947 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:24,948 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:25,930 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:26,113 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:26,115 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:26,115 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:26,116 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:26,270 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:26,272 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:26,273 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:26,274 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:26,931 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:26,931 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:27,471 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:27,472 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:27,473 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:27,473 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:27,625 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:27,626 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:27,627 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:27,628 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:27,931 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:28,629 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:28,824 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:28,826 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:28,827 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:28,828 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:28,932 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:28,932 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:28,983 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:28,985 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:28,986 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:28,987 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:29,932 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:30,371 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:30,373 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:30,373 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:30,374 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:30,555 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:30,556 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:30,557 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:30,558 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:30,933 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:30,934 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:31,799 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:31,801 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:31,801 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:31,802 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:31,933 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:31,973 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:31,975 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:31,976 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:31,976 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:32,934 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:32,935 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:33,200 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:33,202 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:33,202 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:33,203 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:33,370 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:33,372 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:33,372 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:33,373 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:33,935 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:34,374 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:34,726 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:34,728 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:34,729 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:34,730 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:34,898 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:34,900 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:34,901 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:34,902 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:34,936 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:34,936 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:36,152 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:36,153 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:36,153 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:36,153 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:36,302 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:36,303 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:36,304 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:36,305 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:36,937 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:36,937 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:37,446 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:37,448 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:37,448 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:37,449 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:37,595 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:37,597 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:37,598 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:37,598 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:37,752 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:54:37,752 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:54:37,753 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:54:37,937 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:38,796 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:38,797 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:38,798 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:38,799 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:38,938 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:38,938 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:38,945 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:38,947 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:38,948 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:38,961 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:39,938 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:39,962 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:40,093 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:40,095 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:40,095 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:40,095 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:40,249 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:40,251 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:40,252 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:40,252 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:40,939 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:40,940 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:41,348 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:41,350 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:41,350 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:41,351 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:41,498 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:41,500 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:41,500 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:41,501 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:41,940 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:42,614 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:42,616 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:42,616 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:42,617 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:42,763 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:42,765 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:42,765 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:42,766 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:42,940 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:42,941 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:43,883 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:43,885 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:43,885 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:43,886 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:43,941 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:44,034 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:44,036 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:44,036 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:44,037 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:44,941 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:44,942 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:45,038 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:45,221 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:45,223 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:45,223 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:45,224 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:45,377 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:45,379 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:45,379 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:45,380 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:45,942 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:46,808 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:46,810 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:46,810 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:46,811 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:46,944 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:46,945 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:46,984 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:46,986 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:46,987 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:46,988 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:47,945 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:48,015 DEBUG   SystemMonitor:303187 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-01-14 03:54:48,032 DEBUG   SenderThread:303187 [sender.py:send():382] send: stats
+2024-01-14 03:54:48,361 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:48,365 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:48,365 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:48,366 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:48,528 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:48,530 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:48,530 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:48,532 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:48,945 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:48,946 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:49,826 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:49,828 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:49,828 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:49,829 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:49,946 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:49,976 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:49,978 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:49,978 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:49,979 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:50,947 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:50,947 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:50,980 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:51,222 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:51,224 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:51,225 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:51,226 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:51,396 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:51,398 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:51,399 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:51,400 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:51,947 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:52,690 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:52,692 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:52,692 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:52,693 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:52,752 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:54:52,753 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:54:52,758 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:54:52,865 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:52,901 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:52,902 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:52,904 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:52,948 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:52,948 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:54,154 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:54,156 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:54,157 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:54,158 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:54,318 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:54,320 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:54,320 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:54,321 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:54,950 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:54,951 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:55,654 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:55,656 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:55,656 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:55,657 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:55,839 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:55,841 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:55,842 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:55,842 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:55,951 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:56,844 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:54:56,951 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:57,177 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:57,178 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:57,179 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:57,179 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:57,329 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:57,330 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:57,331 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:57,332 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:57,952 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:58,465 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:58,467 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:58,467 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:58,468 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:58,619 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:58,621 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:58,622 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:58,622 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:58,952 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:54:58,953 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:54:59,741 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:59,744 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:59,744 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:59,745 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:59,893 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:54:59,896 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:54:59,896 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:54:59,897 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:54:59,953 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:00,953 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:01,040 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:01,042 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:01,042 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:01,043 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:01,190 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:01,192 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:01,193 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:01,194 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:01,954 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:02,196 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:02,331 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:02,333 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:02,333 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:02,334 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:02,482 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:02,484 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:02,484 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:02,485 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:02,955 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:02,955 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:03,712 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:03,714 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:03,715 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:03,716 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:03,884 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:03,887 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:03,887 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:03,888 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:03,955 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:04,956 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:05,249 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:05,251 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:05,251 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:05,252 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:05,420 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:05,422 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:05,423 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:05,424 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:05,956 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:06,617 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:06,619 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:06,619 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:06,620 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:06,767 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:06,769 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:06,770 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:06,771 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:06,957 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:06,957 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:07,752 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:55:07,753 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:55:07,758 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:55:07,904 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:07,952 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:07,953 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:07,953 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:07,954 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:07,957 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:08,057 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:08,058 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:08,058 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:08,059 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:08,958 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:08,958 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:09,210 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:09,212 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:09,212 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:09,213 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:09,371 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:09,373 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:09,373 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:09,374 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:09,958 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:10,521 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:10,523 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:10,523 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:10,524 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:10,672 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:10,674 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:10,675 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:10,676 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:10,959 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:10,960 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:11,848 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:11,850 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:11,850 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:11,851 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:11,960 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:12,002 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:12,004 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:12,004 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:12,005 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:12,960 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:12,961 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:13,007 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:13,119 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:13,121 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:13,121 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:13,122 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:13,268 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:13,270 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:13,271 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:13,272 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:13,961 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:14,476 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:14,477 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:14,478 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:14,479 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:14,655 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:14,657 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:14,658 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:14,851 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:14,962 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:14,962 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:16,035 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:16,036 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:16,037 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:16,038 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:16,212 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:16,214 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:16,215 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:16,216 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:16,963 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:16,963 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:17,434 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:17,436 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:17,436 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:17,437 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:17,583 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:17,585 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:17,585 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:17,586 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:17,963 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:18,023 DEBUG   SenderThread:303187 [sender.py:send():382] send: stats
+2024-01-14 03:55:18,025 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:18,711 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:18,714 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:18,714 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:18,715 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:18,878 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:18,880 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:18,881 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:18,881 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:18,964 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:18,964 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:20,009 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:20,011 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:20,013 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:20,014 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:20,164 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:20,166 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:20,166 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:20,167 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:20,965 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:20,965 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:21,095 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:21,097 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:21,097 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:21,098 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:21,246 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:21,248 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:21,249 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:21,250 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:21,965 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:22,183 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:22,185 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:22,185 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:22,186 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:22,333 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:22,334 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:22,334 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:22,335 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:22,752 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:55:22,753 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:55:22,754 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:55:22,966 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:22,967 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:23,490 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:23,492 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:23,493 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:23,493 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:23,495 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:23,638 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:23,640 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:23,640 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:23,641 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:23,967 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:24,779 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:24,781 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:24,781 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:24,782 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:24,928 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:24,930 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:24,930 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:24,931 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:24,967 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:24,968 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:26,058 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:26,059 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:26,060 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:26,061 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:26,224 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:26,225 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:26,225 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:26,225 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:26,969 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:26,969 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:27,413 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:27,415 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:27,415 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:27,416 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:27,577 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:27,578 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:27,579 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:27,579 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:27,969 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:28,581 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:28,714 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:28,716 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:28,716 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:28,728 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:28,865 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:28,866 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:28,867 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:28,868 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:28,970 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:28,970 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:29,999 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:30,001 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:30,001 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:30,002 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:30,148 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:30,150 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:30,151 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:30,152 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:30,971 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:30,972 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:31,286 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:31,288 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:31,290 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:31,291 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:31,465 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:31,467 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:31,467 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:31,468 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:31,972 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:32,829 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:32,831 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:32,832 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:32,833 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:32,973 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:32,974 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:32,998 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:33,014 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:33,014 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:33,015 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:33,974 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:34,016 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:34,393 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:34,395 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:34,396 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:34,397 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:34,567 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:34,569 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:34,569 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:34,570 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:34,974 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:34,974 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:35,684 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:35,686 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:35,686 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:35,687 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:35,806 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:35,808 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:35,808 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:35,810 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:35,974 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:36,767 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:36,769 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:36,769 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:36,770 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:36,891 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:36,893 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:36,893 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:36,894 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:36,975 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:36,975 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:37,753 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:55:37,753 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:55:37,754 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:55:37,993 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:37,994 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:37,994 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:37,996 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:38,143 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:38,145 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:38,147 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:38,148 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:38,976 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:38,977 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:39,150 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:39,489 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:39,491 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:39,491 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:39,493 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:39,669 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:39,671 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:39,671 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:39,673 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:39,977 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:40,977 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:41,010 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:41,012 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:41,012 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:41,013 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:41,171 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:41,173 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:41,174 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:41,174 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:41,978 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:42,283 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:42,284 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:42,285 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:42,285 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:42,447 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:42,448 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:42,448 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:42,449 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:42,979 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:42,979 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:43,604 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:43,606 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:43,608 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:43,609 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:43,768 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:43,770 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:43,770 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:43,771 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:43,979 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:44,772 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:44,940 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:44,942 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:44,942 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:44,943 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:44,980 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:44,980 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:45,091 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:45,093 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:45,093 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:45,094 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:45,980 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:46,228 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:46,235 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:46,235 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:46,236 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:46,393 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:46,394 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:46,395 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:46,395 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:46,981 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:46,981 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:47,537 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:47,539 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:47,539 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:47,540 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:47,689 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:47,690 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:47,691 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:47,692 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:47,981 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:48,024 DEBUG   SenderThread:303187 [sender.py:send():382] send: stats
+2024-01-14 03:55:48,862 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:48,866 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:48,867 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:48,867 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:48,982 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:48,983 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:49,021 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:49,023 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:49,024 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:49,025 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:49,983 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:50,026 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:50,147 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:50,159 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:50,159 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:50,160 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:50,297 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:50,299 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:50,299 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:50,300 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:50,983 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:50,984 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:51,397 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:51,399 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:51,399 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:51,400 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:51,545 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:51,547 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:51,547 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:51,548 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:51,984 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:52,648 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:52,650 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:52,650 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:52,651 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:52,753 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-14 03:55:52,754 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:55:52,754 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: stop_status
+2024-01-14 03:55:52,811 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:52,921 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:52,922 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:52,923 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:52,984 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:52,985 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:54,110 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:54,112 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:54,115 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:54,116 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:54,300 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:54,302 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:54,303 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:54,304 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:54,985 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:54,986 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:55,306 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:55:55,665 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:55,666 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:55,666 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:55,667 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:55,839 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:55,841 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:55,842 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:55,843 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:55,986 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:56,987 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:57,212 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:57,213 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:57,213 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:57,214 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:57,386 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:57,388 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:57,389 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:57,389 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:57,987 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:58,622 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:58,624 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:58,625 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:58,625 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:58,774 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:58,775 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:58,776 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:58,777 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:58,988 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:55:58,988 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:55:59,902 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:55:59,904 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:55:59,904 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:55:59,905 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:55:59,988 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:00,066 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:00,068 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:00,068 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:00,069 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:00,989 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:56:00,989 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:01,070 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:56:01,218 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:01,220 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:01,220 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:01,221 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:01,371 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:01,372 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:01,373 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:01,374 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:01,989 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:02,490 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:02,493 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:02,493 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:02,494 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:02,657 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:02,659 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:02,659 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:02,660 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:02,990 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:56:02,991 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:03,732 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:03,734 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:03,735 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:03,736 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:03,882 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:03,884 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:03,884 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:03,885 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:03,991 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:04,984 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:04,986 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:04,989 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:04,990 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:04,991 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:56:04,992 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:05,134 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:05,136 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:05,136 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:05,137 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:05,992 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:06,139 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:56:06,264 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:06,265 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:06,266 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:06,268 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:06,428 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-14 03:56:06,430 DEBUG   SenderThread:303187 [sender.py:send():382] send: history
+2024-01-14 03:56:06,431 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: summary_record
+2024-01-14 03:56:06,432 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:06,433 DEBUG   SenderThread:303187 [sender.py:send():382] send: telemetry
+2024-01-14 03:56:06,433 DEBUG   SenderThread:303187 [sender.py:send():382] send: exit
+2024-01-14 03:56:06,433 INFO    SenderThread:303187 [sender.py:send_exit():589] handling exit code: 0
+2024-01-14 03:56:06,433 INFO    SenderThread:303187 [sender.py:send_exit():591] handling runtime: 138
+2024-01-14 03:56:06,435 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:06,436 INFO    SenderThread:303187 [sender.py:send_exit():597] send defer
+2024-01-14 03:56:06,436 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,436 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 0
+2024-01-14 03:56:06,437 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,437 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-01-14 03:56:06,437 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 1
+2024-01-14 03:56:06,437 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,438 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 1
+2024-01-14 03:56:06,438 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,438 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-01-14 03:56:06,438 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 2
+2024-01-14 03:56:06,439 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,439 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 2
+2024-01-14 03:56:06,439 INFO    HandlerThread:303187 [system_monitor.py:finish():203] Stopping system monitor
+2024-01-14 03:56:06,440 DEBUG   SystemMonitor:303187 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-01-14 03:56:06,440 DEBUG   SystemMonitor:303187 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-01-14 03:56:06,442 INFO    HandlerThread:303187 [interfaces.py:finish():202] Joined cpu monitor
+2024-01-14 03:56:06,446 INFO    HandlerThread:303187 [interfaces.py:finish():202] Joined disk monitor
+2024-01-14 03:56:06,456 INFO    HandlerThread:303187 [interfaces.py:finish():202] Joined gpu monitor
+2024-01-14 03:56:06,457 INFO    HandlerThread:303187 [interfaces.py:finish():202] Joined memory monitor
+2024-01-14 03:56:06,457 INFO    HandlerThread:303187 [interfaces.py:finish():202] Joined network monitor
+2024-01-14 03:56:06,458 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,458 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-01-14 03:56:06,459 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 3
+2024-01-14 03:56:06,459 DEBUG   SenderThread:303187 [sender.py:send():382] send: stats
+2024-01-14 03:56:06,461 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,461 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 3
+2024-01-14 03:56:06,462 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,462 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-01-14 03:56:06,462 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 4
+2024-01-14 03:56:06,463 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,463 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 4
+2024-01-14 03:56:06,463 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,464 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-01-14 03:56:06,464 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 5
+2024-01-14 03:56:06,464 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,464 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 5
+2024-01-14 03:56:06,465 DEBUG   SenderThread:303187 [sender.py:send():382] send: summary
+2024-01-14 03:56:06,466 INFO    SenderThread:303187 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-01-14 03:56:06,467 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,467 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-01-14 03:56:06,467 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 6
+2024-01-14 03:56:06,467 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,467 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 6
+2024-01-14 03:56:06,468 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,468 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-01-14 03:56:06,473 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: status_report
+2024-01-14 03:56:06,616 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 7
+2024-01-14 03:56:06,616 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:06,616 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 7
+2024-01-14 03:56:06,617 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:06,617 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-01-14 03:56:06,992 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:56:06,993 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:06,993 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/config.yaml
+2024-01-14 03:56:07,430 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-14 03:56:08,280 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 8
+2024-01-14 03:56:08,281 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: poll_exit
+2024-01-14 03:56:08,281 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:08,281 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 8
+2024-01-14 03:56:08,282 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:08,283 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-01-14 03:56:08,283 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 9
+2024-01-14 03:56:08,283 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:08,283 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 9
+2024-01-14 03:56:08,284 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:08,284 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-01-14 03:56:08,284 INFO    SenderThread:303187 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-01-14 03:56:08,430 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-14 03:56:08,993 INFO    Thread-12 :303187 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:56:08,995 INFO    SenderThread:303187 [dir_watcher.py:finish():388] scan: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files
+2024-01-14 03:56:08,995 INFO    SenderThread:303187 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/requirements.txt requirements.txt
+2024-01-14 03:56:08,996 INFO    SenderThread:303187 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json wandb-summary.json
+2024-01-14 03:56:08,996 INFO    SenderThread:303187 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/config.yaml config.yaml
+2024-01-14 03:56:08,996 INFO    SenderThread:303187 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/conda-environment.yaml conda-environment.yaml
+2024-01-14 03:56:08,997 INFO    SenderThread:303187 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log output.log
+2024-01-14 03:56:08,997 INFO    SenderThread:303187 [dir_watcher.py:finish():402] scan save: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-metadata.json wandb-metadata.json
+2024-01-14 03:56:08,997 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 10
+2024-01-14 03:56:08,997 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: poll_exit
+2024-01-14 03:56:08,998 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:08,999 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 10
+2024-01-14 03:56:08,999 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:09,000 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-01-14 03:56:09,000 INFO    SenderThread:303187 [file_pusher.py:finish():175] shutting down file pusher
+2024-01-14 03:56:09,335 INFO    wandb-upload_0:303187 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/requirements.txt
+2024-01-14 03:56:09,382 INFO    wandb-upload_1:303187 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/wandb-summary.json
+2024-01-14 03:56:09,417 INFO    wandb-upload_2:303187 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/config.yaml
+2024-01-14 03:56:09,430 INFO    wandb-upload_4:303187 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/output.log
+2024-01-14 03:56:09,431 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-14 03:56:09,431 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: poll_exit
+2024-01-14 03:56:09,439 INFO    wandb-upload_3:303187 [upload_job.py:push():131] Uploaded file /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/files/conda-environment.yaml
+2024-01-14 03:56:09,640 INFO    Thread-11 (_thread_body):303187 [sender.py:transition_state():617] send defer: 11
+2024-01-14 03:56:09,640 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:09,641 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 11
+2024-01-14 03:56:09,641 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:09,641 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-01-14 03:56:09,642 INFO    SenderThread:303187 [file_pusher.py:join():181] waiting for file pusher
+2024-01-14 03:56:09,642 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 12
+2024-01-14 03:56:09,642 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:09,642 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 12
+2024-01-14 03:56:09,643 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:09,643 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-01-14 03:56:09,643 INFO    SenderThread:303187 [file_stream.py:finish():595] file stream finish called
+2024-01-14 03:56:10,049 INFO    SenderThread:303187 [file_stream.py:finish():599] file stream finish is done
+2024-01-14 03:56:10,049 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 13
+2024-01-14 03:56:10,054 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:10,054 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 13
+2024-01-14 03:56:10,055 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:10,055 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-01-14 03:56:10,055 INFO    SenderThread:303187 [sender.py:transition_state():617] send defer: 14
+2024-01-14 03:56:10,056 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: defer
+2024-01-14 03:56:10,056 INFO    HandlerThread:303187 [handler.py:handle_request_defer():172] handle defer: 14
+2024-01-14 03:56:10,057 DEBUG   SenderThread:303187 [sender.py:send():382] send: final
+2024-01-14 03:56:10,057 DEBUG   SenderThread:303187 [sender.py:send():382] send: footer
+2024-01-14 03:56:10,057 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: defer
+2024-01-14 03:56:10,057 INFO    SenderThread:303187 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-01-14 03:56:10,059 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: poll_exit
+2024-01-14 03:56:10,060 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: poll_exit
+2024-01-14 03:56:10,062 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-14 03:56:10,064 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: server_info
+2024-01-14 03:56:10,065 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: server_info
+2024-01-14 03:56:10,107 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: get_summary
+2024-01-14 03:56:10,107 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: sampled_history
+2024-01-14 03:56:10,111 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: job_info
+2024-01-14 03:56:10,199 DEBUG   SenderThread:303187 [sender.py:send_request():409] send_request: job_info
+2024-01-14 03:56:10,201 DEBUG   HandlerThread:303187 [handler.py:handle_request():146] handle_request: shutdown
+2024-01-14 03:56:10,202 INFO    HandlerThread:303187 [handler.py:finish():869] shutting down handler
+2024-01-14 03:56:11,112 INFO    WriterThread:303187 [datastore.py:close():296] close: /home/onyxia/work/aml_project/wandb/run-20240114_035347-cnku5ryv/run-cnku5ryv.wandb
+2024-01-14 03:56:11,200 INFO    SenderThread:303187 [sender.py:finish():1572] shutting down sender
+2024-01-14 03:56:11,200 INFO    SenderThread:303187 [file_pusher.py:finish():175] shutting down file pusher
+2024-01-14 03:56:11,200 INFO    SenderThread:303187 [file_pusher.py:join():181] waiting for file pusher

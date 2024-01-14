@@ -1,0 +1,35 @@
+2024-01-14 08:27:44,685 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Current SDK version is 0.16.2
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Configure stats pid to 125868
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Loading settings from /home/onyxia/.config/wandb/settings
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Loading settings from /home/onyxia/work/aml_project/wandb/settings
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'project': 'hyperparameter-sweep', 'entity': 'emanie-luu', 'root_dir': '/home/onyxia/work/aml_project', 'run_id': 'vtsy7e25', 'sweep_param_path': '/home/onyxia/work/aml_project/wandb/sweep-jsbsvymc/config-vtsy7e25.yaml', 'sweep_id': 'jsbsvymc'}
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-01-14 08:27:44,686 WARNING Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Could not find program at -m molprop_prediction.scripts.grid_search_wandb_bis
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': None, 'program': '-m molprop_prediction.scripts.grid_search_wandb_bis'}
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_init.py:_log_setup():526] Logging user logs to /home/onyxia/work/aml_project/wandb/run-20240114_082744-vtsy7e25/logs/debug.log
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_init.py:_log_setup():527] Logging internal logs to /home/onyxia/work/aml_project/wandb/run-20240114_082744-vtsy7e25/logs/debug-internal.log
+2024-01-14 08:27:44,686 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():566] calling init triggers
+2024-01-14 08:27:44,687 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():573] wandb.init called with sweep_config: {'batch_size': 32, 'epochs': 100, 'hidden_dim': 256, 'lr': 0.01, 'num_gin_layers': 2, 'num_lin_layers': 1, 'random_seed': 42}
+config: {}
+2024-01-14 08:27:44,687 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():616] starting backend
+2024-01-14 08:27:44,687 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():620] setting up manager
+2024-01-14 08:27:44,693 INFO    Thread-432 (_run_job):125868 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-01-14 08:27:44,693 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():628] backend started and connected
+2024-01-14 08:27:44,701 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_config_callback():1342] config_cb None None {'batch_size': 32, 'epochs': 100, 'hidden_dim': 256, 'lr': 0.01, 'num_gin_layers': 2, 'num_lin_layers': 1, 'random_seed': 42}
+2024-01-14 08:27:44,704 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():720] updated telemetry
+2024-01-14 08:27:44,713 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-01-14 08:27:45,077 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_on_init():2254] communicating current version
+2024-01-14 08:27:45,137 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_on_init():2263] got version response 
+2024-01-14 08:27:45,137 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():804] starting run threads in backend
+2024-01-14 08:27:50,425 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_console_start():2233] atexit reg
+2024-01-14 08:27:50,425 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_redirect():2088] redirect: wrap_raw
+2024-01-14 08:27:50,425 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_redirect():2153] Wrapping output streams.
+2024-01-14 08:27:50,425 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_redirect():2178] Redirects installed.
+2024-01-14 08:27:50,427 INFO    Thread-432 (_run_job):125868 [wandb_init.py:init():847] run started, returning control to user process
+2024-01-14 08:30:08,337 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_finish():1962] finishing run emanie-luu/hyperparameter-sweep/vtsy7e25
+2024-01-14 08:30:08,337 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_atexit_cleanup():2202] got exitcode: 0
+2024-01-14 08:30:08,337 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_restore():2185] restore
+2024-01-14 08:30:08,337 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_restore():2191] restore done
+2024-01-14 08:30:13,230 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2024-01-14 08:30:13,231 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2024-01-14 08:30:13,238 INFO    Thread-432 (_run_job):125868 [wandb_run.py:_footer_sync_info():3816] logging synced files
