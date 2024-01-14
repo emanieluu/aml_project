@@ -1,6 +1,0 @@
-
-Epoch 1, Loss: 3.7985979383642023, MAE: 1.5462822846390984
-Traceback (most recent call last):
-  File "/home/onyxia/work/aml_project/molprop_prediction/scripts/grid_search_wandb_bis.py", line 124, in train
-    train_losses.append(average_loss)
-NameError: name 'train_losses' is not defined

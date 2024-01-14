@@ -1,3 +1,0 @@
-Create sweep with ID: pmljbar8
-Sweep URL: https://wandb.ai/emanie-luu/hyperparameter-sweep/sweeps/pmljbar8
-[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.login() after wandb.init() has no effect.
