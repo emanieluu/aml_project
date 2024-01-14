@@ -1,6 +1,7 @@
 import argparse
 import json
 import pandas as pd 
+import torch
 from sklearn.model_selection import train_test_split
 from molprop_prediction.scripts.preprocess import (
     graph_datalist_from_smiles_and_labels,
@@ -24,10 +25,16 @@ def prompt_user_for_args():
     save_path = input("Enter the name of the model (saved in models/trained_models): ")
     return model, params_file, save_path
 
+def prompt_user_for_predictions():
+    model = input("Which model would you like to use to predict? (RF, GIN, GAT): ")
+    checkpoint_name = input("Enter the name of the model (saved in models/trained_models): ")
+    params_file = input("Enter the name of the JSON parameter file to load: ")
+    return model, checkpoint_name, params_file
+
 def load_graph_preprocessed_dataset():
     merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
     train_data, test_data = train_test_split(
-        merged_data, test_size=0.1, random_state=42
+        merged_data, test_size=0.2, random_state=42
     )
 
     train_dataset = graph_datalist_from_smiles_and_labels(
@@ -41,4 +48,19 @@ def load_graph_preprocessed_dataset():
 
     return train_dataloader, test_dataloader
 
+def load_graph_preprocessed_test_dataset():
+    test_data = pd.read_csv("./data/raw_data/X_test.csv")
+    test_dataset = graph_datalist_from_smiles_and_labels(test_data["smiles"], test_data["y"])
+    test_dataloader = DataLoader(test_dataset, batch_size=16, shuffle=False)
+    kept_test_id = test_data['id']
+    return test_dataloader, kept_test_id
 
+def load_model(model, optimizer, checkpoint_path):
+    loaded_checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(loaded_checkpoint['model_state_dict'])
+    optimizer.load_state_dict(loaded_checkpoint['optimizer_state_dict'])
+    epoch = loaded_checkpoint['epoch']
+    loss = loaded_checkpoint['loss']
+    mae = loaded_checkpoint['mae']
+    print(f"Model loaded from {checkpoint_path}, trained for {epoch} epochs. Last loss: {loss}, Last MAE: {mae}")
+    return model, optimizer

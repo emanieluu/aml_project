@@ -26,3 +26,10 @@ config: {}
 2024-01-14 13:43:47,378 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_redirect():2153] Wrapping output streams.
 2024-01-14 13:43:47,379 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_redirect():2178] Redirects installed.
 2024-01-14 13:43:47,380 INFO    Thread-618 (_run_job):125868 [wandb_init.py:init():847] run started, returning control to user process
+2024-01-14 13:47:17,170 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_finish():1962] finishing run emanie-luu/hyperparameter-sweep/0catlm98
+2024-01-14 13:47:17,170 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_atexit_cleanup():2202] got exitcode: 0
+2024-01-14 13:47:17,171 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_restore():2185] restore
+2024-01-14 13:47:17,171 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_restore():2191] restore done
+2024-01-14 13:47:21,291 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2024-01-14 13:47:21,292 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2024-01-14 13:47:21,295 INFO    Thread-618 (_run_job):125868 [wandb_run.py:_footer_sync_info():3816] logging synced files

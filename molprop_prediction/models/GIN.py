@@ -28,23 +28,29 @@ class GIN(torch.nn.Module):
         ])
 
         # Create Linear layers dynamically based on num_lin_layers
-        self.lins = nn.ModuleList([
-            Linear(dim_h * (i + 1), dim_h * (i + 1)) for i in range(num_lin_layers)
-        ])
-
-        self.lin_final = Linear(dim_h * num_lin_layers, 1)
+        self.lin1 = Linear(dim_h * 3, dim_h * 3)
+        self.lin2 = Linear(dim_h * 3, 1)
 
     def forward(self, x, edge_index, batch):
         # Node embeddings
-        h = x
-        for conv, lin in zip(self.convs, self.lins):
-            h = conv(h, edge_index)
-            h = global_add_pool(h, batch)
-            h = lin(h)
-            h = h.relu()
+
+        h = [torch.zeros_like(x)] * (self.num_gin_layers + 1)
+        h[0] = x
+        for i, conv in enumerate(self.convs):
+            h[i + 1] = conv(h[i], edge_index)
+
+        # Graph-level readout
+        for i in range(1, self.num_gin_layers + 1):
+            h[i] = global_add_pool(h[i], batch)
+        
+        # Concatenate graph embeddings
+        h = torch.cat([h[i] for i in range(1, self.num_gin_layers + 1)], dim=1)
 
         # Classifier
+        h = self.lin1(h)
+        h = h.relu()
         h = F.dropout(h, p=0.5, training=self.training)
-        h = self.lin_final(h)
+        h = self.lin2(h)
 
         return F.leaky_relu(h)
+

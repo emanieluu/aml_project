@@ -1,9 +1,22 @@
+import numpy as np
 import torch
 from torch.utils.data import Dataset
 from torch_geometric.data import Data
 from rdkit import Chem
 from rdkit.Chem import AllChem
 import networkx as nx
+from collections import defaultdict
+import json
+from rdkit import Chem
+from rdkit.Chem import GraphDescriptors
+from rdkit.Chem.rdmolops import GetAdjacencyMatrix
+from rdkit import Chem
+from pathlib import Path
+import torch
+import numpy as np, pandas as pd
+import torch
+from torch_geometric.data import Data
+
 
 def smiles_to_graph(smiles: str):
     mol = Chem.MolFromSmiles(smiles)  # construct molecules from smile notations
@@ -51,17 +64,6 @@ class MolDataset(Dataset):
         return Data(x=x, edge_index=edge_index, y=target_property)
 
 ################################################################################################
-
-import json
-from rdkit import Chem
-from rdkit.Chem import GraphDescriptors
-from rdkit.Chem.rdmolops import GetAdjacencyMatrix
-from rdkit import Chem
-from pathlib import Path
-import torch
-import numpy as np, pandas as pd
-import torch
-from torch_geometric.data import Data
 
 
 def onehot_encode(x, features: list):
@@ -365,12 +367,6 @@ def graph_datalist_from_smiles_and_labels(x_smiles, y):
 
 ################################################################################################
 
-from collections import defaultdict
-import numpy as np
-from rdkit import Chem
-import torch
-
-
 def create_atoms(mol, atom_dict):
     """Transform the atom types in a molecule (e.g., H, C, and O)
     into the indices (e.g., H=0, C=1, and O=2).
@@ -434,71 +430,3 @@ def extract_fingerprints(radius, atoms, i_jbond_dict, fingerprint_dict, edge_dic
             i_jedge_dict = i_jedge_dict_
 
     return np.array(nodes)
-
-
-def split_dataset(dataset, ratio):
-    """Shuffle and split a dataset."""
-    np.random.seed(1234)  # fix the seed for shuffle.
-    np.random.shuffle(dataset)
-    n = int(ratio * len(dataset))
-    return dataset[:n], dataset[n:]
-
-
-def create_datasets(task, dataset, radius, device):
-    dir_dataset = "../dataset/" + task + "/" + dataset + "/"
-
-    """Initialize x_dict, in which each key is a symbol type
-    (e.g., atom and chemical bond) and each value is its index.
-    """
-    atom_dict = defaultdict(lambda: len(atom_dict))
-    bond_dict = defaultdict(lambda: len(bond_dict))
-    fingerprint_dict = defaultdict(lambda: len(fingerprint_dict))
-    edge_dict = defaultdict(lambda: len(edge_dict))
-
-    def create_dataset(filename):
-        print(filename)
-
-        """Load a dataset."""
-        with open(dir_dataset + filename, "r") as f:
-            smiles_property = f.readline().strip().split()
-            data_original = f.read().strip().split("\n")
-
-        """Exclude the data contains '.' in its smiles."""
-        data_original = [data for data in data_original if "." not in data.split()[0]]
-
-        dataset = []
-
-        for data in data_original:
-            smiles, property = data.strip().split()
-
-            """Create each data with the above defined functions."""
-            mol = Chem.AddHs(Chem.MolFromSmiles(smiles))
-            atoms = create_atoms(mol, atom_dict)
-            molecular_size = len(atoms)
-            i_jbond_dict = create_ijbonddict(mol, bond_dict)
-            fingerprints = extract_fingerprints(
-                radius, atoms, i_jbond_dict, fingerprint_dict, edge_dict
-            )
-            adjacency = Chem.GetAdjacencyMatrix(mol)
-
-            """Transform the above each data of numpy
-            to pytorch tensor on a device (i.e., CPU or GPU).
-            """
-            fingerprints = torch.LongTensor(fingerprints).to(device)
-            adjacency = torch.FloatTensor(adjacency).to(device)
-            if task == "classification":
-                property = torch.LongTensor([int(property)]).to(device)
-            if task == "regression":
-                property = torch.FloatTensor([[float(property)]]).to(device)
-
-            dataset.append((fingerprints, adjacency, molecular_size, property))
-
-        return dataset
-
-    dataset_train = create_dataset("data_train.txt")
-    dataset_train, dataset_dev = split_dataset(dataset_train, 0.9)
-    dataset_test = create_dataset("data_test.txt")
-
-    N_fingerprints = len(fingerprint_dict)
-
-    return dataset_train, dataset_dev, dataset_test, N_fingerprints
