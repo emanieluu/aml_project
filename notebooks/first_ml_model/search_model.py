@@ -61,9 +61,10 @@ space = {'n_estimators': hp.choice('n_estimators', [50, 100, 200, 300, 400]),
                  }, {
                      'type': 'RFE',
                      'n_features_to_select': hp.choice(
-                         'n_features_to_select', [200, 300, 400]),
+                        'n_features_to_select', [200, 300, 400]),
                      'step': 10,
-                 }, {
+                 }, 
+                 {
                      'type': 'SelectKBest',
                      'k': hp.choice(
                          'k', [10, 75, 150, 200, 300, 400]),
@@ -85,6 +86,7 @@ def model_from_param(params, X, y):
     """
 
     print('Params testing: ', params)
+    
     
     rf_model = RandomForestRegressor(n_estimators=params['n_estimators'],
                                      max_depth=params['max_depth'],
@@ -182,7 +184,7 @@ best = fmin(
     fn=partial(model_from_param, X=final_train, y=y_train),
     space=space,
     algo=tpe.suggest,
-    max_evals=100,
+    max_evals=200,
     trials=trials)
 
 print("Best estimator:", best)
