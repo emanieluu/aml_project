@@ -45,10 +45,22 @@ class AddMolFeaturesTransformer(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         X_copy = X.copy()
-        X_copy[self.molecule_column] = X_copy[self.molecule_column].apply(lambda x: Chem.AddHs(x))
+
+        def add_hs(mol):
+            try:
+                return Chem.AddHs(mol)
+            except:
+                return None
+
+        X_copy[self.molecule_column] = X_copy[self.molecule_column].apply(lambda x: add_hs(x))
+        
+        # Filter out rows where Chem.AddHs failed
+        X_copy = X_copy.dropna(subset=[self.molecule_column])
+
         X_copy['num_of_atoms'] = X_copy[self.molecule_column].apply(lambda x: x.GetNumAtoms())
         X_copy['num_of_heavy_atoms'] = X_copy[self.molecule_column].apply(lambda x: x.GetNumHeavyAtoms())
         return X_copy
+
 
 class FindTopAtomsTransformer(BaseEstimator, TransformerMixin):
     def __init__(self, molecule_column, n):
@@ -70,10 +82,9 @@ class FindTopAtomsTransformer(BaseEstimator, TransformerMixin):
 
 def create_feature_pipeline():
     feature_pipeline = Pipeline([
-        ('smiles_to_mol', SmilesToMolTransformer(smiles_column='smiles')),
-        ('add_fingerprints', AddFingerprintsFeaturesTransformer(molecule_column='mol')),
-        ('add_mol_features', AddMolFeaturesTransformer(molecule_column='mol')),
-        ('find_top_atoms', FindTopAtomsTransformer(molecule_column='mol', n=5))  # Change 'n' as needed
-    ])
+    ('smiles_to_mol', SmilesToMolTransformer(smiles_column='smiles')),
+    ('add_fingerprints', AddFingerprintsFeaturesTransformer(molecule_column='mol')),
+    ('add_mol_features', AddMolFeaturesTransformer(molecule_column='mol')),
+    ('find_top_atoms', FindTopAtomsTransformer(molecule_column='mol', n=5))])
     return feature_pipeline
 

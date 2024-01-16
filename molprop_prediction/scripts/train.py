@@ -19,8 +19,7 @@ if __name__ == "__main__":
         params = json.load(file)
 
     if model_name == "RF":
-        X_train, y_train = train_data["smiles"], train_data["y"]
-
+        X_train, y_train = train_data.drop('y', axis=1), train_data["y"]
         feature_pipeline = create_feature_pipeline()
         X_train = feature_pipeline.fit_transform(X_train)
 
