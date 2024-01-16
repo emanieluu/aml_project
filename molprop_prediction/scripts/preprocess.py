@@ -358,3 +358,61 @@ def graph_datalist_from_smiles_and_labels(x_smiles, y):
         # construct Pytorch Geometric data object list
         data_list.append(Data(x=X, edge_index=E, edge_attr=EF, y=y_tensor))
     return data_list
+
+def smiles_to_mol(dataset,smiles_column):
+    """transform smiles molecules into mol type 
+    Args:
+        dataset (Dataframe): Dataset with smiles molecules
+        smiles_column (str): Name of smiles column
+    """
+    dataset['mol'] = dataset[smiles_column].apply(lambda x: Chem.MolFromSmiles(x)) 
+    return dataset.drop(columns=[smiles_column])
+
+def add_fingerprints_features(dataset, molecule_column):
+    """ Add 2048 new columns to dataset corresponding to bits of fingerprints representation from mol type, and 2 features calculated from number of bits
+    Args:
+        dataset (Dataframe): dataset with mol type's molecules
+        molecule_column (str): name of the molecule column in mol type
+    """
+    dataset['fps_1'] = [np.array(AllChem.GetMorganFingerprintAsBitVect(mol, radius=2, nBits=2048)) for mol in dataset[molecule_column]]
+    dataset['num_bits_active']= dataset['fps_1'].apply(lambda x: np.sum(x))
+    dataset['mean_bit_density'] = dataset['fps_1'].apply(lambda x: np.mean(x))
+    dataset_expanded = pd.DataFrame(dataset['fps_1'].tolist(), columns=[f'feature_{i}' for i in range(1, 2049)])
+    dataset_to_retuned = pd.concat([dataset, dataset_expanded], axis=1)
+    dataset_to_retuned = dataset_to_retuned.drop(columns=['fps_1'])
+    return dataset_to_retuned
+
+def add_mol_features(dataset, molecule_column):
+    """ Add features from molecules to dataset
+
+    Args:
+        dataset (Dataframe): dataset with mol type's molecules
+        molecule_column (str): name of the molecule column in mol type
+    """
+    dataset[molecule_column] = dataset[molecule_column].apply(lambda x: Chem.AddHs(x)) # AddHs function adds H atoms to a MOL (as Hs in SMILES are usualy ignored)
+    dataset['num_of_atoms'] = dataset[molecule_column].apply(lambda x: x.GetNumAtoms())
+    dataset['num_of_heavy_atoms'] = dataset[molecule_column].apply(lambda x: x.GetNumHeavyAtoms())
+
+def find_top_atoms(dataset, molecule_column, n):
+    """_summary_
+
+    Args:
+        df (Dataframe): Dataset
+        molecule_column (str): name of the molecule column in mol type
+        n (int): number of top atoms
+
+    Returns:
+        list : List of strings of the n most current atoms in molecules of the dataset
+    """
+    all_atoms = Counter()
+
+    for mol in dataset[molecule_column]:
+        for atom in mol.GetAtoms():
+            symbol = atom.GetSymbol()
+            all_atoms[symbol] += 1
+    all_atoms['H']= all_atoms['Si']=0
+    
+    top_atoms = [atom for atom, count in all_atoms.most_common(n)]
+    return top_atoms
+
+    
