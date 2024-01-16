@@ -32,11 +32,8 @@ def prompt_user_for_predictions():
     return model, checkpoint_name, params_file
 
 def load_graph_preprocessed_dataset():
-    merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
-    train_data, test_data = train_test_split(
-        merged_data, test_size=0.2, random_state=42
-    )
-
+    train_data = pd.read_csv("./data/raw_data/fixed_train_data.csv", index_col=0)
+    test_data = pd.read_csv("./data/raw_data/fixed_test_data.csv", index_col=0)
     train_dataset = graph_datalist_from_smiles_and_labels(
         train_data["smiles"], train_data["y"]
     )
