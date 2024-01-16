@@ -1,8 +1,9 @@
-import json 
+import json
+import joblib
 import pandas as pd
 import torch
 import torch.optim as optim
-from molprop_prediction.scripts.utils import (prompt_user_for_predictions, load_graph_preprocessed_test_dataset, load_model)
+from molprop_prediction.scripts.utils import (prompt_user_for_predictions, read_test_data, load_model, preprocess_graph_data)
 from molprop_prediction.models.GIN import GIN
 
 if __name__ == "__main__":
@@ -12,14 +13,19 @@ if __name__ == "__main__":
     checkpoint_path = "./molprop_prediction/models/" + model + "/trained_models/" + checkpoint_name
     config_path = "./molprop_prediction/configs/" + params_file
     save_path = "./data/predictions/" + model + "_predictions/" + checkpoint_name + "_predictions.csv"
-
+    test_data = read_test_data()
     with open(config_path, 'r') as file:
         params = json.load(file)
     if model == "RF":
-        pass
+        X_test = test_data["smiles"]
+        model = joblib.load(checkpoint_path)
+        predictions = model.predict(X_test)
+        predictions.to_csv(save_path, index=False)
+        print(f'Predictions saved to {save_path}')
     if model == "GIN":
         #Loading Data
-        test_dataloader, kept_test_id = load_graph_preprocessed_test_dataset()
+        test_dataloader = preprocess_graph_data(test_data)
+        #test_dataloader, kept_test_id = load_graph_preprocessed_test_dataset()
         #Loading Parameters
         locals().update(params)
         #Loading Model and 

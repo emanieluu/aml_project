@@ -1,24 +1,29 @@
-import json 
+import json
+import joblib
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from molprop_prediction.scripts.utils import prompt_user_for_args, load_graph_preprocessed_dataset
+from molprop_prediction.scripts.utils import prompt_user_for_args, read_train_data, preprocess_graph_data
 from molprop_prediction.models.GIN.GIN import GIN
+from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
-    model, params_file, model_name = prompt_user_for_args()
+    model_name, params_file, saving_name = prompt_user_for_args()
     device = torch.device("cuda:0")
-    print(f"Training the {model} model with parameters from the file {params_file} and saving it as {model_name}.")
+    print(f"Training the {model_name} model with parameters from the file {params_file} and saving it as {saving_name}.")
     config_path = "./molprop_prediction/configs/" + params_file
-    save_path = "./molprop_prediction/models/" + model + "/trained_models/" + model_name
+    save_path = "./molprop_prediction/models/" + model_name + "/trained_models/" + saving_name
+    train_data, = read_train_data()
     with open(config_path, 'r') as file:
         params = json.load(file)
-    if model == "RF":
-        pass
-    if model == "GIN":
-        #Loading Data
-        train_dataloader, test_dataloader = load_graph_preprocessed_dataset()
-
+    if model_name == "RF":
+        train_dataloader = preprocess_graph_data(train_data)
+        X_train, y_train = train_dataloader["smiles"], train_dataloader["y"]
+        model = RandomForestRegressor(**params)
+        model.fit(X_train, y_train)
+        joblib.dump(model, save_path + ".pkl")
+        print(f"Model saved to {save_path}")
+    if model_name == "GIN":
         #Loading Parameters
         locals().update(params)
         #Loading Model and 
@@ -72,5 +77,5 @@ if __name__ == "__main__":
 
         print(f"Model saved to {save_path}")
 
-    if model == "GAT":
+    if model_name == "GAT":
         pass
