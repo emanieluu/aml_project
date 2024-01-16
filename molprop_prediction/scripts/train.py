@@ -11,22 +11,15 @@ from molprop_prediction.scripts.preprocess_tabular import create_feature_pipelin
 from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
-    model_name, params_file, saving_name = prompt_user_for_args()
+    model_name, config_path, save_path = prompt_user_for_args()
     device = torch.device("cuda:0")
-
-    print(f"Training the {model_name} model with parameters from the file {params_file} and saving it as {saving_name}.")
-
-    config_path = "./molprop_prediction/configs/" + params_file
-    save_path = "./molprop_prediction/models/" + model_name + "/trained_models/" + saving_name
-
-    train_data, = read_train_data()
+    train_data = read_train_data()
 
     with open(config_path, 'r') as file:
         params = json.load(file)
 
     if model_name == "RF":
-        train_dataloader = preprocess_graph_data(train_data)
-        X_train, y_train = train_dataloader["smiles"], train_dataloader["y"]
+        X_train, y_train = train_data["smiles"], train_data["y"]
 
         feature_pipeline = create_feature_pipeline()
         X_train = feature_pipeline.fit_transform(X_train)

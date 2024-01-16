@@ -70,7 +70,7 @@ class FindTopAtomsTransformer(BaseEstimator, TransformerMixin):
 
 def create_feature_pipeline():
     feature_pipeline = Pipeline([
-        ('smiles_to_mol', SmilesToMolTransformer(smiles_column='your_smiles_column')),
+        ('smiles_to_mol', SmilesToMolTransformer(smiles_column='smiles')),
         ('add_fingerprints', AddFingerprintsFeaturesTransformer(molecule_column='mol')),
         ('add_mol_features', AddMolFeaturesTransformer(molecule_column='mol')),
         ('find_top_atoms', FindTopAtomsTransformer(molecule_column='mol', n=5))  # Change 'n' as needed
