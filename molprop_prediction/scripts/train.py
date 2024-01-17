@@ -1,27 +1,34 @@
-import json 
+import json
+import joblib
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from molprop_prediction.scripts.utils import prompt_user_for_args, load_graph_preprocessed_dataset
-from molprop_prediction.models.GIN import GIN
+from molprop_prediction.scripts.utils import (prompt_user_for_args, 
+                                              read_train_data,
+                                              read_tabular_train,
+                                              preprocess_graph_data)
+from molprop_prediction.models.GIN.GIN import GIN
+from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
-    model, params_file, model_name = prompt_user_for_args()
+    model_name, config_path, save_path = prompt_user_for_args()
     device = torch.device("cuda:0")
-    print(f"Training the {model} model with parameters from the file {params_file} and saving it as {model_name}.")
-    config_path = "./molprop_prediction/configs/" + params_file
-    save_path = "./molprop_prediction/models/trained_models/" + model_name
+    train_data = read_train_data()
     with open(config_path, 'r') as file:
         params = json.load(file)
-    if model == "RF":
-        pass
-    if model == "GIN":
-        #Loading Data
-        train_dataloader, test_dataloader = load_graph_preprocessed_dataset()
+    if model_name == "RF":
+        train_data = read_tabular_train()
+        X_train, y_train = train_data.drop('y', axis=1), train_data['y']
+        model = RandomForestRegressor(**params)
+        model.fit(X_train, y_train)
+        joblib.dump(model, save_path + ".pkl")
+        print(f"Model saved to {save_path}")
 
-        #Loading Parameters
+    if model_name == "GIN":
+        # Loading Parameters
         locals().update(params)
-        #Loading Model and 
+
+        # Loading Model
         model = GIN(dim_h=hidden_dim,
                     num_node_features=input_dim,
                     num_gin_layers=num_gin_layers,
@@ -36,6 +43,7 @@ if __name__ == "__main__":
             model.train()
             total_loss = 0
             total_mae = 0
+
             for batch in train_dataloader:
                 optimizer.zero_grad()
                 batch = batch.to(device)  # Move the entire batch to the GPU
@@ -72,5 +80,5 @@ if __name__ == "__main__":
 
         print(f"Model saved to {save_path}")
 
-    if model == "GAT":
+    if model_name == "GAT":
         pass

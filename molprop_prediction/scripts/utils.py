@@ -2,11 +2,11 @@ import argparse
 import json
 import pandas as pd 
 import torch
-from sklearn.model_selection import train_test_split
-from molprop_prediction.scripts.preprocess import (
+from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
 )
 from torch_geometric.loader import DataLoader
+
 
 def parse_args(arg_path):
     parser = argparse.ArgumentParser(description="Entraînement du modèle GIN")
@@ -14,46 +14,73 @@ def parse_args(arg_path):
     args.config = arg_path
     return args
 
+
 def load_params(config_path):
     with open(config_path, "r") as config_file:
         params = json.load(config_file)
     return params
 
+
 def prompt_user_for_args():
     model = input("Which model would you like to train? (RF, GIN, GAT): ")
-    params_file = input("Enter the name of the JSON parameter file to load: ")
-    save_path = input("Enter the name of the model (saved in models/trained_models): ")
-    return model, params_file, save_path
+    params_file = input("Enter the name of the JSON parameter file to load (default: params.json): ")
+    params_file = params_file.strip() or "params.json"
+    saving_name = input("Enter the name of the model (saved in models/trained_models): ")
+    print(f"Training the {model} model with parameters from the file {params_file} and saving it as {saving_name}.")
+    config_path = f"./molprop_prediction/configs/{model}/{params_file}"
+    save_path = f"./molprop_prediction/models/{model}/trained_models/{saving_name}"
+    return model, config_path, save_path
+
 
 def prompt_user_for_predictions():
     model = input("Which model would you like to use to predict? (RF, GIN, GAT): ")
     checkpoint_name = input("Enter the name of the model (saved in models/trained_models): ")
-    params_file = input("Enter the name of the JSON parameter file to load: ")
-    return model, checkpoint_name, params_file
+    params_file = input("Enter the name of the JSON parameter file to load (default: params.json): ")
+    params_file = params_file.strip() or "params.json"
+    config_path = f"./molprop_prediction/configs/{model}/{params_file}"
+    checkpoint_path = "./molprop_prediction/models/" + model + "/trained_models/" + checkpoint_name
+    print(f"Using {model} model with parameters from the file {params_file} and checkpoint {checkpoint_name} to predict")
+    save_path = "./data/predictions/" + model + "_predictions/" + "predictions.csv"
+    return model, checkpoint_path, config_path, save_path
 
-def load_graph_preprocessed_dataset():
-    merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
-    train_data, test_data = train_test_split(
-        merged_data, test_size=0.2, random_state=42
-    )
 
-    train_dataset = graph_datalist_from_smiles_and_labels(
-        train_data["smiles"], train_data["y"]
-    )
-    test_dataset = graph_datalist_from_smiles_and_labels(
-        test_data["smiles"], test_data["y"]
-    )
-    train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-    test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=True)
+def read_train_data():
+    train_data = pd.read_csv("./data/raw_data/fixed_train_data.csv")
+    train_data.drop(columns="Unnamed: 0")
+    return train_data
 
-    return train_dataloader, test_dataloader
+
+def read_test_data():
+    test_data = pd.read_csv("./data/raw_data/fixed_test_data.csv")
+    test_data.drop(columns="Unnamed: 0")
+    return test_data
+
+
+def read_tabular_train():
+    data = pd.read_csv("./data/preprocessed_data/tabular_data_train.csv")
+    return data 
+
+
+def read_tabular_test():
+    data = pd.read_csv("./data/preprocessed_data/tabular_data_test.csv")
+    return data
+
+
+def preprocess_graph_data(data):
+    data = graph_datalist_from_smiles_and_labels(
+        data["smiles"], data["y"]
+    )
+    graph_dataloader = DataLoader(data, batch_size=32, shuffle=True)
+    return graph_dataloader 
+
 
 def load_graph_preprocessed_test_dataset():
-    test_data = pd.read_csv("./data/raw_data/X_test.csv")
+    test_data = pd.read_csv("./data/raw_data/_test_fixed.csv")
     test_dataset = graph_datalist_from_smiles_and_labels(test_data["smiles"], test_data["y"])
     test_dataloader = DataLoader(test_dataset, batch_size=16, shuffle=False)
     kept_test_id = test_data['id']
     return test_dataloader, kept_test_id
+
 
 def load_model(model, optimizer, checkpoint_path):
     loaded_checkpoint = torch.load(checkpoint_path)
