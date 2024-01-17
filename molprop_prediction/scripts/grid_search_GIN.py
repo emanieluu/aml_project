@@ -7,22 +7,11 @@ import torch.nn as nn
 import torch.optim as optim
 import pandas as pd
 from torch_geometric.loader import DataLoader
+from molprop_prediction.scripts.utils import parse_args, load_params
 from molprop_prediction.models.GIN_bis import GIN
 from molprop_prediction.scripts.preprocess_bis import (
     graph_datalist_from_smiles_and_labels,
 )
-
-def parse_args():
-    parser = argparse.ArgumentParser(description="Entraînement du modèle GIN")
-    args = parser.parse_args()
-    args.config = "molprop_prediction/configs/params.json"
-    return args
-
-
-def load_params(config_path):
-    with open(config_path, "r") as config_file:
-        params = json.load(config_file)
-    return params
 
 def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device):
     param_grid = {       

@@ -2,11 +2,11 @@ import argparse
 import json
 import pandas as pd 
 import torch
-# from sklearn.model_selection import train_test_split
 from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
 )
 from torch_geometric.loader import DataLoader
+
 
 def parse_args(arg_path):
     parser = argparse.ArgumentParser(description="Entraînement du modèle GIN")
@@ -14,10 +14,12 @@ def parse_args(arg_path):
     args.config = arg_path
     return args
 
+
 def load_params(config_path):
     with open(config_path, "r") as config_file:
         params = json.load(config_file)
     return params
+
 
 def prompt_user_for_args():
     model = input("Which model would you like to train? (RF, GIN, GAT): ")
@@ -43,12 +45,14 @@ def prompt_user_for_predictions():
 
 
 def read_train_data():
-    train_data = pd.read_csv("./data/raw_data/fixed_train_data.csv", index_col=0)
+    train_data = pd.read_csv("./data/raw_data/fixed_train_data.csv")
+    train_data.drop(columns="Unnamed: 0")
     return train_data
 
 
 def read_test_data():
-    test_data = pd.read_csv("./data/raw_data/fixed_test_data.csv", index_col=0)
+    test_data = pd.read_csv("./data/raw_data/fixed_test_data.csv")
+    test_data.drop(columns="Unnamed: 0")
     return test_data
 
 
@@ -76,6 +80,7 @@ def load_graph_preprocessed_test_dataset():
     test_dataloader = DataLoader(test_dataset, batch_size=16, shuffle=False)
     kept_test_id = test_data['id']
     return test_dataloader, kept_test_id
+
 
 def load_model(model, optimizer, checkpoint_path):
     loaded_checkpoint = torch.load(checkpoint_path)
