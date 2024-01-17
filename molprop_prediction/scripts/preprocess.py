@@ -403,7 +403,7 @@ def add_mol_features(dataset, molecule_column):
     dataset_return['num_of_heavy_atoms'] = dataset_return[molecule_column].apply(lambda x: x.GetNumHeavyAtoms())
     return dataset_return
 
-def find_top_atoms(dataset, molecule_column, n):
+def find_top_atoms(dataset, molecule_column, n=8):
     """_summary_
 
     Args:
@@ -420,7 +420,7 @@ def find_top_atoms(dataset, molecule_column, n):
         for atom in mol.GetAtoms():
             symbol = atom.GetSymbol()
             all_atoms[symbol] += 1
-    all_atoms['H']= all_atoms['Si']=0
+    all_atoms['H']= all_atoms['Si']=all_atoms['P']= all_atoms['I']=0
     
     top_atoms = [atom for atom, count in all_atoms.most_common(n)]
     return top_atoms
@@ -464,7 +464,7 @@ def remoove_na_and_cols(dataset,cols_to_remoove):
     dataset_return = dataset_return.drop(columns= cols_to_remoove + na_col)
     return dataset_return
 
-def create_our_dataset(dataset, smiles_column, mol_column, n):
+def create_our_dataset(dataset, smiles_column, mol_column, n = 8):
     """ Create our final dataset 
 
     Args:
@@ -476,8 +476,8 @@ def create_our_dataset(dataset, smiles_column, mol_column, n):
     dataset_return = smiles_to_mol(dataset, smiles_column, mol_column)
     dataset_return = add_fingerprints_features(dataset_return, mol_column)
     dataset_return = add_mol_features(dataset_return, mol_column)
-    atom_list = find_top_atoms(dataset_return, mol_column, n)
-    dataset_return = number_of_atoms(dataset_return, mol_column, atom_list)
+    #atom_list = find_top_atoms(dataset_return, mol_column, n)
+    #dataset_return = number_of_atoms(dataset_return, mol_column, atom_list)
     dataset_return = add_descriptors(dataset_return, mol_column)
     dataset_return = remoove_na_and_cols(dataset_return, ['id', mol_column])
     return dataset_return 
