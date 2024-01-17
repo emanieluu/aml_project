@@ -189,7 +189,7 @@ best = fmin(
     fn=partial(model_from_param, X=final_train, y=y_train),
     space=space,
     algo=tpe.suggest,
-    max_evals=1,
+    max_evals=200,
     trials=trials)
 
 print("Best estimator:", best)
