@@ -7,7 +7,7 @@ from molprop_prediction.scripts.utils import (prompt_user_for_args,
                                               read_train_data, 
                                               preprocess_graph_data)
 from molprop_prediction.models.GIN.GIN import GIN
-from molprop_prediction.scripts.preprocess_tabular import create_feature_pipeline
+from molprop_prediction.scripts.preprocess_tabular import MolecularTabularDataset
 from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
@@ -17,15 +17,12 @@ if __name__ == "__main__":
 
     with open(config_path, 'r') as file:
         params = json.load(file)
-
     if model_name == "RF":
-        X_train, y_train = train_data.drop('y', axis=1), train_data["y"]
-        feature_pipeline = create_feature_pipeline()
-        X_train = feature_pipeline.fit_transform(X_train)
-
+        X_raw, y_train = train_data.drop('y', axis=1), train_data["y"]
+        X_raw = MolecularTabularDataset(X_raw, "smiles", "mol")
+        X_train = X_raw.preprocess(n=8)
         model = RandomForestRegressor(**params)
         model.fit(X_train, y_train)
-
         joblib.dump(model, save_path + ".pkl")
         print(f"Model saved to {save_path}")
 
