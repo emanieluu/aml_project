@@ -3,24 +3,29 @@ import joblib
 import pandas as pd
 import torch
 import torch.optim as optim
-from molprop_prediction.scripts.utils import (prompt_user_for_predictions, read_test_data, load_model, preprocess_graph_data)
+from sklearn.metrics import mean_absolute_error
 from molprop_prediction.models.GIN import GIN
+from molprop_prediction.scripts.utils import (prompt_user_for_predictions,
+                                              read_test_data,
+                                              read_tabular_test,
+                                              load_model,
+                                              preprocess_graph_data)
 
 if __name__ == "__main__":
-    model, checkpoint_name, params_file = prompt_user_for_predictions()
+    model, checkpoint_path, config_path, save_path = prompt_user_for_predictions()
     device = torch.device("cuda:0")
-    print(f"Using {model} model with parameters from the file {params_file} and checkpoint {checkpoint_name} to predict")
-    checkpoint_path = "./molprop_prediction/models/" + model + "/trained_models/" + checkpoint_name
-    config_path = "./molprop_prediction/configs/" + params_file
-    save_path = "./data/predictions/" + model + "_predictions/" + checkpoint_name + "_predictions.csv"
     test_data = read_test_data()
     with open(config_path, 'r') as file:
         params = json.load(file)
     if model == "RF":
-        X_test = test_data["smiles"]
+        test_data = read_tabular_test()
+        X_test, y_test = test_data.drop("y", axis=1), test_data['y']
         model = joblib.load(checkpoint_path)
         predictions = model.predict(X_test)
-        predictions.to_csv(save_path, index=False)
+        predictions_df = pd.DataFrame({'predictions': predictions})
+        predictions_df.to_csv(save_path, index=False)
+        mae = mean_absolute_error(y_test, predictions)
+        print(f'Mean Absolute Error (MAE): {mae}')
         print(f'Predictions saved to {save_path}')
     if model == "GIN":
         #Loading Data

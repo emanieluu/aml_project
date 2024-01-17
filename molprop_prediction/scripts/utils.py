@@ -33,17 +33,34 @@ def prompt_user_for_args():
 def prompt_user_for_predictions():
     model = input("Which model would you like to use to predict? (RF, GIN, GAT): ")
     checkpoint_name = input("Enter the name of the model (saved in models/trained_models): ")
-    params_file = input("Enter the name of the JSON parameter file to load: ")
-    return model, checkpoint_name, params_file
+    params_file = input("Enter the name of the JSON parameter file to load (default: params.json): ")
+    params_file = params_file.strip() or "params.json"
+    config_path = f"./molprop_prediction/configs/{model}/{params_file}"
+    checkpoint_path = "./molprop_prediction/models/" + model + "/trained_models/" + checkpoint_name
+    print(f"Using {model} model with parameters from the file {params_file} and checkpoint {checkpoint_name} to predict")
+    save_path = "./data/predictions/" + model + "_predictions/" + "predictions.csv"
+    return model, checkpoint_path, config_path, save_path
 
 
 def read_train_data():
     train_data = pd.read_csv("./data/raw_data/fixed_train_data.csv", index_col=0)
     return train_data
 
+
 def read_test_data():
     test_data = pd.read_csv("./data/raw_data/fixed_test_data.csv", index_col=0)
     return test_data
+
+
+def read_tabular_train():
+    data = pd.read_csv("./data/preprocessed_data/tabular_data_train.csv")
+    return data 
+
+
+def read_tabular_test():
+    data = pd.read_csv("./data/preprocessed_data/tabular_data_test.csv")
+    return data
+
 
 def preprocess_graph_data(data):
     data = graph_datalist_from_smiles_and_labels(
@@ -51,6 +68,7 @@ def preprocess_graph_data(data):
     )
     graph_dataloader = DataLoader(data, batch_size=32, shuffle=True)
     return graph_dataloader 
+
 
 def load_graph_preprocessed_test_dataset():
     test_data = pd.read_csv("./data/raw_data/_test_fixed.csv")

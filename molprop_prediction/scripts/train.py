@@ -4,23 +4,21 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from molprop_prediction.scripts.utils import (prompt_user_for_args, 
-                                              read_train_data, 
+                                              read_train_data,
+                                              read_tabular_train,
                                               preprocess_graph_data)
 from molprop_prediction.models.GIN.GIN import GIN
-from molprop_prediction.scripts.preprocess_tabular import MolecularTabularDataset
 from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
     model_name, config_path, save_path = prompt_user_for_args()
     device = torch.device("cuda:0")
     train_data = read_train_data()
-
     with open(config_path, 'r') as file:
         params = json.load(file)
     if model_name == "RF":
-        X_raw, y_train = train_data.drop('y', axis=1), train_data["y"]
-        X_raw = MolecularTabularDataset(X_raw, "smiles", "mol")
-        X_train = X_raw.preprocess(n=8)
+        train_data = read_tabular_train()
+        X_train, y_train = train_data.drop('y', axis=1), train_data['y']
         model = RandomForestRegressor(**params)
         model.fit(X_train, y_train)
         joblib.dump(model, save_path + ".pkl")
