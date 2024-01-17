@@ -1,0 +1,1 @@
+{"bootstrap": false, "feature_extractor": "RFE", "max_depth": 10, "max_features": "log2", "min_samples_leaf": 3, "min_samples_split": 7, "n_estimators": 300, "n_features_to_select": 200, "preprocessor": "MaxAbsScaler", "warm_startbool": false}

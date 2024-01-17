@@ -33,6 +33,11 @@ import time
 import cProfile
 import pstats
 
+import json
+
+
+from hyperopt.mongoexp import Trials
+
 # Profiler to see where the code is taking the most time 
 profiler = cProfile.Profile()
 profiler.enable()
@@ -125,7 +130,7 @@ def model_from_param(params, X, y):
         del opts['type']
         feature_extraction = SelectKBest(score_func=f_regression, **opts)
     
-    #print("Feature extractor : done ")
+ 
 
     model = Pipeline(steps=[
         ('imputer', imputer),
@@ -172,11 +177,11 @@ def model_from_param(params, X, y):
 
 
 
-final_train = pd.read_csv('/home/onyxia/work/aml_project/data/raw_data/data_fot_ML/final_train_train.csv')
-y_train = pd.read_csv('/home/onyxia/work/aml_project/data/raw_data/data_fot_ML/Y_train.csv')['y']
+final_train = pd.read_csv('/home/onyxia/work/aml_project/data/raw_data/tabular_data_train_without_preprocess.csv')
+x_train = final_train.drop(columns=['y'])
+y_train = pd.read_csv('/home/onyxia/work/aml_project/data/raw_data/tabular_data_train_without_preprocess.csv')['y']
 
 
-from hyperopt.mongoexp import Trials
 trials = Trials()
 
 #minimization of the mae over 100 sets of parameters
@@ -184,11 +189,63 @@ best = fmin(
     fn=partial(model_from_param, X=final_train, y=y_train),
     space=space,
     algo=tpe.suggest,
-    max_evals=200,
+    max_evals=1,
     trials=trials)
 
 print("Best estimator:", best)
 
+
+# Now we want to save our selected parameters
+
+# But we have to translate paramaters returned by best (indices)
+def translate_params(param_indices):
+    translated_params_RF = {}
+    translated_params_pipeline = {}
+
+    param_mapping = {
+        'n_estimators': [50, 100, 200, 300, 400],
+        'max_depth': [None, 10, 20, 30],
+        'min_samples_split': [2, 3, 7, 12],
+        'min_samples_leaf': [1, 3, 6, 10],
+        'bootstrap': [True, False],
+        'warm_startbool': [True, False],
+        'max_features': ['sqrt', 'log2'],
+        'preprocessor': ['StandardScaler', 'RobustScaler', 'Normalizer', 'MaxAbsScaler'],
+        'feature_extractor': ['pca', 'RFE', 'SelectKBest'],
+        'n_components': [10, 50, 60, 75, 100, 150, 200],
+        'whiten': [True, False],
+        'n_features_to_select': [200, 300, 400],
+        'step': 10,
+        'k': [10, 75, 150, 200, 300, 400]
+    }
+
+    for param, index in param_indices.items():
+        if param == 'feature_extractor'or param=='k'or param=='preprocessor' or param=='n_components' or param=='whiten' or param=='n_features_to_select' or param=='step':
+            translated_params_pipeline[param] = param_mapping[param][index]
+        else:
+            translated_params_RF[param] = param_mapping[param][index]
+            translated_params_pipeline[param] = param_mapping[param][index]
+
+    return translated_params_RF, translated_params_pipeline
+
+
+translated_params_RF, translated_params_pipeline = translate_params(best)
+
+print("Translated parameters : ", translated_params_pipeline)
+
+parameters_RF = "/home/onyxia/work/aml_project/molprop_prediction/configs/RF/parameters_RF.json"
+parameters_pipeline = "/home/onyxia/work/aml_project/molprop_prediction/configs/RF/parameters_pipeline_RF.json"
+
+
+# Save parameters in JSON files
+with open(parameters_RF, "w") as json_file:
+    json.dump(translated_params_RF, json_file)
+
+with open(parameters_pipeline, "w") as json_file:
+    json.dump(translated_params_pipeline, json_file)
+
+print(f"Parameters of normalization, features extraction and Random Forest saved at {parameters_pipeline}")
+print(f"Parameters of Random Forest saved at {parameters_RF}")
 
 profiler.disable()
 stats = pstats.Stats(profiler)
