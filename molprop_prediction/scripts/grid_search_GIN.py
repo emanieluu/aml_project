@@ -1,5 +1,3 @@
-import argparse
-import json
 from sklearn.model_selection import ParameterGrid, KFold
 from sklearn.model_selection import train_test_split
 import torch
@@ -13,15 +11,18 @@ from molprop_prediction.scripts.preprocess_bis import (
     graph_datalist_from_smiles_and_labels,
 )
 
-def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device):
-    param_grid = {       
+
+def grid_search(
+    train_dataloader, test_dataloader, input_dim, output_dim, device
+):
+    param_grid = {
         "hidden_dim": [256, 64, 128],
         "lr": [0.0001, 0.001, 0.01],
         "batch_size": [16, 32, 64],
         "epochs": [200, 150, 100],
         "random_seed": [37],
         "k_folds": [3],
-        "num_gin_layers": [4, 3, 2],  
+        "num_gin_layers": [4, 3, 2],
         "num_lin_layers": [1],
     }
 
@@ -30,21 +31,37 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
     best_params = {}
 
     results_file = "molprop_prediction/results/grid_search_res_2.txt"
-    with open(results_file, 'w') as f:
-        f.write("hidden_dim,lr,batch_size,epochs,num_gin_layers,num_lin_layers,val_avg_loss,val_avg_mae,test_avg_loss,test_avg_loss\n")
+    with open(results_file, "w") as f:
+        f.write(
+            "hidden_dim,lr,batch_size,epochs,num_gin_layers,num_lin_layers,val_avg_loss,val_avg_mae,test_avg_loss,test_avg_loss\n"
+        )
 
     for params in ParameterGrid(param_grid):
         print(params)
-        kf = KFold(n_splits=params["k_folds"], shuffle=True, random_state=params["random_seed"])
+        kf = KFold(
+            n_splits=params["k_folds"],
+            shuffle=True,
+            random_state=params["random_seed"],
+        )
         val_losses = []
         mae_values = []
 
-        for fold, (train_index, val_index) in enumerate(kf.split(train_dataloader.dataset), 1):
-            train_set = torch.utils.data.Subset(train_dataloader.dataset, train_index)
-            val_set = torch.utils.data.Subset(train_dataloader.dataset, val_index)
+        for fold, (train_index, val_index) in enumerate(
+            kf.split(train_dataloader.dataset), 1
+        ):
+            train_set = torch.utils.data.Subset(
+                train_dataloader.dataset, train_index
+            )
+            val_set = torch.utils.data.Subset(
+                train_dataloader.dataset, val_index
+            )
 
-            train_loader = DataLoader(train_set, batch_size=params["batch_size"], shuffle=True)
-            val_loader = DataLoader(val_set, batch_size=params["batch_size"], shuffle=False)
+            train_loader = DataLoader(
+                train_set, batch_size=params["batch_size"], shuffle=True
+            )
+            val_loader = DataLoader(
+                val_set, batch_size=params["batch_size"], shuffle=False
+            )
 
             model = GIN(
                 dim_h=params["hidden_dim"],
@@ -86,7 +103,9 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
                 average_loss = total_loss / len(train_loader)
                 average_mae = total_mae / len(train_loader)
 
-                print(f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}")
+                print(
+                    f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}"
+                )
                 loss_fold.append(average_loss)
                 mae_fold.append(average_mae)
 
@@ -108,11 +127,13 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
                 mae_value = mae(output, batch.y.view(-1, 1))
                 total_loss += loss.item()
                 total_mae += mae_value.item()
-        
+
             average_loss = total_loss / len(val_loader)
             average_mae = total_mae / len(val_loader)
 
-            print(f"Validation Loss after {params['epochs']} epochs: {average_loss}")
+            print(
+                f"Validation Loss after {params['epochs']} epochs: {average_loss}"
+            )
             val_losses.append(average_loss)
             mae_values.extend(mae_fold)
 
@@ -151,10 +172,13 @@ def grid_search(train_dataloader, test_dataloader, input_dim, output_dim, device
 
         print(f"Test Loss after {params['epochs']} epochs: {average_loss}\n")
 
-        with open(results_file, 'a') as f:
-            f.write(f"{params['hidden_dim']},{params['lr']},{params['batch_size']},{params['epochs']},{params['num_gin_layers']},{params['num_lin_layers']},{avg_val_loss},{avg_mae},{test_avg_loss},{test_avg_mae}\n")
+        with open(results_file, "a") as f:
+            f.write(
+                f"{params['hidden_dim']},{params['lr']},{params['batch_size']},{params['epochs']},{params['num_gin_layers']},{params['num_lin_layers']},{avg_val_loss},{avg_mae},{test_avg_loss},{test_avg_mae}\n"
+            )
 
     return best_model, best_params
+
 
 def main():
     args = parse_args()
@@ -189,6 +213,7 @@ def main():
 
     print("Best Model:", best_model)
     print("Best Parameters:", best_params)
+
 
 if __name__ == "__main__":
     main()
