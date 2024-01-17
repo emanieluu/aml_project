@@ -2,8 +2,8 @@ import argparse
 import json
 import pandas as pd 
 import torch
-from sklearn.model_selection import train_test_split
-from molprop_prediction.scripts.preprocess import (
+# from sklearn.model_selection import train_test_split
+from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
 )
 from torch_geometric.loader import DataLoader

@@ -2,9 +2,8 @@ import pandas as pd
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem, Descriptors
-from collections import Counter
 from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.pipeline import Pipeline
+from collections import Counter
 
 class SmilesToMol(BaseEstimator, TransformerMixin):
     def __init__(self, smiles_column, mol_column):
@@ -42,10 +41,20 @@ class MolFeatures(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
+        def add_hydrogens(mol):
+            try:
+                # Check if mol is a valid RDKit molecule
+                if mol is not None and Chem.MolToSmiles(mol) != '':
+                    return Chem.AddHs(mol)
+                else:
+                    return mol
+            except:
+                return mol
+
         X_copy = X.copy()
-        X_copy[self.molecule_column] = X_copy[self.molecule_column].apply(lambda x: Chem.AddHs(x))
-        X_copy['num_of_atoms'] = X_copy[self.molecule_column].apply(lambda x: x.GetNumAtoms())
-        X_copy['num_of_heavy_atoms'] = X_copy[self.molecule_column].apply(lambda x: x.GetNumHeavyAtoms())
+        X_copy[self.molecule_column] = X_copy[self.molecule_column].apply(add_hydrogens)
+        X_copy['num_of_atoms'] = X_copy[self.molecule_column].apply(lambda x: x.GetNumAtoms() if x is not None else np.nan)
+        X_copy['num_of_heavy_atoms'] = X_copy[self.molecule_column].apply(lambda x: x.GetNumHeavyAtoms() if x is not None else np.nan)
         return X_copy
 
 class DescriptorsFeatures(BaseEstimator, TransformerMixin):
@@ -56,8 +65,8 @@ class DescriptorsFeatures(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        descrs = [Descriptors.CalcMolDescriptors(mol) for mol in X[self.molecule_column]]
-        descrs_df = pd.DataFrame(descrs)
+        descrs = [Descriptors.CalcMolDescriptors(mol) if mol is not None else [np.nan] * Descriptors._descList.__len__() for mol in X[self.molecule_column]]
+        descrs_df = pd.DataFrame(descrs, columns=[desc[0] for desc in Descriptors._descList])
         return pd.concat([X, descrs_df], axis=1)
 
 class RemoveNaAndCols(BaseEstimator, TransformerMixin):
@@ -84,8 +93,5 @@ class PreprocessTabular(BaseEstimator, TransformerMixin):
         dataset_return = SmilesToMol(self.smiles_column, self.mol_column).fit_transform(X)
         dataset_return = FingerprintFeatures(self.mol_column).fit_transform(dataset_return)
         dataset_return = MolFeatures(self.mol_column).fit_transform(dataset_return)
-        # Atom list commented out to keep the code runnable
-        # atom_list = find_top_atoms(dataset_return, self.mol_column, self.n)
-        # dataset_return = number_of_atoms(dataset_return, self.mol_column, atom_list)
         dataset_return = DescriptorsFeatures(self.mol_column).fit_transform(dataset_return)
         return RemoveNaAndCols(['id', self.mol_column]).fit_transform(dataset_return)
