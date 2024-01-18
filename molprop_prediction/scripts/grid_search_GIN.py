@@ -6,8 +6,8 @@ import torch.optim as optim
 import pandas as pd
 from torch_geometric.loader import DataLoader
 from molprop_prediction.scripts.utils import parse_args, load_params
-from molprop_prediction.models.GIN_bis import GIN
-from molprop_prediction.scripts.preprocess_bis import (
+from molprop_prediction.models.GIN import GIN
+from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
 )
 
@@ -17,11 +17,11 @@ def grid_search(
 ):
     param_grid = {
         "hidden_dim": [256, 64, 128],
-        "lr": [0.0001, 0.001, 0.01],
-        "batch_size": [16, 32, 64],
-        "epochs": [200, 150, 100],
+        "lr": [0.001, 0.01],
+        "batch_size": [32, 64],
+        "epochs": [150, 100, 80],
         "random_seed": [37],
-        "k_folds": [3],
+        "k_folds": [2],
         "num_gin_layers": [4, 3, 2],
         "num_lin_layers": [1],
     }
@@ -30,7 +30,7 @@ def grid_search(
     best_loss = float("inf")
     best_params = {}
 
-    results_file = "molprop_prediction/results/grid_search_res_2.txt"
+    results_file = "molprop_prediction/grid_results/new_grid_search_res.txt"
     with open(results_file, "w") as f:
         f.write(
             "hidden_dim,lr,batch_size,epochs,num_gin_layers,num_lin_layers,val_avg_loss,val_avg_mae,test_avg_loss,test_avg_loss\n"
@@ -181,10 +181,8 @@ def grid_search(
 
 
 def main():
-    args = parse_args()
-    params = load_params(args.config)
-
-    merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    merged_data = pd.read_csv("./data/raw_data/full_data.csv")
     train_data, test_data = train_test_split(
         merged_data, test_size=0.2, random_state=42
     )
@@ -196,17 +194,11 @@ def main():
         test_data["smiles"], test_data["y"]
     )
 
-    train_dataloader = DataLoader(
-        train_dataset, batch_size=params["batch_size"], shuffle=True
-    )
-    test_dataloader = DataLoader(
-        test_dataset, batch_size=params["batch_size"], shuffle=True
-    )
+    train_dataloader = DataLoader(train_dataset, shuffle=True)
+    test_dataloader = DataLoader(test_dataset, shuffle=True)
 
     input_dim = train_dataset[0].x.size(-1)
-    output_dim = params["output_dim"]
-    device = torch.device("cuda:0")
-
+    output_dim = 1
     best_model, best_params = grid_search(
         train_dataloader, test_dataloader, input_dim, output_dim, device
     )
