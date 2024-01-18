@@ -12,11 +12,13 @@ from molprop_prediction.scripts.preprocess_bis import (
     graph_datalist_from_smiles_and_labels,
 )
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Entraînement du modèle GIN")
     args = parser.parse_args()
     args.config = "molprop_prediction/configs/params.json"
     return args
+
 
 def load_params(config_path):
     with open(config_path, "r") as config_file:
@@ -42,8 +44,9 @@ sweep_config = {
         "num_gin_layers": {"values": [4, 3, 2]},
         "num_lin_layers": {"value": 1},
     },
-    }
-    
+}
+
+
 def train(config=None):
     merged_data = pd.read_csv("./data/raw_data/train_merged_data.csv")
     train_data, test_data = train_test_split(
@@ -63,8 +66,12 @@ def train(config=None):
     test_dataloader = DataLoader(
         test_dataset, batch_size=params["batch_size"], shuffle=True
     )
-    train_loader = DataLoader(train_dataloader.dataset, batch_size=params["batch_size"], shuffle=True)
-    val_loader = DataLoader(test_dataloader.dataset, batch_size=params["batch_size"], shuffle=False)
+    train_loader = DataLoader(
+        train_dataloader.dataset, batch_size=params["batch_size"], shuffle=True
+    )
+    val_loader = DataLoader(
+        test_dataloader.dataset, batch_size=params["batch_size"], shuffle=False
+    )
 
     input_dim = train_dataset[0].x.size(-1)
 
@@ -112,19 +119,21 @@ def train(config=None):
             average_mae = total_mae / len(train_loader)
 
             wandb.log(
-                        {
-                            "epoch": epoch,
-                            "train_acc": average_mae,
-                            "train_loss": average_loss,
-                        }
-                    )
+                {
+                    "epoch": epoch,
+                    "train_acc": average_mae,
+                    "train_loss": average_loss,
+                }
+            )
 
-            print(f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}")
+            print(
+                f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}"
+            )
 
             # Validation after each epoch
             model.eval()
             total_loss = 0
-            total_mae = 0 
+            total_mae = 0
 
             for batch in val_loader:
                 batch = batch.to(device)
@@ -144,11 +153,11 @@ def train(config=None):
             average_mae = total_mae / len(val_loader)
 
             wandb.log(
-                            {
-                                "test_mae": average_mae,
-                                "test_loss": average_loss,
-                            }
-                        )
+                {
+                    "test_mae": average_mae,
+                    "test_loss": average_loss,
+                }
+            )
 
             print(f"Validation Loss after epoch {epoch + 1}: {average_loss}")
 
@@ -157,6 +166,6 @@ def main():
     sweep_id = wandb.sweep(sweep_config, project="hyperparameter-sweep")
     wandb.agent(sweep_id, train)
 
+
 if __name__ == "__main__":
     main()
-
