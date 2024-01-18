@@ -15,7 +15,7 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import cross_val_predict, KFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, Normalizer, RobustScaler, MaxAbsScaler
-
+from molprop_prediction.scripts.utils import translate_params
 from sklearnex import patch_sklearn
 from hyperopt.mongoexp import Trials
 
@@ -148,10 +148,26 @@ if __name__ == "__main__":
     )
 
     print("Best estimator:", best)
+    translated_params_RF, translated_params_pipeline = translate_params(best)
+
+
+    parameters_RF = "./configs/RF/parameters_RF.json"
+    parameters_pipeline = "./configs/RF/parameters_pipeline_RF.json"
+
+    with open(parameters_RF, "w") as json_file:
+        json.dump(translated_params_RF, json_file)
+
+    with open(parameters_pipeline, "w") as json_file:
+        json.dump(translated_params_pipeline, json_file)
+
+    
+    print(f"Parameters of normalization, features extraction and Random Forest saved at {parameters_pipeline}")
+    print(f"Parameters of Random Forest saved at {parameters_RF}")
 
     # profiler.disable()
     # stats = pstats.Stats(profiler)
-    # uncomment to see the repartition of spending time across different functions
-    # stats.sort_stats('cumulative').print_stats(10)
+    #uncomment to see the repartion of spending time across different functions
+    #stats.sort_stats('cumulative').print_stats(10) 
+
 
 

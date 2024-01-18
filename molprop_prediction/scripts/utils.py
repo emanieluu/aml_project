@@ -91,3 +91,34 @@ def load_model(model, optimizer, checkpoint_path):
     mae = loaded_checkpoint['mae']
     print(f"Model loaded from {checkpoint_path}, trained for {epoch} epochs. Last loss: {loss}, Last MAE: {mae}")
     return model, optimizer
+
+
+def translate_params(param_indices):
+    translated_params_RF = {}
+    translated_params_pipeline = {}
+
+    param_mapping = {
+        'n_estimators': [50, 100, 200, 300, 400],
+        'max_depth': [None, 10, 20, 30],
+        'min_samples_split': [2, 3, 7, 12],
+        'min_samples_leaf': [1, 3, 6, 10],
+        'bootstrap': [True, False],
+        'warm_startbool': [True, False],
+        'max_features': ['sqrt', 'log2'],
+        'preprocessor': ['StandardScaler', 'RobustScaler', 'Normalizer', 'MaxAbsScaler'],
+        'feature_extractor': ['pca', 'RFE', 'SelectKBest'],
+        'n_components': [10, 50, 60, 75, 100, 150, 200],
+        'whiten': [True, False],
+        'n_features_to_select': [200, 300, 400],
+        'step': 10,
+        'k': [10, 75, 150, 200, 300, 400]
+    }
+
+    for param, index in param_indices.items():
+        if param == 'feature_extractor'or param=='k'or param=='preprocessor' or param=='n_components' or param=='whiten' or param=='n_features_to_select' or param=='step':
+            translated_params_pipeline[param] = param_mapping[param][index]
+        else:
+            translated_params_RF[param] = param_mapping[param][index]
+            translated_params_pipeline[param] = param_mapping[param][index]
+
+    return translated_params_RF, translated_params_pipeline
