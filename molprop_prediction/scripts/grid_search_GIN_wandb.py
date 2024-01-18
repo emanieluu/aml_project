@@ -7,29 +7,16 @@ import pandas as pd
 import wandb
 from sklearn.model_selection import train_test_split
 from torch_geometric.loader import DataLoader
-from molprop_prediction.models.GIN_bis import GIN
-from molprop_prediction.scripts.preprocess_bis import (
+from molprop_prediction.models.GIN import GIN
+from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
 )
-
-
-def parse_args():
-    parser = argparse.ArgumentParser(description="Entraînement du modèle GIN")
-    args = parser.parse_args()
-    args.config = "molprop_prediction/configs/params.json"
-    return args
-
-
-def load_params(config_path):
-    with open(config_path, "r") as config_file:
-        params = json.load(config_file)
-    return params
-
+from molprop_prediction.scripts.utils import (parse_args,
+                                              load_params)
 
 args = parse_args()
 params = load_params(args.config)
 device = torch.device("cuda:0")
-
 
 sweep_config = {
     "method": "grid",
