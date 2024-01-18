@@ -31,6 +31,23 @@ Install dependencies with Pipenv:
 ```
 pipenv install
 ```
+
+### Data Preprocessing
+
+We perform two types of preprocessing for the data initially provided in SMILES format:
+
+1. **Tabular Data Processing:**
+   - The data is preprocessed into tabular format with feature engineering, resulting in 100 features.
+   - The feature engineering process is time-consuming, and for convenience, we store the tabular data in two folders: `tabular_feature_enhancement` and `tabular_preprocessed_data`. This allows us to directly access these preprocessed data when training the models.
+   - To initiate the preprocessing of these data, execute the following command:
+     ```
+     python -m molprop_prediction.scripts.preprocess_tabular
+     ```
+
+2. **Graph Data Processing:**
+   - The data is preprocessed into a format suitable for graph neural networks. This process is quick and is performed just before model training when executing the training file with GIN or GAT input.
+
+
 ### Model Training 
 
 To train a model, run the following command:

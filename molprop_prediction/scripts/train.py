@@ -8,6 +8,7 @@ from molprop_prediction.scripts.utils import (prompt_user_for_args,
                                               read_tabular_train,
                                               preprocess_graph_data)
 from molprop_prediction.models.GIN.GIN import GIN
+from molprop_prediction.models.GIN.GIN import GIN
 from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
