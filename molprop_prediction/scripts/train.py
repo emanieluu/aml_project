@@ -6,7 +6,8 @@ import torch.optim as optim
 from molprop_prediction.scripts.utils import (prompt_user_for_args, 
                                               read_train_data,
                                               read_tabular_train,
-                                              preprocess_graph_data)
+                                              preprocess_graph_data,
+                                              load_data_gat)
 from molprop_prediction.models.GIN import GIN
 from molprop_prediction.models.GAT import GATGraphRegressor
 from sklearn.ensemble import RandomForestRegressor
@@ -27,8 +28,15 @@ if __name__ == "__main__":
 
     if model_name == "GIN":
         # Loading Parameters
-        locals().update(params)
-
+        input_dim = params['input_dim']
+        hidden_dim = params['hidden_dim']
+        output_dim = params['output_dim']
+        lr = params['lr']
+        epochs = params['epochs']
+        batch_size = params['batch_size']
+        num_gin_layers = params['num_gin_layers']
+        num_lin_layers = params['num_lin_layers']
+        
         # Loading Model
         model = GIN(dim_h=hidden_dim,
                     num_node_features=input_dim,
@@ -38,7 +46,7 @@ if __name__ == "__main__":
         optimizer = optim.Adam(model.parameters(), lr=lr)
         criterion = nn.MSELoss()
         mae = nn.L1Loss()
-
+        train_dataloader = preprocess_graph_data(train_data)
         # Boucle d'entraînement
         for epoch in range(epochs):
             model.train()
@@ -82,18 +90,74 @@ if __name__ == "__main__":
         print(f"Model saved to {save_path}")
 
     if model_name == "GAT":
-        for epoch in range(hyperparameters['epochs']):
-        model.train()
-        total_loss = 0
-        for data in train_dataloader:
-            if data is None:
-                continue
-            
-            optimizer.zero_grad()
-            output = model(data)
-            output = output.squeeze(-1)
-            loss = loss_func(output, data.y)
-            loss.backward()
-            optimizer.step()
-            total_loss += loss.item()
+        train_dataloader = load_data_gat(train_data)
+        num_node_features = params['num_node_features']
+        hidden_dim = params['hidden_dim']
+        out_features = params['out_features']
+        epochs = params["epochs"]
+        lr = params["lr"]
+
+        model = GATGraphRegressor(num_node_features,
+                                  hidden_dim,
+                                  out_features).to(device)
+        optimizer = optim.Adam(model.parameters(), lr=lr)
+        criterion = nn.MSELoss()
+        mae = nn.L1Loss()
+
+        # Boucle d'entraînement
+        for epoch in range(epochs):
+            model.train()
+            total_loss = 0
+            total_mae = 0
+
+            for batch in train_dataloader:
+                optimizer.zero_grad()
+                batch = batch.to(device)  # Move the entire batch to the GPU
+                output = model(batch)
+                loss = criterion(output, batch.y.view(-1, 1))
+                mae_value = mae(output, batch.y.view(-1, 1))
+                loss.backward()
+                optimizer.step()
+                total_loss += loss.item()
+                total_mae += mae_value.item()
+
+            average_loss = total_loss / len(train_dataloader)
+            average_mae = total_mae / len(train_dataloader)
+
+            print(f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}")
+
+        torch.save(
+            {
+                "epoch": epoch + 1,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "loss": average_loss,
+                "mae": average_mae,
+            },
+            save_path,
+        )
+
+        print(f"Model saved to {save_path}")
+
+
+
+
+
+
+
+        # optimizer = torch.optim.Adam(model.parameters(), lr=hyperparameters['learning_rate'])
+        # loss_func = torch.nn.MSELoss()
+        # for epoch in range(hyperparameters['epochs']):
+        #     model.train()
+        #     total_loss = 0
+        #     for data in train_dataloader:
+        #         if data is None:
+        #             continue
+        #         optimizer.zero_grad()
+        #         output = model(data)
+        #         output = output.squeeze(-1)
+        #         loss = loss_func(output, data.y)
+        #         loss.backward()
+        #         optimizer.step()
+        #         total_loss += loss.item()
         

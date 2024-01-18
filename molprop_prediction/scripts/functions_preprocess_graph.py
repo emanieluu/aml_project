@@ -6,30 +6,37 @@ from torch.utils.data import Dataset
 from torch_geometric.data import Data
 from rdkit import Chem
 from rdkit.Chem import AllChem
-import networkx as nx
 from collections import defaultdict
 from rdkit.Chem import GraphDescriptors
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
 from pathlib import Path
 
-def smiles_to_graph(smiles: str):
-    mol = Chem.MolFromSmiles(smiles)  # construct molecules from smile notations
+def smiles_to_graph(smiles):
+    """
+    Converts a SMILES string to an RDKit molecule object.
+    SMILES strings are a textual representation of molecular structures.
+    """
+    mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         return None
 
-    # Convertir la molécule RDKit en graphe NetworkX
-    g = nx.Graph()
-    for atom in mol.GetAtoms():  # loop over the atoms
-        g.add_node(atom.GetIdx(), atom_type=atom.GetSymbol())
+    #Initialize list to store graph data 
+    node_features = []
+    edge_indices = []
 
-    for bond in mol.GetBonds():  # loop over the bonds
-        g.add_edge(
-            bond.GetBeginAtomIdx(),
-            bond.GetEndAtomIdx(),
-            bond_type=bond.GetBondTypeAsDouble(),
-        )
+    for atom in mol.GetAtoms():
+        node_features.append([atom.GetAtomicNum()]) 
 
-    return g
+    for bond in mol.GetBonds():
+        i = bond.GetBeginAtomIdx()
+        j = bond.GetEndAtomIdx()
+        edge_indices += [[i, j], [j, i]]  # Ajouter les deux directions pour le graphe non orienté
+
+    # Convert node features and edge indices to PyTorch tensors
+    x = torch.tensor(node_features, dtype=torch.float32)
+    edge_index = torch.tensor(edge_indices, dtype=torch.long).t().contiguous()
+
+    return Data(x=x, edge_index=edge_index)
 
 
 class MolDataset(Dataset):
@@ -41,24 +48,13 @@ class MolDataset(Dataset):
 
     def __getitem__(self, idx):
         row = self.dataframe.iloc[idx]
-        mol_graph = smiles_to_graph(row["smiles"])
-
-        x = torch.tensor(
-            [[0.0] for _ in range(len(mol_graph.nodes))], dtype=torch.float32
-        )
-
-        # Construct edge_index from the adjacency matrix of the graph
-        edge_index = (
-            torch.tensor(list(mol_graph.edges), dtype=torch.long).t().contiguous()
-        )
-
-        # Utilisez row['target_property'] pour obtenir la propriété cible
-        target_property = torch.tensor(row["y"], dtype=torch.float32)
-
-        return Data(x=x, edge_index=edge_index, y=target_property)
+        graph = smiles_to_graph(row['smiles'])
+        if graph is None:
+            return None
+        graph.y = torch.tensor([row['y']], dtype=torch.float32)
+        return graph
 
 ################################################################################################
-
 
 def onehot_encode(x, features: list):
     """
@@ -358,61 +354,3 @@ def graph_datalist_from_smiles_and_labels(x_smiles, y):
         # construct Pytorch Geometric data object list
         data_list.append(Data(x=X, edge_index=E, edge_attr=EF, y=y_tensor))
     return data_list
-
-def smiles_to_mol(dataset,smiles_column):
-    """transform smiles molecules into mol type 
-    Args:
-        dataset (Dataframe): Dataset with smiles molecules
-        smiles_column (str): Name of smiles column
-    """
-    dataset['mol'] = dataset[smiles_column].apply(lambda x: Chem.MolFromSmiles(x)) 
-    return dataset.drop(columns=[smiles_column])
-
-def add_fingerprints_features(dataset, molecule_column):
-    """ Add 2048 new columns to dataset corresponding to bits of fingerprints representation from mol type, and 2 features calculated from number of bits
-    Args:
-        dataset (Dataframe): dataset with mol type's molecules
-        molecule_column (str): name of the molecule column in mol type
-    """
-    dataset['fps_1'] = [np.array(AllChem.GetMorganFingerprintAsBitVect(mol, radius=2, nBits=2048)) for mol in dataset[molecule_column]]
-    dataset['num_bits_active']= dataset['fps_1'].apply(lambda x: np.sum(x))
-    dataset['mean_bit_density'] = dataset['fps_1'].apply(lambda x: np.mean(x))
-    dataset_expanded = pd.DataFrame(dataset['fps_1'].tolist(), columns=[f'feature_{i}' for i in range(1, 2049)])
-    dataset_to_retuned = pd.concat([dataset, dataset_expanded], axis=1)
-    dataset_to_retuned = dataset_to_retuned.drop(columns=['fps_1'])
-    return dataset_to_retuned
-
-def add_mol_features(dataset, molecule_column):
-    """ Add features from molecules to dataset
-
-    Args:
-        dataset (Dataframe): dataset with mol type's molecules
-        molecule_column (str): name of the molecule column in mol type
-    """
-    dataset[molecule_column] = dataset[molecule_column].apply(lambda x: Chem.AddHs(x)) # AddHs function adds H atoms to a MOL (as Hs in SMILES are usualy ignored)
-    dataset['num_of_atoms'] = dataset[molecule_column].apply(lambda x: x.GetNumAtoms())
-    dataset['num_of_heavy_atoms'] = dataset[molecule_column].apply(lambda x: x.GetNumHeavyAtoms())
-
-def find_top_atoms(dataset, molecule_column, n):
-    """_summary_
-
-    Args:
-        df (Dataframe): Dataset
-        molecule_column (str): name of the molecule column in mol type
-        n (int): number of top atoms
-
-    Returns:
-        list : List of strings of the n most current atoms in molecules of the dataset
-    """
-    all_atoms = Counter()
-
-    for mol in dataset[molecule_column]:
-        for atom in mol.GetAtoms():
-            symbol = atom.GetSymbol()
-            all_atoms[symbol] += 1
-    all_atoms['H']= all_atoms['Si']=0
-    
-    top_atoms = [atom for atom, count in all_atoms.most_common(n)]
-    return top_atoms
-
-    

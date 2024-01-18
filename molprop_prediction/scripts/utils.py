@@ -4,6 +4,7 @@ import pandas as pd
 import torch
 from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
+    MolDataset
 )
 from torch_geometric.loader import DataLoader
 
@@ -72,6 +73,18 @@ def preprocess_graph_data(data):
     )
     graph_dataloader = DataLoader(data, batch_size=32, shuffle=True)
     return graph_dataloader 
+
+
+def load_data_gat(dataframe, batch_size=32):
+    dataset = MolDataset(dataframe)
+    
+    def collate_fn(batch):
+        # Filter out None values
+        batch = [item for item in batch if item is not None]
+        # Combine Data objects into a Batch object
+        return Batch.from_data_list(batch)
+
+    return DataLoader(dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn)
 
 
 def load_graph_preprocessed_test_dataset():
