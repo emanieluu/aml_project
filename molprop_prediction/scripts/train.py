@@ -7,8 +7,8 @@ from molprop_prediction.scripts.utils import (prompt_user_for_args,
                                               read_train_data,
                                               read_tabular_train,
                                               preprocess_graph_data)
-from molprop_prediction.models.GIN.GIN import GIN
-from molprop_prediction.models.GIN.GIN import GIN
+from molprop_prediction.models.GIN import GIN
+from molprop_prediction.models.GAT import GATGraphRegressor
 from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == "__main__":
@@ -82,4 +82,18 @@ if __name__ == "__main__":
         print(f"Model saved to {save_path}")
 
     if model_name == "GAT":
-        pass
+        for epoch in range(hyperparameters['epochs']):
+        model.train()
+        total_loss = 0
+        for data in train_dataloader:
+            if data is None:
+                continue
+            
+            optimizer.zero_grad()
+            output = model(data)
+            output = output.squeeze(-1)
+            loss = loss_func(output, data.y)
+            loss.backward()
+            optimizer.step()
+            total_loss += loss.item()
+        
