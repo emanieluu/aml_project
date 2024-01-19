@@ -1,1 +1,0 @@
-hidden_dim,lr,batch_size,epochs,num_gin_layers,num_lin_layers,val_avg_loss,val_avg_mae,test_avg_loss,test_avg_loss
