@@ -6,8 +6,8 @@ if __name__ == "__main__":
 
     train_data = read_train_data()
     test_data = read_test_data()
-    X_train_raw, y_train = train_data.drop(columns=["y"]), train_data[["y"]].ravel()
-    X_test_raw, y_test = test_data.drop(columns=["y"]), test_data[["y"]].ravel()
+    X_train_raw, y_train = train_data.drop(columns=["y"]), train_data[["y"]]
+    X_test_raw, y_test = test_data.drop(columns=["y"]), test_data[["y"]]
     X_train, X_test = full_pipeline(X_train_raw, X_test_raw, y_train)
     X_train = pd.DataFrame(X_train)
     X_test = pd.DataFrame(X_test)

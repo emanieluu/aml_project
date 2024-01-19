@@ -5,3 +5,7 @@ matplotlib>=*
 wandb>=*
 rdkit>=*
 networkx>=*
+torch-scatter>=*
+timeout_decorator>=*
+hyperopt>=*
+scikit-learn-intelex>=*
