@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import torch
 import torch.optim as optim
-from sklearn.metrics import mean_absolute_error
+import torch.nn as nn
 from molprop_prediction.models.GIN import GIN
 from molprop_prediction.scripts.utils import (
     prompt_user_for_predictions,
@@ -14,6 +14,7 @@ from molprop_prediction.scripts.utils import (
     load_data_gat,
 )
 from molprop_prediction.models.GAT import GATGraphRegressor
+from sklearn.metrics import mean_absolute_error
 
 if __name__ == "__main__":
     (
@@ -29,7 +30,6 @@ if __name__ == "__main__":
     if model == "RF":
         test_data = read_tabular_test()
         X_test, y_test = test_data.drop("y", axis=1), test_data["y"]
-
         model = joblib.load(checkpoint_path)
         predictions = model.predict(X_test)
 
@@ -42,8 +42,7 @@ if __name__ == "__main__":
 
     if model == "GIN":
         test_data = read_test_data()
-        y_test = test_data["y"]
-
+        X_test, y_test = test_data.drop("y", axis=1), test_data["y"]
         # Loading Parameters
         input_dim = params["input_dim"]
         hidden_dim = params["hidden_dim"]
@@ -65,11 +64,14 @@ if __name__ == "__main__":
             num_lin_layers=num_lin_layers,
         ).to(device)
 
-        optimizer = optim.Adam(model.parameters(), lr=lr)git 
+        optimizer = optim.Adam(model.parameters(), lr=lr)
+        mae = nn.L1Loss()
         model, optimizer = load_model(model, optimizer, checkpoint_path)
         model.eval()
 
         predictions = []
+        total_mae = 0
+
         with torch.no_grad():
             for batch in test_dataloader:
                 batch = batch.to(device)
@@ -80,15 +82,17 @@ if __name__ == "__main__":
                 )
                 output = model(x, edge_index, batch_data)
                 predictions.extend(output.cpu().numpy().flatten().tolist())
+                mae_value = mae(output, batch.y.view(-1, 1))
+                total_mae += mae_value.item()
 
-        predictions_df = pd.DataFrame(
-            {"id": test_data.index, "y": predictions}
-        )
-        predictions_df.to_csv(save_path, index=False)
-
-        mae = mean_absolute_error(y_test, predictions)
-        print(f"Mean Absolute Error (MAE): {mae}")
+        average_mae = total_mae / len(test_dataloader)
+        print(f"Mean Absolute Error (MAE): {average_mae}")
         print(f"Predictions saved to {save_path}")
+
+        # predictions_df = pd.DataFrame(
+        #     {"id": test_data.index, "y": predictions}
+        # )
+        # predictions_df.to_csv(save_path, index=False)
 
     if model == "GAT":
         test_data = read_test_data()

@@ -9,6 +9,7 @@ from molprop_prediction.scripts.utils import (
     read_tabular_train,
     preprocess_graph_data,
     load_data_gat,
+    read_test_data,
 )
 from molprop_prediction.models.GIN import GIN
 from molprop_prediction.models.GAT import GATGraphRegressor
