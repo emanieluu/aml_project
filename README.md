@@ -65,7 +65,7 @@ python -m molprop_prediction.scripts.grid_search
 
 ## Folder structure
 
-
+```
 .
 └── aml_project/
     ├── data/
@@ -88,7 +88,7 @@ python -m molprop_prediction.scripts.grid_search
     ├── notebooks
     └── reports/
         └── figures 
-
+```
 ## Contributors
 
 Claire Dechaux, François Lacarce, Emanie Luu 
