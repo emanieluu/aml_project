@@ -27,8 +27,8 @@ patch_sklearn()  # Extension to speed calculation (X10-100)
 # profiler.enable()
 
 
-final_train = pd.read_csv("/home/onyxia/work/aml_project/data/raw_data/data_fot_ML/final_train_train.csv")
-y_train = pd.read_csv("/home/onyxia/work/aml_project/data/raw_data/data_fot_ML/Y_train.csv")["y"]
+final_train = pd.read_csv("../aml_project/data/tabular_feature_enhancement/train_data.csv")
+y_train = pd.read_csv("../aml_project/data/tabular_feature_enhancement/train_data.csv")["y"]
 trials = Trials()
 
 # Our space of hyperparameters: scaler, feature extractor, and hyperparameters of Random Forest

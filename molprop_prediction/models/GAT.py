@@ -4,6 +4,7 @@ from torch_geometric.nn import global_mean_pool
 import torch.nn.functional as F
 
 
+
 class GATGraphRegressor(torch.nn.Module):
     def __init__(self, num_node_features, hidden_dim, out_features):
         super(GATGraphRegressor, self).__init__()
