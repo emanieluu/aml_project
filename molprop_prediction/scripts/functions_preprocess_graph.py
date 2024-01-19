@@ -11,6 +11,7 @@ from rdkit.Chem import GraphDescriptors
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
 from pathlib import Path
 
+
 def smiles_to_graph(smiles):
     """
     Converts a SMILES string to an RDKit molecule object.
@@ -20,17 +21,20 @@ def smiles_to_graph(smiles):
     if mol is None:
         return None
 
-    #Initialize list to store graph data 
+    # Initialize list to store graph data
     node_features = []
     edge_indices = []
 
     for atom in mol.GetAtoms():
-        node_features.append([atom.GetAtomicNum()]) 
+        node_features.append([atom.GetAtomicNum()])
 
     for bond in mol.GetBonds():
         i = bond.GetBeginAtomIdx()
         j = bond.GetEndAtomIdx()
-        edge_indices += [[i, j], [j, i]]  # Ajouter les deux directions pour le graphe non orienté
+        edge_indices += [
+            [i, j],
+            [j, i],
+        ]  # Ajouter les deux directions pour le graphe non orienté
 
     # Convert node features and edge indices to PyTorch tensors
     x = torch.tensor(node_features, dtype=torch.float32)
@@ -48,13 +52,12 @@ class MolDataset(Dataset):
 
     def __getitem__(self, idx):
         row = self.dataframe.iloc[idx]
-        graph = smiles_to_graph(row['smiles'])
+        graph = smiles_to_graph(row["smiles"])
         if graph is None:
             return None
-        graph.y = torch.tensor([row['y']], dtype=torch.float32)
+        graph.y = torch.tensor([row["y"]], dtype=torch.float32)
         return graph
 
-################################################################################################
 
 def onehot_encode(x, features: list):
     """
@@ -94,6 +97,7 @@ def list_to_json(json_file, input_list):
     with open(json_file, "w") as f:
         json.dump(input_list, f)
     print(f"Output json saved to: {json_file}")
+
 
 class FeaturesArgs:
     # encodings information
@@ -178,13 +182,21 @@ class FeaturesArgs:
     atom_info_lambdas = {
         "is_in_a_ring_enc": lambda atom: [int(atom.IsInRing())],
         "is_aromatic_enc": lambda atom: [int(atom.GetIsAromatic())],
-        "atomic_mass_scaled": lambda atom: [float((atom.GetMass() - 10.812) / 116.092)],
+        "atomic_mass_scaled": lambda atom: [
+            float((atom.GetMass() - 10.812) / 116.092)
+        ],
         "vdw_radius_scaled": lambda atom: [
-            float((Chem.GetPeriodicTable().GetRvdw(atom.GetAtomicNum()) - 1.5) / 0.6)
+            float(
+                (Chem.GetPeriodicTable().GetRvdw(atom.GetAtomicNum()) - 1.5)
+                / 0.6
+            )
         ],
         "covalent_radius_scaled": lambda atom: [
             float(
-                (Chem.GetPeriodicTable().GetRcovalent(atom.GetAtomicNum()) - 0.64)
+                (
+                    Chem.GetPeriodicTable().GetRcovalent(atom.GetAtomicNum())
+                    - 0.64
+                )
                 / 0.76
             )
         ],
@@ -203,7 +215,9 @@ class FeaturesArgs:
     stereo_types = ["STEREOZ", "STEREOE", "STEREOANY", "STEREONONE"]
     # bond encodings
     bond_encoding_lambdas = {
-        "bond_types": onehot_encodings(lambda bond: bond.GetBondType(), bond_types),
+        "bond_types": onehot_encodings(
+            lambda bond: bond.GetBondType(), bond_types
+        ),
         "stereo_types": onehot_encodings(
             lambda bond: str(bond.GetStereo()), stereo_types
         ),
