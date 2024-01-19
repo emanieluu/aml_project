@@ -11,6 +11,7 @@ wandb = "*"
 rdkit = "*"
 networkx = "*"
 torchsummary = "*"
+seaborn = "*"
 
 [dev-packages]
 

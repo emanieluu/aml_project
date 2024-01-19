@@ -5,7 +5,6 @@ import torch.nn as nn
 import torch.optim as optim
 import pandas as pd
 from torch_geometric.loader import DataLoader
-from molprop_prediction.scripts.utils import parse_args, load_params
 from molprop_prediction.models.GIN import GIN
 from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,

@@ -4,13 +4,15 @@ import pandas as pd
 import torch
 import torch.optim as optim
 import torch.nn as nn
-from molprop_prediction.models.GIN import GIN
+from molprop_prediction.models.GIN_bis import GIN
 from molprop_prediction.scripts.utils import (
     prompt_user_for_predictions,
     read_test_data,
+    read_train_data,
     read_tabular_test,
     load_model,
     preprocess_graph_data,
+    preprocess_test_graph_data,
     load_data_gat,
 )
 from molprop_prediction.models.GAT import GATGraphRegressor
@@ -54,15 +56,10 @@ if __name__ == "__main__":
         num_lin_layers = params["num_lin_layers"]
 
         # Loading Data
-        test_dataloader = preprocess_graph_data(test_data)
+        test_dataloader = preprocess_test_graph_data(test_data)
 
         # Loading Model
-        model = GIN(
-            dim_h=hidden_dim,
-            num_node_features=input_dim,
-            num_gin_layers=num_gin_layers,
-            num_lin_layers=num_lin_layers,
-        ).to(device)
+        model = GIN(hidden_dim, input_dim).to(device)
 
         optimizer = optim.Adam(model.parameters(), lr=lr)
         mae = nn.L1Loss()
@@ -70,7 +67,7 @@ if __name__ == "__main__":
         model.eval()
 
         predictions = []
-        total_mae = 0
+        # total_mae = 0
 
         with torch.no_grad():
             for batch in test_dataloader:
@@ -82,17 +79,18 @@ if __name__ == "__main__":
                 )
                 output = model(x, edge_index, batch_data)
                 predictions.extend(output.cpu().numpy().flatten().tolist())
-                mae_value = mae(output, batch.y.view(-1, 1))
-                total_mae += mae_value.item()
+                # mae_value = mae(output, batch.y.view(-1, 1))
+                # total_mae += mae_value.item()
 
-        average_mae = total_mae / len(test_dataloader)
-        print(f"Mean Absolute Error (MAE): {average_mae}")
+        mae = mean_absolute_error(y_test, predictions)
+        # average_mae = total_mae / len(test_dataloader)
+        print(f"Mean Absolute Error (MAE): {mae}")
         print(f"Predictions saved to {save_path}")
 
-        # predictions_df = pd.DataFrame(
-        #     {"id": test_data.index, "y": predictions}
-        # )
-        # predictions_df.to_csv(save_path, index=False)
+        predictions_df = pd.DataFrame(
+            {"id": test_data.index, "y": predictions}
+        )
+        predictions_df.to_csv(save_path, index=False)
 
     if model == "GAT":
         test_data = read_test_data()

@@ -51,12 +51,17 @@ def prompt_user_for_predictions():
     )
     params_file = params_file.strip() or "params.json"
     config_path = f"./molprop_prediction/configs/{model}/{params_file}"
-    checkpoint_path = "./molprop_prediction/trained_models/" + model + "/" + checkpoint_name
+    checkpoint_path = (
+        "./molprop_prediction/trained_models/" + model + "/" + checkpoint_name
+    )
     print(
         f"Using {model} model with parameters from the file {params_file} and checkpoint {checkpoint_name} to predict"
     )
     save_path = (
-        "./data/predictions/" + model + "_predictions/" + "predictions.csv"
+        "./data/predictions/"
+        + model
+        + "_predictions/"
+        + "predictions_test_bis.csv"
     )
     return model, checkpoint_path, config_path, save_path
 
@@ -85,7 +90,13 @@ def read_tabular_test():
 
 def preprocess_graph_data(data):
     data = graph_datalist_from_smiles_and_labels(data["smiles"], data["y"])
-    graph_dataloader = DataLoader(data, batch_size=32, shuffle=True)
+    graph_dataloader = DataLoader(data, batch_size=16, shuffle=True)
+    return graph_dataloader
+
+
+def preprocess_test_graph_data(data):
+    data = graph_datalist_from_smiles_and_labels(data["smiles"], data["y"])
+    graph_dataloader = DataLoader(data, batch_size=1, shuffle=True)
     return graph_dataloader
 
 

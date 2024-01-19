@@ -110,7 +110,7 @@ python -m molprop_prediction.scripts.grid_search_GIN
         └── figures/                      # Visualizations and figures generated for reports
 
 ```
-## 5. In-Depth Development Insights
+## 5 In-Depth Development Insights
 
 - The model architecture for optimizing parameters of all the pipeline of our Random Forest model (aml_project/molprop_prediction/scripts/grid_search_RF.py), in particular the use of the hyperopt package, drew inspiration from: [GitHub link - A quantitative model for the prediction of sooting tendency from molecular structure](https://github.com/pstjohn/ysi_qsar_energy_fuels/blob/master/ysi_utils/models/setup_model.py)
 

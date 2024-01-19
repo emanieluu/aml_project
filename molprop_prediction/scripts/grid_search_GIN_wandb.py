@@ -1,5 +1,3 @@
-import argparse
-import json
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -11,8 +9,7 @@ from molprop_prediction.models.GIN import GIN
 from molprop_prediction.scripts.functions_preprocess_graph import (
     graph_datalist_from_smiles_and_labels,
 )
-from molprop_prediction.scripts.utils import (parse_args,
-                                              load_params)
+from molprop_prediction.scripts.utils import parse_args, load_params
 
 args = parse_args()
 params = load_params(args.config)

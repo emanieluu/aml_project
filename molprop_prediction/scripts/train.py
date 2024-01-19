@@ -6,20 +6,23 @@ import torch.optim as optim
 from molprop_prediction.scripts.utils import (
     prompt_user_for_args,
     read_train_data,
+    read_test_data,
     read_tabular_train,
     preprocess_graph_data,
     load_data_gat,
-    read_test_data,
+    preprocess_test_graph_data,
 )
-from molprop_prediction.models.GIN import GIN
+from molprop_prediction.models.GIN_bis import GIN
 from molprop_prediction.models.GAT import GATGraphRegressor
 from sklearn.ensemble import RandomForestRegressor
+import pandas as pd
+from sklearn.metrics import mean_absolute_error
 
 if __name__ == "__main__":
     model_name, config_path, save_path = prompt_user_for_args()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     train_data = read_train_data()
-
+    test_data = read_test_data()
     with open(config_path, "r") as file:
         params = json.load(file)
 
@@ -32,6 +35,8 @@ if __name__ == "__main__":
         print(f"Model saved to {save_path}")
 
     if model_name == "GIN":
+        X_train, y_train = train_data.drop("y", axis=1), train_data["y"]
+        X_test, y_test = test_data.drop("y", axis=1), test_data["y"]
         # Loading Parameters
         input_dim = params["input_dim"]
         hidden_dim = params["hidden_dim"]
@@ -43,12 +48,7 @@ if __name__ == "__main__":
         num_lin_layers = params["num_lin_layers"]
 
         # Loading Model
-        model = GIN(
-            dim_h=hidden_dim,
-            num_node_features=input_dim,
-            num_gin_layers=num_gin_layers,
-            num_lin_layers=num_lin_layers,
-        ).to(device)
+        model = GIN(hidden_dim, input_dim).to(device)
         optimizer = optim.Adam(model.parameters(), lr=lr)
         criterion = nn.MSELoss()
         mae = nn.L1Loss()
@@ -84,6 +84,51 @@ if __name__ == "__main__":
                 f"Epoch {epoch + 1}, Loss: {average_loss}, MAE: {average_mae}"
             )
 
+        model.eval()
+        test_dataloader = preprocess_test_graph_data(test_data)
+        predictions = []
+
+        with torch.no_grad():
+            for batch in train_dataloader:
+                batch = batch.to(device)
+                x, edge_index, batch_data = (
+                    batch.x,
+                    batch.edge_index,
+                    batch.batch,
+                )
+                output = model(x, edge_index, batch_data)
+                predictions.extend(output.cpu().numpy().flatten().tolist())
+
+        predictions_df = pd.DataFrame({"y": predictions})
+
+        predictions_df.to_csv(
+            "/Users/emanieluu/Documents/ENSAE/3A/Advanced Machine Learning/aml_project/data/predictions/GIN_predictions/predict_train.csv",
+            index=False,
+        )
+
+        print(mean_absolute_error(y_train, predictions))
+
+        predictions = []
+
+        with torch.no_grad():
+            for batch in test_dataloader:
+                batch = batch.to(device)
+                x, edge_index, batch_data = (
+                    batch.x,
+                    batch.edge_index,
+                    batch.batch,
+                )
+                output = model(x, edge_index, batch_data)
+                predictions.extend(output.cpu().numpy().flatten().tolist())
+
+        predictions_df = pd.DataFrame({"y": predictions})
+        predictions_df.to_csv(
+            "/Users/emanieluu/Documents/ENSAE/3A/Advanced Machine Learning/aml_project/data/predictions/GIN_predictions/predict_test.csv",
+            index=False,
+        )
+
+        print(mean_absolute_error(y_test, predictions))
+
         # Save the trained model and optimizer state
         torch.save(
             {
@@ -95,8 +140,6 @@ if __name__ == "__main__":
             },
             save_path,
         )
-
-        print(f"Model saved to {save_path}")
 
     if model_name == "GAT":
         train_dataloader = load_data_gat(train_data)

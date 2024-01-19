@@ -1,13 +1,9 @@
 import numpy as np
-import pandas as pd
 import torch
 import json
 from torch.utils.data import Dataset
 from torch_geometric.data import Data
 from rdkit import Chem
-from rdkit.Chem import AllChem
-from collections import defaultdict
-from rdkit.Chem import GraphDescriptors
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
 from pathlib import Path
 
