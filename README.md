@@ -69,25 +69,26 @@ python -m molprop_prediction.scripts.grid_search
 .
 └── aml_project/
     ├── data/
-   │   ├── predictions/          #contains the results 
-    │   │   ├── GAT
-    │   │   ├── GIN
-    │   │   └── RF
-    │   ├── raw_data
-    │   ├── tabular_feature_enhancement
-    │   └── tabular_preprocessed_data
-    ├── molprop_prediction /
-    │   ├── configs/
-    │   │   ├── GAT
-    │   │   ├── GIN
-    │   │   └── RF
-    │   ├── grid_results
-    │   ├── models
-    │   ├── scripts
-    │   └── trained_models
-    ├── notebooks
+    │   ├── predictions/                  # Contains the model predictions on the test set
+    │   │   ├── GAT/                      # Predictions from the GAT model
+    │   │   ├── GIN/                      # Predictions from the GIN model
+    │   │   └── RF/                       # Predictions from the Random Forest model
+    │   ├── raw_data/                     # Raw data sources
+    │   ├── tabular_feature_enhancement/  # Tabular data with additional engineered features 
+    │   └── tabular_preprocessed_data/    # Preprocessed tabular data (ready for training)
+    ├── molprop_prediction/
+    │   ├── configs/                      # Best hyperparameters for each model 
+    │   │   ├── GAT/                      # Hyperparameters for the GAT model
+    │   │   ├── GIN/                      # Hyperparameters for the GIN model
+    │   │   └── RF/                       # Hyperparameters for the Random Forest model
+    │   ├── grid_results/                 # Results from hyperparameter tuning grid search
+    │   ├── models/                       # Trained machine learning models
+    │   ├── scripts/                      # Main scripts for data preprocessing, model training, and optimization
+    │   └── trained_models/               # Saved instances of the trained models
+    ├── notebooks/                        # Jupyter notebooks for exploration and analysis
     └── reports/
-        └── figures 
+        └── figures/                      # Visualizations and figures generated for reports
+
 ```
 ## Contributors
 
