@@ -1,7 +1,7 @@
 {   "lr": 1e-3,
     "hidden_dim": 64,
     "batch_size": 32,
-    "epochs": 300,
+    "epochs": 100,
     "num_node_features": 1,
     "out_features": 1
   }

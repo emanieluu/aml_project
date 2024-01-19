@@ -20,11 +20,11 @@ class GATGraphRegressor(torch.nn.Module):
     def forward(self, data):
         x, edge_index = data.x, data.edge_index
         x = F.relu(self.bn1(self.conv1(x, edge_index)))
-        x = F.dropout(x, training=self.training)
         x = F.relu(self.bn2(self.conv2(x, edge_index)))
-        x = F.dropout(x, training=self.training)
         x = F.relu(self.bn3(self.conv3(x, edge_index)))
-        x = F.dropout(x, training=self.training)
+        x = F.dropout(x, p=0.5, training=self.training)
         x = F.relu(self.bn4(self.conv4(x, edge_index)))
+        x = F.dropout(x, p=0.5, training=self.training)
         x = global_mean_pool(x, data.batch)
         return self.fc(x)
+

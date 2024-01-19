@@ -63,14 +63,31 @@ To train a model, run the following command:
 python -m molprop_prediction.scripts.grid_search
 ```
 
-## Project Structure
+## Folder structure
 
-molprop_prediction/: The main package of the project.  
-models/: Contains model definitions.  
-scripts/: Contains Python scripts for training, prediction, hyperparameters optimisation etc.  
-configs/: Configuration files for model hyperparameters.  
-data/: Folder for storing data required for training and evaluation
-docs/: Project documentation.  
+
+.
+└── aml_project/
+    ├── data/
+   │   ├── predictions/          #contains the results 
+    │   │   ├── GAT
+    │   │   ├── GIN
+    │   │   └── RF
+    │   ├── raw_data
+    │   ├── tabular_feature_enhancement
+    │   └── tabular_preprocessed_data
+    ├── molprop_prediction /
+    │   ├── configs/
+    │   │   ├── GAT
+    │   │   ├── GIN
+    │   │   └── RF
+    │   ├── grid_results
+    │   ├── models
+    │   ├── scripts
+    │   └── trained_models
+    ├── notebooks
+    └── reports/
+        └── figures 
 
 ## Contributors
 

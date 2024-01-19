@@ -114,20 +114,25 @@ if __name__ == "__main__":
         ).to(device)
 
         optimizer = optim.Adam(model.parameters(), lr=lr)
+        mae = nn.L1Loss()
         model, optimizer = load_model(model, optimizer, checkpoint_path)
         model.eval()
 
         predictions = []
+        total_mae = 0
+
         with torch.no_grad():
             for batch in test_dataloader:
                 batch = batch.to(device)
                 output = model(batch)
                 predictions.extend(output.cpu().numpy().flatten().tolist())
+                mae_value = mae(output, batch.y.view(-1, 1))
+                total_mae += mae_value.item()
+        average_mae = total_mae / len(test_dataloader)
+        print(f"Mean Absolute Error (MAE): {average_mae}")
+        print(f"Predictions saved to {save_path}")
 
         predictions_df = pd.DataFrame(
             {"id": test_data.index, "y": predictions}
         )
-        mae = mean_absolute_error(y_test, predictions)
-        print(f"Mean Absolute Error (MAE): {mae}")
-        print(f"Predictions saved to {save_path}")
         predictions_df.to_csv(save_path, index=False)
